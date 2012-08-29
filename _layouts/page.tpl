@@ -4,8 +4,8 @@
 <meta charset="utf-8" />
 <meta name="author" content="wkliang" />
 <meta name="keywords" content="{{ page.tags | join: ',' }}" />
-<title>闭门造轮子{% if page.title %} / {{ page.title }}{% endif %}</title>
-<link href="http://wkliang.github.com/feed.xml" rel="alternate" title="闭门造轮子" type="application/atom+xml" />
+<title>pirate bear:D{% if page.title %} / {{ page.title }}{% endif %}</title>
+<link href="http://wkliang.github.com/feed.xml" rel="alternate" title="pirate bear:D" type="application/atom+xml" />
 <link rel="stylesheet" type="text/css" href="/assets/css/site.css" />
 <link rel="stylesheet" type="text/css" href="/assets/css/code/github.css" />
 {% for style in page.styles %}<link rel="stylesheet" type="text/css" href="{{ style }}" />
@@ -23,7 +23,7 @@
 </div>
 
 <side>
-	<h2><a href="/">闭门造轮子</a><a href="/feed.xml" class="feed-link" title="RSS订阅"><img src="http://blog.rexsong.com/wp-content/themes/rexsong/icon_feed.gif" alt="RSS feed" /></a></h2>
+	<h2><a href="/">pirate bear:D</a><a href="/feed.xml" class="feed-link" title="RSS订阅"><img src="http://blog.rexsong.com/wp-content/themes/rexsong/icon_feed.gif" alt="RSS feed" /></a></h2>
 	
 	<nav class="block">
 		<ul>
@@ -40,10 +40,10 @@
 	<div class="block block-about">
 		<h3>关于</h3>
 		<figure>
-			<img src="https://lh6.googleusercontent.com/-uzNtYiYb8CY/AAAAAAAAAAI/AAAAAAAAAAA/7u3fZc2FHTc/s96-c/photo.jpg" />
+			<img src="https://twimg0-a.akamaihd.net/profile_images/271493586/bear_reasonably_small.jpg"/>
 			<figcaption><strong>wkliang</strong></figcaption>
 		</figure>
-		<p>由于经常造各种轮子，所以自诩为前端造轮子工程师。各种形式主义，工具癖，规划控，纠结帝……以及重度拖延症患者。</p>
+		<p>工程師就是造物者，雖然造出的垃圾居多。segmentation fault &amp; brain damaged!</p>
 	</div>
 	
 	<div class="block block-license">

@@ -4,6 +4,10 @@ title: 像黑客一样写自己的技术博客
 category: thinking
 ---
 
+看了這篇博文：[搭建一个免费的，无限流量的Blog----github Pages和Jekyll入门](http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html)
+
+一時手癢，想試看看看...
+
 原文：[像黑客一样写自己的技术博客](http://mytharcher.github.com/posts/my-tech-blogging-like-a-hacker.html)
 
 说实话，我发现自己的确是个形式主义者，工具癖，规划控……就是不想静下来仔细思考认真沉淀最后生产出点有质量的内容，而且从小就是（我曾多次准备好一个练习本规划好用来如何写组词造句等，但第一页都没写完过）。再加上重度的拖延症，偶尔稍微纠结下，曾经写点技术积累的想法就彻底夭折了。
