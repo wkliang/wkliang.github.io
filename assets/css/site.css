@@ -19,7 +19,12 @@ side{position:fixed; left:62%; top:0; right:0; height:100%; overflow:hidden; pad
 side h2{margin:1em 0;}
 side .feed-link{margin-left:0.5em;}
 side nav ul{list-style:none; line-height:1.5em;}
-side nav li:before{content:"> "; font:normal 80%/1em "宋体"; margin:0 .3em; color: #999;}
+side nav li:before {
+	content:"> ";
+	font:normal 80%/1em "宋体";
+	margin:0 .3em;
+	color: #999;
+}
 side .block{max-width:300px; margin:1.5em 0; line-height:1.5em;}
 side .block h3{margin:.5em 0;}
 side .block a{margin:0px;}

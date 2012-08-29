@@ -7,6 +7,45 @@ category: thinking
 看了這篇博文：[搭建一个免费的，无限流量的Blog----github Pages和Jekyll入门](http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html)
 
 一時手癢，想試看看看...
+只要是 tab 開頭的行～就會被當作 code ??
+
+	var Jsonp = (function() {
+	  // "Static" script ID counter
+	  var scriptTagCounter = 1, head;
+
+	  function buildScriptTag(url, cacheOk) {
+	    // Create the script tag
+	    var element = document.createElement("script"),
+	      additionalQueryParams, conjunction,
+	      actualUrl = url,
+	      elementId = 'jsonp-script-' + scriptTagCounter++;
+
+	    if (!cacheOk) {
+	      additionalQueryParams = '_=' + (new Date()).getTime();
+	      conjunction = (url.indexOf('?') == -1) ? '?' : '&';
+	      actualUrl = url + conjunction + additionalQueryParams;
+	    }
+
+	    // Set attributes on the script element
+	    element.setAttribute("type", "text/javascript");
+	    element.setAttribute("src", actualUrl);
+	    element.setAttribute("id", elementId);
+	    return element;
+	  }
+
+	  return function invoke(fullUrl, cacheOk) {
+	    var c = cacheOk || true; // false  ... default
+	    var script = buildScriptTag(fullUrl, c);
+
+	    if (typeof head != 'object') {
+	      head = document.getElementsByTagName("head").item(0);
+	    }
+	    head.appendChild(script);
+	    return script;
+	  }
+
+	}());
+
 
 原文：[像黑客一样写自己的技术博客](http://mytharcher.github.com/posts/my-tech-blogging-like-a-hacker.html)
 
