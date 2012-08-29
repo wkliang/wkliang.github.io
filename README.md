@@ -1,6 +1,7 @@
-造轮子工程师的代码笔记
+借来的 template
 ======================
 
-此项目内容为个人博客，**请不要Fork！**。访问地址: <http://wkliang.github.com/>
+此项目**只是測試！**。访问地址: <http://wkliang.github.com/>
 
-如需使用此博客主题，请转向对应主题项目：[SimpleGray](https://github.com/wkliang/SimpleGray)
+原始設計：<http://mytharther.github.com/>
+如需使用此博客主题，请转向对应主题项目：[SimpleGray](https://github.com/mytharther/SimpleGray)

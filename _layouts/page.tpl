@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
 <meta charset="utf-8" />
 <meta name="author" content="wkliang" />
 <meta name="keywords" content="{{ page.tags | join: ',' }}" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>pirate bear:D{% if page.title %} / {{ page.title }}{% endif %}</title>
 <link href="http://wkliang.github.com/feed.xml" rel="alternate" title="pirate bear:D" type="application/atom+xml" />
 <link rel="stylesheet" type="text/css" href="/assets/css/site.css" />
@@ -40,10 +41,10 @@
 	<div class="block block-about">
 		<h3>关于</h3>
 		<figure>
-			<img src="https://twimg0-a.akamaihd.net/profile_images/271493586/bear_reasonably_small.jpg"/>
+			<img src="/assets/img/bear.jpg"/>
 			<figcaption><strong>wkliang</strong></figcaption>
 		</figure>
-		<p>工程師就是造物者，雖然造出的垃圾居多。segmentation fault &amp; brain damaged!</p>
+		<p>工程師應該是造物者，但是造出的垃圾居多。segmentation fault &amp; brain damaged!</p>
 	</div>
 	
 	<div class="block block-license">
