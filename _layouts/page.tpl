@@ -40,7 +40,7 @@
 	<div class="block block-about">
 		<h3>关于</h3>
 		<figure>
-			<img src="http://cn.gravatar.com/avatar/1cd8c12591616d8c22aaa624f8c07834?s=48" />
+			<img src="https://lh6.googleusercontent.com/-uzNtYiYb8CY/AAAAAAAAAAI/AAAAAAAAAAA/7u3fZc2FHTc/s96-c/photo.jpg" />
 			<figcaption><strong>wkliang</strong></figcaption>
 		</figure>
 		<p>由于经常造各种轮子，所以自诩为前端造轮子工程师。各种形式主义，工具癖，规划控，纠结帝……以及重度拖延症患者。</p>
