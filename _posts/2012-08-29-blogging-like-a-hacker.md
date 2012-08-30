@@ -1,13 +1,13 @@
 ---
 layout: post
-title: FWD 像黑客一样写自己的技术博客
+title: 像黑客一样写自己的技术博客
 category: thinking
 ---
 
 看了這篇博文：[搭建一个免费的，无限流量的Blog----github Pages和Jekyll入门](http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html)
 
 一時手癢，想試看看看...
-只要是 tab 開頭的行～就會被當作 code ??
+tab 開頭的行～會被當作 code ??
 
 	var Jsonp = (function() {
 	  // "Static" script ID counter
@@ -49,15 +49,7 @@ category: thinking
 
 原文：[像黑客一样写自己的技术博客](http://mytharcher.github.com/posts/my-tech-blogging-like-a-hacker.html)
 
-说实话，我发现自己的确是个形式主义者，工具癖，规划控……就是不想静下来仔细思考认真沉淀最后生产出点有质量的内容，而且从小就是（我曾多次准备好一个练习本规划好用来如何写组词造句等，但第一页都没写完过）。再加上重度的拖延症，偶尔稍微纠结下，曾经写点技术积累的想法就彻底夭折了。
-
-但在用了[GitHub][]这么一段时间后，对[Markdown]语法和[jekyll]建站托管的迷恋一发不可收拾，基本上达到了手里拿着一把榔头就准备到处去敲钉子的地步。于是琢磨着用这些东西再次开个博客稍微的积累点技术方面东西，自然的，也是对[WordPress]时代的一个告别：
-
-* 其实我不想维护数据库
-* 其实我只想生成静态的html
-* 其实我不需要什么CMS
-* 其实我讨厌富文本编辑器
-* 其实我希望最好可以像使用svn一样维护版本
+...
 
 其实，我只希望一切都很简单。
 
@@ -78,8 +70,14 @@ category: thinking
 
 感谢这个有云的时代！可以让我们通过一件件简单的工具打造属于每个程序员自己的站点，[像黑客一样写博客](http://kyle.xlau.org/posts/blogging-like-a-hacker.html)（原文：[Blogging Like a Hacker](http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html)）。于是我可以把精力只放在文章的内容上，这一定会更有效率。
 
-今后，我会在这里记录开发中遇到和解决的各种问题，与技术有关的思考，姑且就当做一个代码笔记本了。不过回到开始说的，不管形式如何，努力坚持产出才是王道。
+...
 
--EOF-
+// wkliang:20120830, Random note & thinking:
+
+* jekyll 跟小日本的 wiki template 相比，有什麼優缺點？
+* 把 servent 放上 github
+
+// EOT
+
 
 {% include references.md %}

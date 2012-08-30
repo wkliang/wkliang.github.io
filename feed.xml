@@ -10,7 +10,7 @@ layout: nil
 	<id>http://wkliang.github.com/</id>
 	<author>
 		<name>wkliang</name>
-		<email>wkliang@gmail.com</email>
+		<email>wenkui.liang@gmail.com</email>
 	</author>
 	{% for post in site.posts limit:10 %}
 	<entry>

@@ -9,23 +9,23 @@ host: wkliang.github.com
 
 custom:
     category:
-        thinking: 闭门思考
-        problems: 问题记录
-        knowledge: 知识经验
+        thinking: 思考
+        reading: 閱讀
+        note: 筆記
     categories:
       - name:  thinking
-        title: 闭门思考
+        title: 思考
 
-      - name:  problems
-        title: 问题记录
+      - name:  reading
+        title: 閱讀
 
-      - name:  knowledge
-        title: 知识经验
+      - name:  note
+        title: 筆記
 
 meta:
     authors:
       - name: wkliang
-        email: wkliang@gmail.com
+        email: wenkui.liang@gmail.com
         gravatar: none
 
     gravatar:
