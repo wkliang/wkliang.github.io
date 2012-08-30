@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 像黑客一样写自己的技术博客
-category: thinking, reading, note
+category: note
 ---
 
 看了這篇博文：[搭建一个免费的，无限流量的Blog----github Pages和Jekyll入门](http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html)
