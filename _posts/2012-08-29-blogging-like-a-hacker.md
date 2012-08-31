@@ -76,6 +76,7 @@ tab 開頭的行～會被當作 code ??
 
 * jekyll 跟小日本的 wiki template 相比，有什麼優缺點？
 * 把 servent 放上 github
+* 好玩的 [Bookmarklet](/demo/jstdg6e/1300.html)
 
 // EOT
 
