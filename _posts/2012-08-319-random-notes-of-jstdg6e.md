@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 犀牛書 jstdg6e 讀書隨記
-category: reading note
+category: note
 ---
 
 tab 開頭的行～會被當作 code ??

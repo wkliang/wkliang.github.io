@@ -9,18 +9,18 @@ host: wkliang.github.com
 
 custom:
     category:
-        thinking: 思考
-        reading: 閱讀
         note: 筆記
+        reading: 閱讀
+        thinking: 思考
     categories:
-      - name:  thinking
-        title: 思考
+      - name:  note
+        title: 筆記
 
       - name:  reading
         title: 閱讀
 
-      - name:  note
-        title: 筆記
+      - name:  thinking
+        title: 思考
 
 meta:
     authors:
