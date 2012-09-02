@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>pg#318, Example 13-3. Generating document content at load time</title>
+</head>
+<body>
+<h1>Table of Factorials</h1>
+<script>
+var start_time = new Date();
+function factorial(n) {
+/*
+    if (n <= 1 ) return n;
+    else return n * factorial(n-1);
+*/
+    if (n in arguments.callee)
+	return arguments.callee[n];
+    if (n <= 1) return 1;
+    return (arguments.callee[n] = n * arguments.callee(n-1));
+}
+
+document.write("<table>");				// Begin an HTML table
+document.write("<tr><th>n</th><th>n!</th></tr>");	// Output table header
+for (var i = 1; i <= 10; i++) {			// Output 10 rows
+    document.write("<tr><td>" + i + "</td><td>" + factorial(i) + "</td></tr>");
+}
+document.write("</table>");				// End the table
+document.write("Generated at " + new Date() + "<br/>");	// Output a timestamp
+document.write("elapsed " + (new Date()-start_time) + " ms<br/>");
+</script>
+</body>
+</html>

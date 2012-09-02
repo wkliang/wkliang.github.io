@@ -40,6 +40,9 @@ window.onload = function() {
 	title.onclick = function() {
 	    if (elt.className == "reveal") elt.className = "revealed";
 	    else if (elt.className == "revealed") elt.className = "reveal";
+
+	    // wkliang:20120901: how to avoid event from bubbling up?
+	    return false;
 	}
     }
     document.getElementsByTagName("body")[0].onclick = function() {
