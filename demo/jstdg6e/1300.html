@@ -49,6 +49,18 @@ window.onload = function() {
 	this.style.backgroundColor =
 		this.style.backgroundColor == "" ? "#00FFFF" : "";
     };
+    var myDialog = document.getElementById("myDialog");
+    myDialog.onclick = function() {
+	// var a = new Object();
+	// a["length"]=4; a["0"]="Enter"; a["1"]="x"; a["2"]="y"; a["3"]="z";
+	var a = ["Enter coordinates:", "x", "y", "z"];
+	var p = window.showModalDialog("1404.html", a, "dialogWidth:640px; dialogHeight:480px; resizable:no");
+	var text = "myDialog<br/>\n";
+	for (var i = 0; i < p.length; i++) {
+	    text += "ret#"+i+"="+p[i]+".<br/>\n";
+	}
+	myDialog.innerHTML = text;
+    };
 };
 
 </script>
@@ -64,7 +76,7 @@ window.onload = function() {
 <p>This paragraph is hidden. It appears when you click on the title.</p>
 </div>
 
-<a href="javascript:new Date().toLocaleTimeString();">
+<a href="javascript:new Date().toLocaleTimeString();" target="xMyWin">
 What time is it?
 </a><br/>
 
@@ -90,7 +102,6 @@ show hidden script data
   void 0;	/* This prevents the current document from being overwritten */
 '>JavaScript Evaluator</a><br/>
 
-
 <script id="scriptData" type="text/data">
 pg#314, 13.2.3 Script Type
 
@@ -98,5 +109,11 @@ When a web browser encounters a script element with a type attribute whose value
 it does not recognize, it parses the element but does not attempt to display or execute that content. This means that you can use the script element to embed arbitrary textual data into your document: just use the type attribute to specify a non-executable type for your data. To retrieve the data, you can use the text property of the HTMLElement object that represents the script element (Chapter 15 explains how to obtain these elements). Note, however, that this data embedding technique only works for inline scripts. If you specify a src attribute and an unknown type, the script will be ignored and nothing will be downloaded from the URL you specified.
 </script>
 
+<a href="http://www.google.com" target="xMyWin">new google window</a><br/>
+<a href='javascript:
+	var xDialog = window.open("1404.html","xMyWin");
+'>another window</a><br/>
+
+<div id="myDialog">showModalDialog</div>
 </body>
 </html>

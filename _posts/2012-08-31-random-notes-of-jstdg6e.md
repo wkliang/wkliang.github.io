@@ -26,6 +26,12 @@ tab 開頭的行～會被當作 code ??
 * 可以想一下，怎樣用 bookmarklet 加入 JsonP 的功能...
 * jstdg6e ch8 functional programming 相關的 paradigms 需要更熟悉，特別是 map/reduce
 
+// wkliang:20120904，jstdg6e 筆記
+* pg#350 showModalDialog("form.html"); 兩個 html 必須 same origin，不然 from 抓不到 window.dialogArguments
+* pg#351, firefox 跟別人不一樣，onerror handler return true 代表該錯誤事件已經被處理了。
+* pg#351，If you name an element in your HTML document using the id attribute, and if the Window object does not already have a property by that name, the Window object is given a nonenumerable property whose name is the value of the id attribute and whose name is the HTMLElement object that represents that document element. ~~~ 有錯！ window property 的 name 是 id，value 可以是 HTMLElement，或者 array of HTMLElements（當 name="sameName"），甚至是 window object（iframe）
+
+
 // EOT
 
 
