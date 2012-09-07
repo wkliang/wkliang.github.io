@@ -1,12 +1,10 @@
 ---
 layout: post
-title: 犀牛書：ch16 Scripting Documents
+title: 犀牛書 ch15 Scripting Documents
 category: note
 ---
 
-tab 開頭的行～會被當作 code ??
-
-	// pg#367, NodeLists and HTMLCollections
+// pg#367, NodeLists and HTMLCollections
 
 	for (var i=0; i < document.images.length; i++)	// Loop thru all images
 	    document.images[i].style.display = "none";	// ... and hide them.
