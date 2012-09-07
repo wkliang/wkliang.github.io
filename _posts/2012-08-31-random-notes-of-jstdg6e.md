@@ -22,7 +22,7 @@ tab 開頭的行～會被當作 code ??
 * 把 servent 放上 github
 
 // wkliang:20120831
-* 好玩的 [Bookmarklet](/demo/jstdg6e/1300.html)
+* 好玩的 [Bookmarklet](/jstdg6e/1300.html)
 * 可以想一下，怎樣用 bookmarklet 加入 JsonP 的功能...
 * jstdg6e ch8 functional programming 相關的 paradigms 需要更熟悉，特別是 map/reduce
 
