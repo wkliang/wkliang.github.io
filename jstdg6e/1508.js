@@ -8,7 +8,7 @@ function getScrollOffset(w) {
     w = w || window;
 
     // This work for all browser except IE version 8 and before
-    if (x.pageXOffset != null) return {x: w.pageXOffset, y:w.pageYOffset};
+    if (w.pageXOffset != null) return {x: w.pageXOffset, y:w.pageYOffset};
 
     // For IE (or any browser) in Standards mode
     var d = w.document;
@@ -27,7 +27,7 @@ function getViewportSize(w) {
     w = w || window;
 
     // This work for all browser except IE version 8 and before
-    if (x.innerWidth != null) return {w: w.innerWidth, h:w.innerHeight};
+    if (w.innerWidth != null) return {w: w.innerWidth, h:w.innerHeight};
 
     // For IE (or any browser) in Standards mode
     var d = w.document;
@@ -47,7 +47,7 @@ function getDisplayInfo(w) {
     w = w || window;
 
     // This work for all browser except IE version 8 and before
-    if (x.pageXOffset != null)
+    if (w.pageXOffset != null)
 	return {
 		x: w.pageXOffset, y:w.pageYOffset,
 		w: w.innerWidth, h: w.innerHeight };
