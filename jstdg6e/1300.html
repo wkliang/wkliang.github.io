@@ -89,28 +89,14 @@ show hidden script data
 </a><br/>
 
 <a href='javascript:
-    var url;
-/*
-    var head = document.getElementsByTagName("head")[0];
-    var scripts = head.getElementsByTagName("script");
-    if (scripts.length > 0 && scripts[scripts.length-1].src !== "")
-	url = scripts[scripts.length-1].src;
-    else
-*/
-	url = "http://";
-    while (url) {
-	url = prompt("Enter URL: ", url);
-	if (url.search(/^http:\/\/.*\.js/i) < 0) {
-	    console.log("url: " + url + " mismatched!");
-	    continue;
-	}
-	var head = document.getElementsByTagName("head")[0];
-	var script = document.createElement("script");
-	script.src = url;
-	head.appendChild(script);
-	break;
-    }
-    void 0;
+// Asynchronously load and execute a script from specified URL
+function JSLoader(url) {
+    var head = document.getElementsByTagName("head")[0]; // Find document <head>
+    var s = document.createElement("script");	// Create a <script> element
+    s.src = url;
+    head.appendChild(s);
+}
+void 0;
 '>JS Loader</a><br/>
 
 <a href='javascript:
