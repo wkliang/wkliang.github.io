@@ -89,12 +89,14 @@ show hidden script data
 </a><br/>
 
 <a href='javascript:
+    var url;
+/*
     var head = document.getElementsByTagName("head")[0];
     var scripts = head.getElementsByTagName("script");
-    var url;
     if (scripts.length > 0 && scripts[scripts.length-1].src !== "")
 	url = scripts[scripts.length-1].src;
     else
+*/
 	url = "http://";
     while (url) {
 	url = prompt("Enter URL: ", url);
