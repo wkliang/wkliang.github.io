@@ -89,6 +89,23 @@ show hidden script data
 </a><br/>
 
 <a href='javascript:
+    var url = "http://";
+    while (url) {
+	url = prompt("Enter URL: ", url);
+	if (url.search(/^http:\/\/.*\.js/i) < 0) {
+	    console.log("url: " + url + " mismatched!");
+	    continue;
+	}
+	var head = document.getElementsByTagName("head")[0];
+	var script = document.createElement("script");
+	script.src = url;
+	head.appendChild(script);
+	break;
+    }
+    void 0;
+'>JS Loader</a><br/>
+
+<a href='javascript:
   var e = "", r = ""; /* Expression to evaluate and the result */
   do {
     /* Display expression and result and ask for a new expression */
@@ -100,7 +117,7 @@ show hidden script data
     }
   } while(e);	/* Continue until no expression entered or Cancel clicked */
   void 0;	/* This prevents the current document from being overwritten */
-'>JavaScript Evaluator</a><br/>
+'>JS Evaluator</a><br/>
 
 <script id="scriptData" type="text/data">
 pg#314, 13.2.3 Script Type

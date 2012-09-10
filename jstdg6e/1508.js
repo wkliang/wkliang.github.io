@@ -69,3 +69,22 @@ function getDisplayInfo(w) {
 	h: d.body.clientHeight };
 
 }
+
+// pg#396
+// wkliang:20120910
+function getElementPos(elt) {
+    var x = 0, y = 0;
+    // Loop to add up offsets
+    for (var e = elt; e != null; e = e.offsetParent) {
+	x += e.offsetLeft;
+	y += e.offsetTop;
+    }
+    // Loop again, through all ancestor elements to subtract scroll offsets.
+    // This subtracts the main scrollbars, too, and converts to viewport coords.
+    for (var e=elt.parentNode; e!=null && e.nodeType==1; e=e.parentNode) {
+	x -= e.scrollLeft;
+	y -= e.scrollTop;
+    }
+    return {x:x, y:y};
+}
+
