@@ -3,7 +3,7 @@
 
 // Example 15-8. Querying the scrollbar positions of a window
 // Return the current scrollbar offsets as the x and y properties of an object
-function getScrollOffset(w) {
+function getScrollOffsets(w) {
     // Use the specified window or the current window if no argument
     w = w || window;
 

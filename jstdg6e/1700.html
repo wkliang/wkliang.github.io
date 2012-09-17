@@ -42,9 +42,11 @@ div.translucent { /* this class makes a window partially transparent */
 }
 
 </style>
+<script src="1508.js"></script>
+<script src="1603.js"></script>
 <script src="1700.js"></script>
 <script src="1701.js"></script>
-<script src="1603.js"></script>
+<script src="1702.js"></script>
 <script>
 whenReady(function() {
 	shake(document.getElementsByTagName("body")[0],fadeOut,null,3000);
@@ -62,9 +64,14 @@ whenReady(function() {
 	elts = document.getElementsByClassName("titlebar");
 	console.log(elts.length);
 	for (i = 0; i < elts.length; i++) {
+		/*
 		addEvent(elts[i], "click", function(e) {
 			console.log("className",this.className);
 			shake(this.parentNode,shake,null,3000);
+		});
+		*/
+		addEvent(elts[i], "mousedown", function(e) {
+			drag(this.parentNode, e);
 		});
 	}
 
