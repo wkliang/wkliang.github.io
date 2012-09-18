@@ -86,7 +86,7 @@ function enclose(content, framewidth, frameheight, contentX, contentY) {
 	var contentwidth = contentbox.right - contentbox.left;
 	var contentheight = contentbox.bottom - contentbox.top;
 
-	if (e.altKey) {	// If Alt key is held down, resize the frame
+	if (e.altKey) { // If Alt key is held down, resize the frame
 	    if (deltaX) {
 		framewidth -= deltaX;	// New width, but not bigger than the
 		framewidth = Math.min(framewidth, contentwidth); // content
@@ -103,14 +103,19 @@ function enclose(content, framewidth, frameheight, contentX, contentY) {
 	else { // Without the Alt modifier, pan the content within the frame
 	    if (deltaX) {
 		// Don't scroll more than this
+		var minoffset = Math.min(framewidth-contentwidth, 0);
+		// Add deltaX to contentX, but don't go lower than minoffset
+		contentX = Math.max(contentX + deltaX, minoffset);
+		contentX = Math.min(contentX, 0);	// or higher than 0
+		content.style.left = contentX + "px";	// Set net offset
 	    }
 	    if (deltaY) {
-		var minoffset = Math.min(frameheight - contentheight, 0);
+		var minoffset = Math.min(frameheight-contentheight, 0);
 		// Add deltaY to contentY, but don't go lower than minoffset
 		contentY = Math.max(contentY + deltaY, minoffset);
-		contentY = Math.min(content, 0);	// Or higher than 0
+		contentY = Math.min(contentY, 0);	// Or higher than 0
 		content.style.top = contentY + "px";	// Set the new offset
-
+		// console.log("contentY: ", contentY);
 	    }
 	}
 	// Don't let this event bubble. Prevent any default action.
