@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>pg#430, Example 16-2. Displaying window with CSS</title>
+<meta charset="utf-8">
+<title>pg#523, Chapter 19. The jQuery Library</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
 <style type="text/css">
 /**
  * This is a CSS stylesheet that defines three style rules that we use
@@ -45,14 +47,11 @@ div.translucent { /* this class makes a window partially transparent */
 <script src="1508.js"></script>
 <script src="1603.js"></script>
 <script src="1700.js"></script>
-<script src="1701.js"></script>
 <script src="1702.js"></script>
 <script>
-whenReady(function() {
-	shake(document.getElementsByTagName("body")[0],fadeOut,null,3000);
-});
+$(function() {
+    shake(document.getElementsByTagName("body")[0],fadeOut,null,3000);
 
-whenReady(function() {
 	var elts = document.getElementsByClassName("window");
 	console.log(elts.length);
 	for (var i = 0; i < elts.length; i++) {
@@ -76,6 +75,23 @@ whenReady(function() {
 		});
 	}
 
+    var myNode = $("<img/>", {
+	src: "http://i.telegraph.co.uk/multimedia/archive/02167/hunger-games_2167652b.jpg",
+	alt: "The Hunger Games 2012",
+	className: "translucent_image",
+	click: function() {
+	    var x = $(this).css("opacity");
+	    x -= 0.2;
+	    if (x < 0.2) x = 1;
+	    var x = $(this).css("opacity", x);
+	    return false;
+	}
+    });
+    $(document.body).append(myNode);
+    $("img").bind({
+	mouseover: function() { $(this).stop().fadeTo(300,0.5);}, 
+	mouseout: function() { $(this).stop().fadeTo(300,1.0);}
+    });
 });
 </script>
 </head>
