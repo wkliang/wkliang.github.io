@@ -9,32 +9,34 @@
 function polygon(c,n,x,y,r,angle,counterclockwise) {
     angle = angle || 0;
     counterclockwise = counterclockwise || false;
-    c.moveTo(x + r*Math.sin(angle),
-	     y - r*Math.cos(angle));
-    var delta = 2*Math.PI/n;
-    for (var i = 1; i < n; i++) {
-	angle += counterclockwise?-delta:delta;
-	c.lineTo(x + r*Math.sin(angle),
+    console.log(n,0,x+r*Math.sin(angle),y-r*Math.cos(angle));
+    c.moveTo(x + r*Math.sin(angle),  // Begin a new subpath at the first vertex
+	     y - r*Math.cos(angle)); // Use trigonometry to compute position
+    var delta = 2*Math.PI/n;	     // Angular distance between vertices
+    for (var i = 1; i < n; i++) {    // For each of remaining vertices
+	angle += counterclockwise?-delta:delta;	// Adjust angle
+	console.log(n,i,x+r*Math.sin(angle),y-r*Math.cos(angle));
+	c.lineTo(x + r*Math.sin(angle),		// Add line to next vertex
 		 y - r*Math.cos(angle));
     }
-    c.closePath();
+    c.closePath();		// Connect last vertex back to the first
 }
 
 function draw_polygon(c) {
     // Start a new path and add polygon subpaths
     c.beginPath();
-    polygon(c, 3, 50, 70, 50);
-    polygon(c, 4, 150, 60, 50, Math.PI/4);
-    polygon(c, 5, 255, 55, 50);
-    polygon(c, 6, 365, 53, 50, Math.PI/6);
-    polygon(c, 4, 365, 53, 20, Math.PI/4, true);
+    polygon(c, 3, 50, 70, 50);			// Triangle
+    polygon(c, 4, 150, 60, 50, Math.PI/4);	// Square
+    polygon(c, 5, 255, 55, 50);			// Pentagon
+    polygon(c, 6, 365, 53, 50, Math.PI/6);	// Hexagon
+    polygon(c, 4, 365, 53, 20, Math.PI/4, true); // Small square inside the hexago
 
     // Set some properties that control how the graphics will look like
-    c.fillStyle = "#ccc";
-    c.strokeStyle = "#008"
-    c.lineWidth = 5;
+    c.fillStyle = "#ccc";	// Light gray interiors
+    c.strokeStyle = "#008"	// outlined with dark blue lines
+    c.lineWidth = 5;		// five pixels wide
 
     // Now draw all the polygons (each in its own subpath) with these calls
-    c.fill();
-    c.stroke();
+    c.fill();			// Fill the shapes
+    c.stroke();			// And stroke their outlines
 }
