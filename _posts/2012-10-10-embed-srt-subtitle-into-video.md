@@ -22,7 +22,8 @@ and [srt2frame.c](/programs/srt2frame.c) for framming srt.
 
 	ffmpeg -i ${AVF} -ss ${START} -t ${DURATION} \
 		-vf scale=-1:360 -f image2 -y ${OUTPUT}.frames/f%d.png \
-		-ss ${START} -t ${DURATION} -acodec copy -sameq -y ${OUTPUT}.mka
+		-ss ${START} -t ${DURATION} -acodec copy -sameq \
+		-y ${OUTPUT}.mka
 
 	FRAMES=`ls ${OUTPUT}.frames |wc -l`
 	FPS=`echo "scale=0; ${FRAMES}/${DURATION}" |bc`
@@ -47,12 +48,12 @@ and [srt2frame.c](/programs/srt2frame.c) for framming srt.
 		fi
 	done
 
-	ffmpeg -threads 4 -r ${FPS} -f image2 -i ${OUTPUT}.out/f%d.png -i ${OUTPUT}.mka -acodec copy -sameq -y ${OUTPUT}.mkv
+	ffmpeg -threads 4 -r ${FPS} -f image2 -i ${OUTPUT}.out/f%d.png \
+		-i ${OUTPUT}.mka -acodec copy -sameq -y ${OUTPUT}.mkv
 
 	echo "Done!"
 	exit
 
 // EOT
-
 
 {% include references.md %}
