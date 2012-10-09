@@ -12,6 +12,7 @@ custom:
         note: 筆記
         reading: 閱讀
         thinking: 思考
+        programming: 程式
     categories:
       - name:  note
         title: 筆記
@@ -21,6 +22,9 @@ custom:
 
       - name:  thinking
         title: 思考
+
+      - name:  programming
+        title: 程式
 
 meta:
     authors:
