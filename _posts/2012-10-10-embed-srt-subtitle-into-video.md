@@ -4,7 +4,7 @@ title: embed srt into mkv using ffmpeg ImageMagick
 category: programming
 ---
 
-following shell script to embed srt into mkv
+following [shell script](/programs/srt2frame.sh) to embed srt into mkv
 and [srt2frame.c](/programs/srt2frame.c) for framming srt.
 
 	#!/bin/sh
