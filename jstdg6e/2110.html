@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Example 21-10.</title>
+<script src="1305.js"></script>
+<script src="2110.js"></script>
+<script src="2111.js"></script>
+<script src="2112.js"></script>
+<script src="2113.js"></script>
+<style>
+.sparkline { background-color: #ddd; color: red; }
+</style>
+</head>
+<body>
+this is a red square: <canvas id="square" width=10 height=10></canvas>
+this is a blue circle: <canvas id="circle" width=10 height=10></canvas>
+<span class="sparkline">3 5 7 6 6 9 11 15</span>
+<div><canvas id="fig2113" width=600 height=600></canvas></div>
+<script src="2104.js"></script>
+<script>
+var canvas = document.getElementById("square");	// Get first canvas element
+var c = canvas.getContext("2d");	// Get 2D drawing context
+c.fillStyle = "#f00";			// Set fill color to red
+c.fillRect(0,0,10,10);			// Fill a square
+
+canvas = document.getElementById("circle");	// Second canvas element
+c = canvas.getContext("2d");		// Get its context
+c.beginPath();				// Begin a new "path"
+c.arc(5, 5, 5, 0, 2*Math.PI, true);	// Add a circle to the path
+c.fillStyle = "#00f";			// Set blue fill color
+c.fill();				// Fill the path
+
+// pg#652
+canvas = document.getElementById("fig2113");
+c = canvas.getContext("2d");
+
+// Define some drawing attributes
+c.font = "bold 60pt san-serif";		// Big font
+c.lineWidth = 2;			// Narrow lines
+c.strokeStyle = "#000";			// Black lines
+
+// Outline a rectangle and some text
+c.strokeRect(175,25,50,325);		// A vertical stripe down the middle
+c.strokeText("<canvas>",15,330);	// Note strokeText() instead of fillText
+
+// Define a complex path with an interior that is outside.
+polygon(c,3,200,225,200);		// Large triangle
+polygon(c,3,200,225,100,0,true);	// Smaller reverse triangle inside
+
+// Make that path the clipping region.
+c.clip();
+
+// Stroke the path with a 5 pixel line, entirely inside the clipping region.
+c.lineWidth = 10;	// Half of this 10 pixel line will be clipped away
+c.stroke();
+
+// Fill the parts of the rectangle and text that are inside the clipping region
+c.fillStyle = "#aaa";		// Light gray
+c.fillRect(175,25,50,325);	// Fill the vertical stripe
+c.fillStyle = "#888";		// Darker gray
+c.fillText("<canvas>",15,330);	// Fill the text
+
+canvas.onclick = function(event) {
+    if (hitpath(this.getContext("2d"), event)) {
+	// Click over current path
+	console.log("Hit!", event.clientX, event.clientY);
+    }
+    if (hitpaint(this.getContext("2d"), event)) {
+	// Click over a painted pixel
+	console.log("Painted", event.clientX, event.clientY);
+    }
+};
+
+smear(c, 5, 0, 0, 600, 600);
+
+</script>
+</body>
+</html>

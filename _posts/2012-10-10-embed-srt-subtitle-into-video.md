@@ -9,16 +9,20 @@ and [srt2frame.c](/programs/srt2frame.c) for framming srt.
 
 	#!/bin/sh
 
+	if [ $# -lt 5 ]; then
+		echo $0 avfile srtfile start duration output
+		exit 1
+	fi
+
 	AVF=${1}
 	SRT=${2}
 	START=${3}
 	DURATION=${4}
 	OUTPUT=${5}
 
-	if [ $# -lt 5 ]; then
-		echo $0 avfile srt start duration output
-		exit 1
-	fi
+	mkdir -p ${OUTPUT}.out
+	mkdir -p ${OUTPUT}.txt
+	mkdir -p ${OUTPUT}.frames
 
 	ffmpeg -i ${AVF} -ss ${START} -t ${DURATION} \
 		-vf scale=-1:360 -f image2 -y ${OUTPUT}.frames/f%d.png \
@@ -27,10 +31,9 @@ and [srt2frame.c](/programs/srt2frame.c) for framming srt.
 
 	FRAMES=`ls ${OUTPUT}.frames |wc -l`
 	FPS=`echo "scale=0; ${FRAMES}/${DURATION}" |bc`
-	mkdir -p ${OUTPUT}.out
-	mkdir -p ${OUTPUT}.txt
-	mkdir -p ${OUTPUT}.frames
+
 	srt2frame ${SRT} ${START} ${DURATION} ${FPS} ${OUTPUT}.txt
+
 	for (( i=1 ; i<=${FRAMES} ; i++ )) ; do
 		echo ${FRAMES} ${FPS} ${i}
 		if [ -f ${OUTPUT}.txt/${i} ] ; then
