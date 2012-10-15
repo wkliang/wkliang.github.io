@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>22.4 Web Worker</title>
+<script src="2201.js"></script>
+<script src="2206.js"></script>
+</head>
+<body>
+<div id="mygeo">Hello, Google Map<div>
+<img id="myimg" src="http://www.umeajazzfestival.se/media/115192/martino_pat1_byjimmykatz.jpg" width="100%" />
+<script>
+// var map = getmap();
+// map.onclick = smear(this);
+// document.getElementById("mygeo").appendChild(map);
+document.getElementById("myimg").onclick = function(e) {
+	smear(this);
+};
+</script>
+</body>
+</html>
