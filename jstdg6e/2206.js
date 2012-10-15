@@ -12,7 +12,7 @@ function smear(img) {
     // Copy the image into the canvas, then extract its pixels
     var context = canvas.getContext("2d");
     context.drawImage(img, 0, 0);
-    netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
+    // netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
     var pixels = context.getImageData(0,0,img.width,img.height);
 
     // Send the pixels to a worker thread
