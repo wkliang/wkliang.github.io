@@ -10,16 +10,16 @@
 // See http://javascript.crockford.com/prototypal.html.
 
 function inherit(p) {
-	if (p == null)			// p must be a non-null object
-		throw TypeError();
-	if (Object.create)		// If Object.create() is defined...
-		return Object.create(p);	// then just use it.
-	var t = typeof p;		// Otherwise do some more type checking
-	if (t !== "object" && t !== "function")
-		throw  TypeError();
-	function f() {};		// Define a dummy constructor function.
-	f.prototype = p;		// Set its prototype property to p.
-	return new f();			// Use f() to create a "heir" of p.
+    if (p == null)			// p must be a non-null object
+	throw TypeError();
+    if (Object.create)			// If Object.create() is defined...
+	return Object.create(p);	// then just use it.
+    var t = typeof p;			// Otherwise do some more type checking
+    if (t !== "object" && t !== "function")
+	throw  TypeError();
+    function f() {};			// Define a dummy constructor function.
+    f.prototype = p;			// Set its prototype property to p.
+    return new f();			// Use f() to create a "heir" of p.
 }
 
 
@@ -47,7 +47,7 @@ function extend(o, p) {
 // subsequent arguments onto its first argument.
 
 // We work around an IE bug here: in many versions of IE, the for/in loop
-// won't enumerate an enumerable property of of if the prototype of o has
+// won't enumerate an enumerable property of o if the prototype of o has
 // a nonenumerable property by the same name. This means that properties
 // like toString are not handled correctly unless we explicitly check for them.
 
@@ -76,7 +76,7 @@ var extend = (function() {
 			for (var prop in source)
 				o[prop] = source[prop];
 			// And now check the special-case properties
-			for (var j = 0; i < protoprops.length; j++) {
+			for (var j = 0; j < protoprops.length; j++) {
 				prop = protoprops[j];
 				if (source.hasOwnProperty(prop))
 					o[prop] = source[prop];
@@ -245,24 +245,24 @@ var random = {
  * with the same name already exists in the target object.
  */
 Object.defineProperty(Object.prototype,
-	"extend",	// Define Object.prototype.extend
-	{
-		writable: true,
-		enumerable: false,	// Make it nonenumerable
-		configurable: true,
-		value: function(o) {	// Its value is this function
-			// Get all own props, even nonenumerable ones
-			var names = Object.getOwnPropertyNames(o);
-			// Loop through them
-			for (var i = 0; i < names.length; i++) {
-				// Skip props already in this object
-				if (names[i] in this)
-					continue;
-				var desc = Object.getOwnPropertyDescriptor(o,names[i]);
-				// Use it to create property on this
-				Object.defineProperty(this, names[i], desc);
-			}
-		}
+    "extend",	// Define Object.prototype.extend
+    {
+	writable: true,
+	enumerable: false,	// Make it nonenumerable
+	configurable: true,
+	value: function(o) {	// Its value is this function
+	    // Get all own props, even nonenumerable ones
+	    var names = Object.getOwnPropertyNames(o);
+	    // Loop through them
+	    for (var i = 0; i < names.length; i++) {
+		// Skip props already in this object
+		if (names[i] in this)
+		    continue;
+		var desc = Object.getOwnPropertyDescriptor(o,names[i]);
+		// Use it to create property on this
+		Object.defineProperty(this, names[i], desc);
+	    }
+	}
 	});
 
 

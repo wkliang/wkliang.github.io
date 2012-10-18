@@ -6,9 +6,23 @@
 // use moves the mouse over them, the gadget searchs for the link's URL.
 // This allows the users to see what people are tweeting about the link
 // destination before clicking on it.
+
+function handleMessage(e) {
+    if (typeof e.data === "string") {
+	console.log("o: " + e.origin + ", d: " + e.data + ".");
+    }
+    else {
+	for (var i in e.data) {
+	    console.log("e.data[" + i + "]=" + e.data[i] + ".");
+	}
+    }
+}
+
 window.addEventListener("load", function() {	// Won't work in IE < 9
-    var origin = "http://wkliang.github.com";		// Gadget origin
-    var gadget = "/jstdg6e/2204.html";			// Gadget path
+//   var origin = "http://wkliang.github.com";		// Gadget origin
+//   var gadget = "/jstdg6e/2204.html";			// Gadget path
+    var origin = "";		// Gadget origin
+    var gadget = "2204.html";			// Gadget path
 
     var iframe = document.createElement("iframe");	// Create the iframe
     iframe.src = origin + gadget;			// Set its URL
@@ -22,6 +36,7 @@ window.addEventListener("load", function() {	// Won't work in IE < 9
 
     // Now find all links and hook them up to the gadget
     var links = document.getElementsByTagName("a");
+    var urls = [];
     for (var i = 0; i < links.length; i++) {
 	// addEventListener doesn't work in IE8 and before
 	links[i].addEventListener("mousemove", function() {
@@ -30,10 +45,18 @@ window.addEventListener("load", function() {	// Won't work in IE < 9
 	    iframe.contentWindow.postMessage(this.href, "*" /* origin */);
 	    console.log("postMessage: ", this.href);
 	}, false);
+	// urls.push(links[i].href);
     }
- 
+    urls.push("0101.html");
+    urls.push("0800.html");
+
+    var worker = new Worker("2208.js");
+    worker.postMessage(urls);
+
+    worker.onmessage = function(e) {
+	handleMessage(e);
+    };
+
 }, false);
 
-window.addEventListener("message", function(e) {
-	console.log("o: " + e.origin + ", d: " + e.data + ".");
-}, false);
+window.addEventListener("message", function(e) { handleMessage(e) }, false);

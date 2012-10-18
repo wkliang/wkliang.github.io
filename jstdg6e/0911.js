@@ -12,6 +12,7 @@ function defineSubclass(
 	// Set up the prototype object of the subclass
 	// wkliang:20120824: why don't use:
 	//	constructor.prototype = new superclass();
+	// wkliang:20121016: use constructor to call superclass.constructor
 	constructor.prototype = inherit(superclass.prototype);
 	constructor.prototype.constructor = constructor;
 

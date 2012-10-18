@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+  Created using jsbin.com
+  Source can be edited via http://jsbin.com/evodil/28/edit
+-->
+<title>Analog Clock in pure HTML5 Canvas + Javascript for Beginners</title>
+<style>
+  #detailed {
+      font-family:arial;
+      font-size: small;
+      float:left;
+      clear:left;
+      width: 560px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      background-color: #eee;
+      border-radius: 10px;
+  }
+  #detailed a {
+      color: #17E;
+  }
+  #oops {
+      font-family:arial;
+      font-size: medium;
+      float:left;
+      width: 560px;
+      padding: 20px;
+      margin-bottom: 50px;
+      border: 1px solid #f88;
+      background-color: #faa;
+      border-radius: 10px;
+  }
+  #oops a {
+      color: #a52;
+  }
+</style>
+</head>
+<body>
+       <canvas id="ca" width="300" height="300">
+           <div id="oops"><p>Your browser does not support HTML5 Canvas. This is bad, eh? You can get an HTML5 enabled browser from these links: 
+            <a href="http://www.google.com/chrome"><strong>Google Chrome</strong></a>, <a href="http://www.mozilla.org/en-US/firefox/new/"><strong>Mozilla Firefox</strong></a>, <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home"><strong>Internet Explorer 9</strong></a>. It's always better to keep yourself updated!
+            </p>
+          </div>
+      </canvas>
+      <br/>
+      <p id="detailed">
+        <strong>Analog Clock in pure HTML5 + Javascript</strong>
+        <br/>
+        <br/>
+        <strong>Author: </strong>Vishnu Haridas <br/>
+        <strong>Contact: </strong>hvishnu999 [at] gmail.com<br/>
+        <strong>Twitter: </strong><a href="http://twitter.com/hvishnu999">twitter.com/hvishnu999</a><br/>
+        <br/>
+        <strong>Description: </strong>I've done the same clock in Macromedia (now Adobe) Flash about 6 years ago. Now, Flash player is almost leaving the web-world, as the HTML5 enters into the scene. So, I started doing some HTML5 tricks, mostly to write tutorials and to showcase in my upcoming blog <a href="http://iamvishnu.com/">www.iamvishnu.com</a>.
+        <br/><br/>This is one analog clock in pure HTML5+Javascript written from scratch. It works in <strong>Mozilla Firefox</strong>, <strong>Google Chrome</strong>, and mostly in <strong>Internet Explorer 9</strong>. Flash not used. I designed this just to write a starting-tutorial on HTML5 Canvas programming. Hope you enjoy the preview. <br/><br/>
+        You can see the source code in <a href="http://jsbin.com/evodil/28/edit">jsbin.com</a>, or do Right Click &gt; View Page Source
+      </p>
+<script>
+/**
+  * How the analog clock works:
+  *   ~ Each minute is 6 degrees. (That is, 360deg / 60min = 6deg/min)
+  *   ~ Second Needle Angle = (sec * 6) degrees
+  *   ~ Minute Needle Angle = (min * 6) + (sec/60) degrees
+  *   ~ Hour Needle Angle = (hour * 30) + (min/60) + (sec/3600) degrees
+  * 
+  * In Javascript Sin(), Cos() functions accept angles in Radians only.
+  *   
+  *   ~ Angle in Radians = Degrees * 3.14 / 180
+  *
+  * Once we find the angles, calculate X and Y positions of the needle ends from (0,0) as - 
+  *
+  *   ~ X = D + A * cos(Theta)
+  *   ~ Y = D + A * sin(Theta)
+  *
+  * A = size of the needle
+  * D = displacement from (0,0)
+  * Theta = Angle in Radians
+  *
+  * All are old-skool math, I think you get this.
+  * 
+  * In canvas, first we draw the clock face, then draw each needle on top. Then we update time.
+  * We will contine the process every 1 sec, that is, cleaning and drawing again and again.
+**/
+
+(function(f) { // lamda onLoad
+    if (window.addEventListener)
+	window.addEventListener("load", f, false);
+    else if (window.attachEvent)
+	window.attachEvent("onload", f);
+    else
+	window.setTimeout(f, 0);
+}(function() {	// lamda main
+
+// Set the radius of the clock dial
+var rad = 320;
+
+// Get the Canvas Element!
+var cv = document.getElementById("ca");
+var cx = cv.getContext('2d');
+
+// Set the WxH size of the canvas element.
+cv.width = cv.height = rad;
+
+// Just fill a light blue rectangle. In-case any of the functions below
+// fails, you will see this rectangle,
+// to understand that "at-least, it can work!"
+// (I picked the color in random!)
+cx.fillStyle = "rgba(55,133,144,0.5)";
+cx.fillRect(0,0,rad,rad);
+
+// Create a new Clock Face object
+var _clock_face = new (function(ctx, rad){
+  
+  this.radius = rad/2 - 5;
+  this.center = rad/2;
+  this.ctx = ctx;
+    
+  this.draw = function() {
+    this.ctx.clearRect(0,0,this.center*2,this.center*2);
+    
+	this.ctx.shadowColor = "rgba(100,100,50,1)";
+	this.ctx.shadowOffsetX = this.ctx.shadowOffsetY = 0;
+	this.ctx.shadowBlur = 0;
+	this.ctx.fillStyle = "#eef";
+
+    this.ctx.lineWidth = 4.0;
+    this.ctx.strokeStyle = "#567";
+    this.ctx.beginPath();
+    this.ctx.arc(this.center,this.center,this.radius,0,Math.PI * 2,true);
+    this.ctx.closePath();
+    this.ctx.stroke();
+	this.ctx.fill();
+    
+    this.drawDotes();
+    this.drawHourDotes();
+  };
+    
+  this.drawDotes = function() {
+    /* 
+        we need to draw dots in every 6 degrees (6 * PI / 180 radians) 
+        Total 60 dots. (One minute = 6 degrees)
+     */
+    var theta = 0;
+    var distance = this.radius * 0.9; // 90% from the center
+    
+    this.ctx.lineWidth = 0.5;
+    this.ctx.strokeStyle = "#137";
+    
+    for(var i=0; i<60; i++){
+      // calculate Theta
+      theta = theta + (6 * Math.PI / 180);
+      // calculate x,y
+      x = this.center + distance * Math.cos(theta);
+      y = this.center + distance * Math.sin(theta);
+      
+      this.ctx.beginPath();
+      this.ctx.arc(x,y,1,0,Math.PI * 2,true);
+      this.ctx.closePath();
+      this.ctx.stroke();
+    } // for(i:0..60)
+  };
+    
+  this.drawHourDotes = function() {
+    /* 
+        we need to draw dots in every 30 degrees (30 * PI / 180 radians) 
+        Total 12 dots.
+     */
+    var theta = 0;
+    var distance = this.radius * 0.9; // 90% from the center
+    
+    this.ctx.lineWidth = 5.0;
+    this.ctx.strokeStyle = "#137";
+    
+    for(var i=0; i<12; i++){
+      // calculate Theta
+      theta = theta + (30 * Math.PI / 180);
+      // calculate x,y
+      x = this.center + distance * Math.cos(theta);
+      y = this.center + distance * Math.sin(theta);
+      
+      this.ctx.beginPath();
+      this.ctx.arc(x,y,1,0,Math.PI * 2,true);
+      this.ctx.closePath();
+      this.ctx.stroke();
+    } // for(i:0..60)
+  };
+})(cx,rad); // Immediately create an object in the Canvas Context, with given Radius.
+
+    function clockNeedle(c,x,y,r,w) {
+	this.c = c;	// context
+	this.x = x;	// center X
+	this.y = y;	// center Y
+	this.r = r;	// radius
+	this.w = w;	// needle width
+	this.d = 0;	// degree
+    }
+
+    clockNeedle.prototype.updateDraw = function(d) {
+	this.d = d;
+
+	var theta = (d * Math.PI / 180) - (Math.PI/2);
+	var dx = this.x + this.r * Math.cos(theta);
+	var dy = this.y + this.r * Math.sin(theta);
+
+	this.c.lineWidth = this.w;
+	this.c.lineCap = "round";
+	this.c.strokeStyle = "#123";
+
+	this.c.shadowColor = "rgba(100,100,80,.5)";
+	this.c.shadowOffsetX = 5;
+	this.c.shadowOffsetY = 3;
+	this.c.shadowBlur = 1;
+   
+	this.c.beginPath();
+	this.c.moveTo(this.x,this.y);
+	this.c.lineTo(dx,dy);
+	this.c.closePath();
+
+	this.c.stroke();
+    };
+
+    var secHand = new clockNeedle(cx,rad/2,rad/2,rad*0.42,2);
+    var minHand = new clockNeedle(cx,rad/2,rad/2,rad*0.35,4);
+    var hourHand = new clockNeedle(cx,rad/2,rad/2,rad*0.3,8);
+
+    function updateTime() {
+	// get the real-time-based clock details,
+
+	var now = new Date();
+	var sec = now.getSeconds()%60;			// Secnods
+	var min = (now.getMinutes()%60) + sec/60;	// Minutes
+	var hour = (now.getHours()%12) + min/60;	// Fractional hours
+	var secAngle = sec*6;		// 6 degress per minute
+	var minAngle = min*6;		// 6 degress per minute
+	var hourAngle = hour*30;	// 30 degrees per hour
+
+	// Draw the face
+	_clock_face.draw();
+  
+	// Draw the needles
+	secHand.updateDraw(secAngle);
+	minHand.updateDraw(minAngle);
+	hourHand.updateDraw(hourAngle);
+
+	// Update the clock again in 1 second
+	setTimeout(updateTime, 1000);
+    }
+
+    updateTime();
+}));
+  
+</script>
+</body>
+</html>
