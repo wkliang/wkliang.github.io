@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- 
+    pg#699, Example 22-11. Reading text files with FileReader
+  -->
+<html>
+<head>
+<title>Example 22-11. Reading text files with FileReader</title>
+</head>
+<body>
+Select the file to display:
+<!--
+<input id="inputfile" type="file" onchange="readfile(this.files[0])"></input>
+-->
+<input id="inputfile" type="file"></input>
+<pre id="output"></pre>
+<script>
+// Read the specified text file and display it in the <pre> element below
+function displayProperties(o) {
+    for (var p in o) {
+	console.log(p,":",o[p],".");
+    }
+}
+
+function readfile(f) {
+    var reader = new FileReader();	// Create a FileReader object
+    reader.readAsText(f);		// Read the file
+    reader.onload = function() {	// Define an event handler
+	var text = reader.result;	// This is the file contents
+	var out = document.getElementById("output");	// Find output element
+	out.innerHTML = "";				// Clear it
+	out.appendChild(document.createTextNode(text));	// Display file contents
+    };
+    reader.onerror = function(e) {	// If anything goes wrong
+	console.log("Error", e);	// Just log it
+    };
+}
+
+// pg#699, Example 22-12. Reading the first four bytes of a file
+
+// Examine the first 4 bytes of the specified blob. If this "magic number"
+// identifies the type of the file, asynchronously set a property on the Blob.
+
+function typefile(file) {
+    var slice = file.slice(0,4);	// Only read the start of the file
+    var reader = new FileReader();	// Create an asynchronous FileReader
+    reader.readAsArrayBuffer(slice);	// Read the slice of the file
+    reader.onload = function(e) {
+	var buffer = reader.result;	// The result ArrayBuffer
+	var view = new DataView(buffer); // Get access to the result bytes
+	var magic = view.getUint32(0,false);	// Read 4 bytes, big-endian
+	file.verified_type = "*/*";
+	switch(magic) {			// Determine file type from them
+	case 4292411360: file.verified_type = "image/jpg";		break;
+	case 0x89504E47: file.verified_type = "image/png";		break;
+	case 0x47494638: file.verified_type = "image/gif";		break;
+	case 0x25504446: file.verified_type = "application/pdf";	break;
+	case 0x504b0304: file.verified_type = "application/zip";	break;
+	}
+	console.log(file.name, file.type, file.verified_type, magic);
+    };
+}
+
+window.onload = function() {
+    var inputFile = document.getElementById("inputfile");
+
+    inputFile.onchange = function(e) {
+	// displayProperties(e);
+	// displayProperties(this.files);
+	// displayProperties(e.target.files[0]);
+	for (var i=0; i<this.files.length; i++) {
+	    displayProperties(this.files[i]);
+	    typefile(this.files[i]);
+	}
+    };
+};
+
+</script>
+</body>
+</html>
