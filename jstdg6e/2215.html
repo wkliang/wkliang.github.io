@@ -21,7 +21,7 @@ function logerr(e) {
 
 // This function asynchronously obtains the database object (creating and
 // initializing the database if necessary) and passes it to the function f().
-function windDB(f) {
+function withDB(f) {
     var request = indexedDB.open("zipcodes");	// Request the zipcode database
     request.onerror = logerr;			// Log any errors
     request.onsuccess = function() {		// Or call this when done
