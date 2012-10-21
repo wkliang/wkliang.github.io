@@ -190,7 +190,7 @@ function initdb(db, f) {
 	    // process partial records)
 	    var lastNewline = xhr.responseText.lastIndexOf("\n");
 	    if (lastNewline > lastChar) {
-		var chunk = xhr.responseTet.substring(lastChar, lastNewline);
+		var chunk = xhr.responseText.substring(lastChar, lastNewline);
 		lastChar = lastNewline + 1;	// Where to start next time
 
 		// Now break the new chunk of data into individual lines
