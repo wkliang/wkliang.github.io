@@ -38,10 +38,8 @@ var n = 10;
 var xmlhttp;
 var links = new Array("raultamas", "mascus", "artsoft", "artificial", "silvestru", "moodplay", "mascus", "raultamas", "artificial", "moodplay", "mascus", "raultamas", "artificial", "moodplay", "mascus", "raultamas", "mascus", "artsoft", "artificial", "silvestru", "moodplay", "mascus", "raultamas", "artificial");
 
-function putImages(){
-	
-	if (xmlhttp.readyState==4) 
-	  {
+function putImages() {
+	if (xmlhttp.readyState==4) {
 		  if(xmlhttp.responseText){
 			 var resp = xmlhttp.responseText.replace("\r\n", ""); 
 			 var files = resp.split(";");
@@ -62,11 +60,93 @@ function putImages(){
 		  }
 	  }
 }
-		
-		
-function scroll(){
+
+function imgUrl() {
+	var ch = request("ch");
+	var p = 1;
+	if (ch.indexOf("-")>0) {p=parseInt(ch.split('-')[1]);ch=ch.split('-')[0];}
+	var chs=17;
+	var itemid=487;
+	if(ch=="") ch=1;else ch=parseInt(ch);
+
+	var codes="1 11 2 112 p8hsh87chqnepdb9teu7ghttvpkrmmmkgcwcps5j|"+
+	"2 11 2 112 p8hsh87chqnepdb9teu7ghttvpkrmmmkgcwcps5j|"+
+	"3 11 2 112 rjce4vy2htfdyn5a6haunvuhw3rskpubpmuxxgyc|"+
+	"4 11 2 109 6rpn33r57p5smvh28xxuv4b7yw37qmqmm7gnbrmj|"+
+	"5 11 2 111 38r5h5yqyvjywpmcp2n9ajx77f885cy8xrgcgpdb|"+
+	"6 11 2 109 rgqfnwh54cmgp2a6ppjxfyt4pdtkke3fdxpgnf42|"+
+	"7 11 2 111 vm8ba8q9uekp8g5qyb3398gen45h9fh7y5q2wvxu|"+
+	"8 11 2 111 57wvvvp649eypcg6eky6jvjp9pkh2axntca6vcu5|"+
+	"9 11 2 112 4qvwabktpuevjmt42hw3dur9p2rqtexcfwjcm2af|"+
+	"10 11 2 110 aakgvykpwp97yf7hftt6pgsham8qk9eta55hkg6q|"+
+	"11 11 2 112 gd95v4g9r54dbkuvg3n6s52cbjvw68uyrvwu9mfb|"+
+	"12 11 2 108 gd95v4g9r54dbkuvg3n6s52cbjvw68uyrvwu9mfb|"+
+	"13 11 2 108 u4eh43naq2vubw3u8x4cw2qwvumtj5r77ahjhh7d|"+
+	"14 11 2 111 cukcymfe2ynb75b7b7tnawmubhtk2vhsrfnmfsws|"+
+	"15 11 2 111 u4eh43naq2vubw3u8x4cw2qwvumtj5r77ahjhh7d|"+
+	"16 11 2 107 u4eh43naq2vubw3u8x4cw2qwvumtj5r77ahjhh7d|"+
+	"17 11 2 112 fe4cgbrunr8djw24rfc9hrfu9bhn9avjvb63uw2h".split('|');
+	var code="";
+	var cid=0;
+	for (i=0;i<codes.length;i++) {
+		if(codes[i].indexOf(ch+" ")==0) {
+			cid=i;
+			code=codes[i];
+			break;
+		};
+	}
+	if (code=="")
+		for (i=0;i<codes.length;i++) {
+			if(parseInt(codes[i].split(' ')[0])>ch) {
+				cid=i;code=codes[i];ch=parseInt(codes[i].split(' ')[0]);break;
+			}
+		}
+	if (code=="") { 
+		cid=codes.length-1;
+		code=codes[cid];
+		ch=chs;
+	}
+
+	var previd=cid>0?parseInt(codes[cid-1].split(' ')[0]):ch;
+	var nextid=cid<codes.length-1?parseInt(codes[cid+1].split(' ')[0]):ch;
+	var num=code.split(' ')[0];
+	var sid=code.split(' ')[1];
+	var did=code.split(' ')[2];
+	var page=code.split(' ')[3];
+	var code=code.split(' ')[4];
+
+	if (p=="") p=1; else p=parseInt(p);
+	document.getElementById("lastchapter").innerHTML=ch;
+	if(p>=page) document.getElementById("next").style.display="none";
+	if(p<=1) document.getElementById("prev").style.display="none";
+	if(ch>=chs) document.getElementById("nextvol").style.display="none";
+	if(ch<=1) document.getElementById("prevvol").style.display="none";
+	function jumpnext(){if(p<page) jump(p+1);else alert('本集完');}
+	function jumpprev(){if(p>1) jump(p-1);}
+
+	function nextvol(){if(ch<chs) jumpvol(nextid);} //ch+1
+	function prevvol(){if(ch>1) jumpvol(previd);} //ch-1
+	function lastvol(){jumpvol(chs);} 
+	function jump(n) {
+		document.location.href=replaceurl("ch",ch+"-"+n);
+	}
+	function jumpvol(n) {
+		document.location.href=replaceurl("ch",n);
+	}
+	var img="";
+	if(p<10) img="00"+p;else if(p<100) img="0"+p;else img=p;
+	var m=(parseInt((p-1)/10)%10)+(((p-1)%10)*3);
+	img+="_"+code.substring(m,m+3);
 	
-	if(navigator.appName == "Microsoft Internet Explorer")
+	var src = "http://img"+sid+".8comic.com/"+did+"/"+itemid+"/"+num+"/"+img+".jpg";
+	// document.getElementById("TheImg").src = src;
+	// initpage(page,p,"pageindex");
+	return src;
+}
+
+function scroll() {
+	
+	if (navigator.appName == "Microsoft Internet Explorer")
 		scrollPosition = document.documentElement.scrollTop;
 	else
 		scrollPosition = window.pageYOffset;		
