@@ -9,6 +9,14 @@
 http://alexandrupitea.ro/nettuts/scroll/#header
 http://www.jquery4u.com/tutorials/jquery-infinite-scrolling-demos/
 http://www.8comic.com/show/cool-487.html?ch=1-25
+
+
+// according to twitter's style
+window.pageYOffset // seem == scrollTop, but read-only
+document.documentElement.scrollTop // current top position
+document.documentElement.scrollHeight // Total document height
+document.documentElement.clientHeight // client area height
+
 -->
 </head>
 
@@ -61,6 +69,14 @@ function putImages() {
 	  }
 }
 
+/*
+This is what imgUrl should return
+[10:04:57.222] GET http://img11.8comic.com/2/487/2/002_sh8.jpg [HTTP/1.1 200 OK 33ms]
+
+This is the URL pass to... request("ch") return "2-2" ? "vol-page"
+http://www.8comic.com/show/cool-487.html?ch=2-2
+
+*/
 function imgUrl() {
 	var ch = request("ch");
 	var p = 1;
