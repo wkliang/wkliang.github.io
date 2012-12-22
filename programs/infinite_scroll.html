@@ -170,8 +170,9 @@ function imgAppend() {
     return;
   }
   var chp = chapter + "-" + page;
-  document.getElementById("container").innerHTML += '<a href="http://www.8comic.com/show/cool-'+itemid+'.html?ch='+chp+'"><img src="'+url+'" /></a><br /><p>'+chp+" Images Displayed | <a href='#header'>top</a></p><br /><hr />";
-  page++;
+//	document.getElementById("container").innerHTML += '<a href="http://www.8comic.com/show/cool-'+itemid+'.html?ch='+chp+'"><img src="'+url+'" /></a><br /><p>'+chp+" Images Displayed | <a href='#header'>top</a></p><br /><hr />";
+	document.getElementById("container").innerHTML += '<img src="'+url+'" /><br/><p>'+chp+" Images Displayed | <a href='#header'>top</a></p><br/><hr/>";
+	page++;
 }
 
 function scroll() {
