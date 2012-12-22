@@ -171,7 +171,7 @@ function imgAppend() {
   }
   var chp = chapter + "-" + page;
 //	document.getElementById("container").innerHTML += '<a href="http://www.8comic.com/show/cool-'+itemid+'.html?ch='+chp+'"><img src="'+url+'" /></a><br /><p>'+chp+" Images Displayed | <a href='#header'>top</a></p><br /><hr />";
-	document.getElementById("container").innerHTML += '<img src="'+url+'" /><br/><p>'+chp+" Images Displayed | <a href='#header'>top</a></p><br/><hr/>";
+	document.getElementById("container").innerHTML += '<a href="#header"><img src="'+url+'" /></a><br/><p>'+chp+" Images Displayed </p><br/><hr/>";
 	page++;
 }
 
@@ -191,10 +191,8 @@ function scroll() {
   else
     var scrollPosition = window.pageYOffset;
   
-  if ((contentHeight - clientHeight - scrollPosition) < 500) {
+  if ((contentHeight - clientHeight - scrollPosition) < clientHeight / 2) {
         imgAppend();
-		contentHeight += 800;
-
   }
 }
 </script>
