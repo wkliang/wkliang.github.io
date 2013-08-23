@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 架構網站的架構
-category:thinking
+category: thinking
 ---
 
 寫個幾個 android 的程式，又把眼光焦點移回網站架構的問題。
