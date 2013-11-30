@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ssh over tor
-category: power_usage
+category: note
 ---
 
 on server side,

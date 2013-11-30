@@ -1,7 +1,7 @@
 ---
 layout: post
 title: firefox with tor
-category: power_usage
+category: note
 ---
 
 [old post on blogsport](http://wkliang.blogspot.tw/2012/06/firefox-with-tor-socks.html) re-post here,

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: virtualbox with windows
-category: power_usage
+category: note
 ---
 
 	yum install VirtualBox kmod-VirtualBox
