@@ -14,7 +14,7 @@ category: note
 
 * jekyll 跟小日本的 wiki template 相比，有什麼優缺點？
 * 把 servent 放上 github
-* 好玩的 [Bookmarklet](/demo/jstdg6e/1300.html)
+* 好玩的 [Bookmarklet](/jstdg6e/1300.html)
 * 可以想一下，怎樣用 bookmarklet 加入 JsonP 的功能...
 * ch8 functional programming 相關的 paradigms 需更熟悉，特別是 map/reduce
 * pg#350 showModalDialog("form.html"); 兩個 html 必須 same origin，不然 from 抓不到 window.dialogArguments
