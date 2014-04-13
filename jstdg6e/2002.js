@@ -22,7 +22,7 @@ function CookieStorage(maxage, path) {	// Arguments specify lifetime and scope
 	    var name = cookie.substring(0,p);	// Get cookie name
 	    var value = cookie.substring(p+1);	// Get cookie value
 	    value = decodeURIComponent(value);	// Decode the value
-	    cookes[name] = value;	// Store name and value in object
+	    cookies[name] = value;	// Store name and value in object
 	}
 	return cookies;
     }());
