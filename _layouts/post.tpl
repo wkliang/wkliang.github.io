@@ -3,8 +3,8 @@ layout: page
 
 pageClass: page-type-post
 
-scripts:
-  - http://tech-justlog-me.disqus.com/embed.js
+# scripts:
+#   - http://tech-justlog-me.disqus.com/embed.js
 
 ---
 
