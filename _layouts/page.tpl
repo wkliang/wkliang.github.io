@@ -35,7 +35,7 @@
 	
 	<form action="/search/" class="block block-search">
 		<h3>搜索</h3>
-		<p><input type="search" name="q" placeholder="输入关键词按回车搜索" /></p>
+		<p><input type="search" name="q" placeholder="Enter to search" /></p>
 	</form>
 	
 	<div class="block block-about">
@@ -44,14 +44,16 @@
 			<img src="/assets/img/bear.jpg"/>
 			<figcaption><strong>wkliang</strong></figcaption>
 		</figure>
-		<p>And One More Thing... Steve Jobs said:</p>
-		<p>我的激情所在是打造一家可以传世的公司,这家公司里的人动力十足地创造伟大的产品。其他一切都是第二位的。当然,能赚钱很棒,因为那样你才能够制造伟大的产品。但是动力来自产品,而不是利润。斯卡利本末倒置,把赚钱当成了目标。这只是个微妙的差别,但其结果却会影响每一件事:你聘用谁,提拔谁,会议上讨论什么事情。</p>
-		<p>有些人说:"消费者想要什么就给他们什么。”但那不是我的方式。我们的责任是提前一步搞清楚他们将来想要什么。我记得亨利·福特曾说过,“如果我最初是问消费者他们想要什么, 他们应该是会告诉我: 要一匹更快的马!”人们不知道想要什么, 直到你把它摆在他们面前。正因如此,我从不依靠市场研究。我们的任务是读懂还没落到纸面上的东西。</p>
+		<p>Clarke's Three Laws:
+		<li>When a distinguished but elderly scientist states that something is possible, he is almost certainly right. When he states that something is impossible, he is very probably wrong.</li>
+		<li>The only way of discovering the limits of the possible is to venture a little way past them into the impossible.</li>
+		<li>Any sufficiently advanced technology is indistinguishable from magic.</li>
+		</p>
 	</div>
 	
 	<div class="block block-license">
 		<h3>版权申明</h3>
-		<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/2.5/cn/" target="_blank" class="hide-target-icon" title="本站(博客)作品全部采用知识共享署名-非商业性使用-禁止演绎 2.5 中国大陆许可协议进行许可。转载请通知作者并注明出处。"><img alt="知识共享许可协议" src="http://i.creativecommons.org/l/by-nc-nd/2.5/cn/88x31.png" /></a></p>
+		<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/2.5/cn/" target="_blank" class="hide-target-icon" title="全部采用知识共享署名"><img alt="知识共享许可协议" src="http://i.creativecommons.org/l/by-nc-nd/2.5/cn/88x31.png" /></a></p>
 	</div>
 	
 	<div class="block block-fork">
