@@ -1,0 +1,6 @@
+{
+  "name": "Generics, Inheritance, and Subtypes",
+  "description":
+	"In object-oriented terminology, this is called an \"is a\" relationship. Since an Integer is a kind of Object, the assignment is allowed. But Integer is also a kind of Number, so the following code is valid as well...",
+  "lastChanged": "2011-04-04"
+}

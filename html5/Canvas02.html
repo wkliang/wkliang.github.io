@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <body>
+    <header>
+	<a href="http://www.matrix67.com/blog/archives/6039">
+		用三段 140 字符以内的代码生成一张 1024×1024 的图片</a>
+    </header>
+    <article>
+      <canvas id="my-canvas" width=1024 height=1024 />
+    </article>
+  </body>
+  <script>
+	window.addEventListener('load', function() {
+		var DIM = 1024;
+		var DIM2 = DIM/2;
+		var dimH = DIM/2-1;
+		var dimQ = DIM/4-1;
+		var width = DIM;
+		var height = DIM;
+
+		var randSeed = [{k: 0}, {k: 0}, {k: 0}];
+		function randDraw(seed) {
+			seed.k += Math.random();	// 0..1
+			var l = Math.floor(seed.k % DIM2);
+			return l>dimQ ? dimH-l : l;
+		}
+
+		var ctx = document.getElementById('my-canvas').getContext('2d');
+		var imageData = ctx.getImageData(0, 0, width, height);
+
+		setInterval(function() {
+			var pixel = imageData.data;
+			for (var x = 0; x < width; ++x)
+			for (var y = 0; y < height; ++y)
+			{
+				var i = ((y * width) + x) * 4;
+				pixel[i+3] = 255;
+				pixel[i+2] = randDraw(randSeed[2]);
+				pixel[i+1] = randDraw(randSeed[1]);
+				pixel[i+0] = randDraw(randSeed[0]);
+			}
+			ctx.putImageData(imageData, 0, 0);
+		}, 100);
+		
+	}, true);
+  </script>
+</html>

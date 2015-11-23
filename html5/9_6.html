@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <link rel=stylesheet href="8_2.css">
+  <meta charset="utf-8">
+  <body>
+    <header>
+      <h1>Adding Dynamic Interactions Using AJAX</h1>
+      <h2>Essential App Engine... Listing 9.6</h2>
+    </header>
+    <nav>
+      <a href="/9_1.html">First Link</a>
+      <a href="/9_4.html">Second link</a>
+      <div id=replaceHTML>load more</div>
+    </nav>
+
+    <article>
+      <header>
+        <h1>Avoiding Global Variables</h1>
+        <p>Page 110 <time datetime=2011-11-24 pubdate>
+		the 24rd on October 2011</time></p>
+      </header>
+        <p>The final flaw in the code examples presented so far
+	is the unnecessary use of global variables. JavaScript specialists
+	introduced clever ways to avoid global variables. You can find these
+	on the Internet if you search for namespaces, modulesm or the Revealing
+	Module pattern. Most of these patterns require a bit more explanation
+	than is possible in the context of this chapter. Some of them require
+	frameworks like the Yahoo! User Interface (YUI) library or jQuery,
+	others can stand alone. Most of them also work in older browsers.
+        </p>
+      <footer>
+        Little icons here to publish to Facebook, Twitter, etc.
+      </footer>
+    </article>
+
+    <article>
+      <header>
+        <h1>Optimizing Performance Using Event Delegation</h1>
+        <p>Page 109 <time datetime=2011-11-13 pubdate>
+		the 13th on November 2011</time></p>
+      </header>
+        <p>
+	In larger and richer applications, the number of elements that should
+	respond to events may grow. Looping through all elements and binding
+	events during initialization also costs performance at some point...
+	<br/>
+	When Your web application is very dunamic and screen elements are added
+	and removed on the fly, you have another challenge...
+	<br/>
+	Assuming that your page elements and their behavior is relatively
+	predictable and generic, you can optimize your code using the principle
+	of event delegation. To put it simply, event delegation means that
+	instead of binding event handlers to the HTML elements targeted by
+	the end user, you bind the event handler to a parent element that
+	contains one or more of the target HTML elements.
+	<br/>
+	The reason this works is called event bubbling. When an event is not
+	sufficiently handled by the target element, the event is passed to its
+	parent element, and this goes on recursively until either the document
+	root or an event handler actively cancels the bubbling process.
+	<br/>
+	Using this approach, you can monitor events on several thousands of 
+	HTML elements (or more) using only a single event handler. And
+	dynamically adding or removing HTML elements from their container
+	does not affect the event handler.
+        </p>
+      <footer>
+        Little icons here to publish to Facebook, Twitter, etc.
+      </footer>
+    </article>
+
+    <article>
+      <header>
+        <h1>Reducing JavaScript Dependence by Progressively Enhancing the HTML</h1>
+        <p>posted on <time datetime=2011-11-12 pubdate>
+		the 12th on November 2011</time></p>
+      </header>
+        <p>
+	A more elegant way to write web application is to start writing them
+	with JavaScript disabled and do the best possible job you can to invent
+	a usable web application without JavaScript. In most case, this lead
+	to more page switches, more page reloading, and heavier reliance on the
+	server side.
+        </p>
+      <footer>
+        Little icons here to publish to Facebook, Twitter, etc.
+      </footer>
+    </article>
+
+    <article>
+      <header>
+        <h1>Cleaning Up HTML Using Unobtrusive JavaScript</h1>
+        <p>posted on <time datetime=2011-11-11 pubdate>
+		the 11th on November 2011</time></p>
+      </header>
+        <p>
+	Mixing HTML and JavaScript makes it harder for multiple
+	specialists to work together on a piece of code, and inline
+	JavaScript introduces the risk of code duplication.
+	Most important of all, mixing HTML and JavaScript creates a performance
+	penalty during rendering. Every tiime the browser encounters a piece of
+	JavaScript, it pauses the rendering process to interpret the JavaScript
+	code. The penalty grows as the size of the JavaScript code increases.
+        </p>
+      <footer>
+        Little icons here to publish to Facebook, Twitter, etc.
+      </footer>
+    </article>
+
+    <article>
+      <header>
+        <h1>Post title</h1>
+        <p>Written on <time datetime=2010-10-23 pubdate>
+		the 23rd on October 2010</time></p>
+      </header>
+        <p>Selecting Pseudo-Elemtns<br/> The first question you should ask is, What is the difference between a pseudo-element and a pseudo-class, and why are the different?
+	A pseudo-class leaves the element intact and provides an extra property (class) to the element in order to style the full element. In most case, this helps to render interactivity without requiring JavaScript code.
+	A pseudo-element applies only to part of the element and not to the full element. Pseudo-elements act as if they are child elements of the real element. <br/>
+        #91...</p>
+        <p id=replaceXML>... and XML</p>
+      <footer>
+        Little icons here to publish to Facebook, Twitter, etc.
+      </footer>
+    </article>
+
+    <article>
+      <header>
+        <h1>Second post</h1>
+        <p>Written on <time datetime=2010-10-24 pubdate>
+		the 24rd on October 2010</time></p>
+      </header>
+        <p>Different text</p>
+        <p id=replaceJSON>.. and JSON</p>
+      <footer>
+        Little icons here to publish to Facebook, Twitter, etc.
+      </footer>
+    </article>
+
+    <footer>
+	Copyleft &copy; 2011 --- all rights released
+    </footer>
+  </body>
+  <script src=9_6.js></script>
+</html>

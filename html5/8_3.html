@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <link rel=stylesheet href="8_2.css">
+  <meta charset="utf-8">
+  <body>
+    <header>
+      <h1>Adding Static Interactions Using JavaScript</h1>
+      <h2>Essential App Engine... Listing 8.3<br/>
+	Removing inline JavaScript and Referring to External JavaScript</h2>
+      <h3>Blog title</h3>
+    </header>
+    <nav>
+      <a href="/1">First Link</a>
+      <a href="/2">Second link</a>
+    </nav>
+
+    <article>
+      <header>
+        <h1>Cleaning Up HTML Using Unobtrusive JavaScript</h1>
+        <p>posted on <time datetime=2011-11-11 pubdate>
+		the 11th on November 2011</time></p>
+      </header>
+        <p>
+	Mixing HTML and JavaScript makes it harder for multiple
+	specialists to work together on a piece of code, and inline
+	JavaScript introduces the risk of code duplication.
+	Most important of all, mixing HTML and JavaScript creates a performance
+	penalty during rendering. Every tiime the browser encounters a piece of
+	JavaScript, it pauses the rendering process to interpret the JavaScript
+	code. The penalty grows as the size of the JavaScript code increases.
+        </p>
+      <footer>
+        Little icons here to publish to Facebook, Twitter, etc.
+      </footer>
+    </article>
+
+    <article class=minimized>
+      <header>
+        <h1>Post title</h1>
+        <p>Written on <time datetime=2011-10-23 pubdate>
+		the 23rd on October 2011</time></p>
+      </header>
+        <p>Selecting Pseudo-Elemtns<br/> The first question you should ask is, What is the difference between a pseudo-element and a pseudo-class, and why are the different?
+	A pseudo-class leaves the element intact and provides an extra property (class) to the element in order to style the full element. In most case, this helps to render interactivity without requiring JavaScript code.
+	A pseudo-element applies only to part of the element and not to the full element. Pseudo-elements act as if they are child elements of the real element. <br/>
+        #91... and more</p>
+      <footer>
+        Little icons here to publish to Facebook, Twitter, etc.
+      </footer>
+    </article>
+
+    <article class=minimized>
+      <header>
+        <h1>Second post</h1>
+        <p>Written on <time datetime=2010-10-24 pubdate>
+		the 24rd on October 2010</time></p>
+      </header>
+        <p>Different text</p>
+        <p>... and more</p>
+      <footer>
+        Little icons here to publish to Facebook, Twitter, etc.
+      </footer>
+    </article>
+
+    <footer>
+	Copyleft &copy; 2011 --- all rights released
+    </footer>
+  </body>
+  <script src=8_4.js></script>
+</html>

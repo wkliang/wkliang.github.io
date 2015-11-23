@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>html5 canvas</title>
+	<style>
+		body {background:gray;}
+		canvas {background:white;}
+	</style>
+</head>
+<body>
+	<a href="http://blog.csdn.net/tsangyang/article/details/8202824">
+		blog.csdn.net </a>
+	<a href="http://www.alloyteam.com/2015/08/fu-li-ru-yao-dong-hua-chu-tan/">
+		alloyteam</a><br/>
+	<canvas id="c1" width="400" height="400">
+		your browser doesn't support the HTML5 canvas.
+	</canvas><br/>
+	<input type="button" value="&lt;&lt;">
+	<input type="button" value="&gt;&gt;">
+	<br/>
+	<canvas id="c2" width="400" height="400">
+		your browser doesn't support the HTML5 canvas.
+	</canvas><br/>
+</body>
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		console.log("DOMContentLoaded");
+		var oGC = document.getElementById('c1').getContext('2d');
+		var yImg = new Image();
+		yImg.onload = function() {
+			var bg = oGC.createPattern(this, 'repeat');
+					// repeat-x、repeat-y、no-repeat
+			oGC.fillStyle = bg;
+			oGC.fillRect(0, 0, 400, 400);
+		};
+		yImg.src = '200px-Soccer_ball.svg.png';
+
+		var imgX = 0;
+		var aInputs = document.getElementsByTagName('input');
+		console.log("aInputs.length=" + aInputs.length);
+		console.log("imgX=" + imgX);
+		aInputs[0].onclick = function() {
+			imgX -= 10;
+			console.log("imgX=" + imgX);
+			oGC.clearRect(0, 0, 400, 400);
+			oGC.drawImage(yImg, imgX, 0);
+		};
+		aInputs[1].onclick = function() {
+			imgX += 10;
+			console.log("imgX=" + imgX);
+			oGC.clearRect(0, 0, 400, 400);
+			oGC.drawImage(yImg, imgX, 0);
+		};
+
+	});
+	window.addEventListener('load', function() {
+		console.log("window.addEventListener('load')");
+		var oC = document.getElementById('c2');
+		var oGC = oC.getContext('2d');
+
+		// createLinearGradient(x1,y1,x2,y2)
+		// 线性渐变：第一组参数：起始点坐标、第二组参数：结束点坐标
+
+		// addColorStop(位置、颜色)添加渐变点
+
+		oGC.fillStyle = oGC.createLinearGradient(0,0,200,200);
+		oGC.fillStyle.addColorStop(0,   'red');
+		oGC.fillStyle.addColorStop(0.5, 'yellow');
+		oGC.fillStyle.addColorStop(1,   'blue');
+		oGC.fillRect(0,0,oC.width/2,oC.height/2);
+
+		// createRadialGradient(x1,y1,r1,x2,y2,r2)
+		// 放射性渐变：第一个圆的坐标和半径，第二个圆的坐标和半径
+		oGC.fillStyle = oGC.createRadialGradient(300,300,50,300,300,100);
+		oGC.fillStyle.addColorStop(0,   'red');
+		oGC.fillStyle.addColorStop(0.5, 'yellow');
+		oGC.fillStyle.addColorStop(1,   'blue');
+		oGC.fillRect(oC.width/2,oC.height/2,oC.width,oC.height);
+
+		oGC.font = '60px impact';
+		oGC.textBaseLine = 'bottom';	// top middle bottom
+		oGC.textAlign = 'start';	// end right center
+		oGC.fillText("深夜食堂", 0, 100);
+
+		oGC.textAlign = 'center';		// end right center
+		oGC.strokeText("基本演绎法", 0, 300);
+
+		oGC.textAlign = 'start';
+		oGC.shadowOffsetX = 6;		// x轴偏移
+		oGC.shadowOffsetY = 6;		// y轴偏移
+		oGC.shadowBlur = 3;		// 高斯模糊值
+		oGC.shadowColor = 'purple';	// 阴影颜色, 默认：黑色透明  
+		var w = oGC.measureText("秘密特工").width;
+		oGC.strokeText("秘密特工", (oC.width-w)/2, (oC.height-60)/2);
+
+	}, true);
+	window.onload = function() {
+		console.log("window.onload...");
+	};
+	console.log("hello...");
+
+</script>
+</html>

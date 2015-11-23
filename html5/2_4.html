@@ -1,0 +1,113 @@
+<html>
+<head>
+<title>Throwing dice</title>
+<script>
+	var cwidth = 400;
+	var cheight = 300;
+	var diceX = 50;
+	var diceY = 50;
+	var diceWidth = 100;
+	var diceHeight = 100;
+	var dotrad = 6;
+	var ctx;
+	var dX, dY;
+
+	function throwdice() {
+		var ch = 1 + Math.floor(Math.random()*6);
+		dX = diceX;
+		dY = diceY;
+		drawface(ch);
+		dX = diceX + 150;
+		ch = 1 + Math.floor(Math.random()*6);
+		drawface(ch);
+	}
+
+	function drawface(n) {
+		ctx = document.getElementById('my-canvas').getContext('2d');
+		ctx.lineWidth = 5;
+		ctx.clearRect(dX, dY, diceWidth, diceHeight);
+		ctx.strokeRect(dX, dY, diceWidth, diceHeight);
+		ctx.fillStyle = "#009966";
+		switch (n) {
+			case 1 : draw1(); break;
+			case 2 : draw2(); break;
+			case 3 : draw2(); draw1(); break;
+			case 4 : draw4(); break;
+			case 5 : draw4(); draw1(); break;
+			case 6 : draw4(); draw2mid(); break;
+		}
+	}
+
+	function draw1() {
+		var dotx, doty;
+		ctx.beginPath();
+		dotx = dX + .5 * diceWidth;
+		doty = dY + .5 * diceHeight;
+		ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);
+		ctx.closePath();
+		ctx.fill();
+	}
+
+	function draw2() {
+		var dotx, doty;
+
+		ctx.beginPath();
+
+		dotx = dX + 3 * dotrad;
+		doty = dY + 3 * dotrad;
+		ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);
+
+		dotx = dX + diceWidth - 3 * dotrad;
+		doty = dY + diceHeight - 3 * dotrad;
+		ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);
+
+		ctx.closePath();
+		ctx.fill();
+	}
+
+	function draw4() {
+		var dotx, doty;
+		ctx.beginPath();
+		dotx = dX + 3*dotrad;
+		doty = dY + 3*dotrad;
+		ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);
+		dotx = dX + diceWidth  - 3*dotrad;
+		doty = dY + diceHeight - 3*dotrad;
+		ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);
+		ctx.closePath();
+		ctx.fill();
+
+		ctx.beginPath();
+		dotx = dX + 3*dotrad;
+		doty = dY + diceHeight - 3*dotrad;
+		ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);
+		dotx = dX + diceWidth - 3*dotrad;
+		doty = dY + 3*dotrad;
+		ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);
+		ctx.closePath();
+		ctx.fill();
+	}
+
+	function draw2mid() {
+		var dotx, doty;
+		ctx.beginPath();
+		dotx = dX + 3*dotrad;
+		doty = dY + .5 * diceHeight;
+		ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);
+		dotx = dX + diceWidth - 3*dotrad;
+		doty = dY + .5 * diceHeight;
+		ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);
+		ctx.closePath();
+		ctx.fill();
+	}
+
+</script>
+</head>
+<body>
+	<canvas id="my-canvas" width="400" height="300">
+		Your browser doesn't support the HTML5 element canvas.
+	</canvas>
+	<br/>
+	<button onClick="throwdice();">Throw dice</button>
+</body>
+</html>

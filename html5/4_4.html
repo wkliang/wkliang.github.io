@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>4_4 Cannonball</title>
+	<style>
+		form {
+			width: 330px;
+			margin: 20px;
+			background-color : lightgray;
+			padding: 20px;
+		}
+		/* input:valid { background: green; } */
+		input:invalid { background: red; }
+	</style>
+</head>
+<body>
+	<canvas id ='canvas' width='600' height='400'>
+		Your browser doesn't support the HTML5 element canvas.
+	</canvas>
+	<br/>
+	<form name='f' id='f' onSubmit="return fire();">
+		Set velocity, angle and fire cannonball.
+		<br/>
+		Velocity out of cannon <input name='vo' id='vo'
+			value='30' type='number' min='-100' max='100'/>
+		<br/>
+		Angle <input name='ang' id='ang'
+			value='45' type='number' min='0' max='80'/>
+		<br/>
+		<input type='submit' value='FIRE'/>
+	</form>
+	<br/>
+	<a href="https://github.com/JamesAX/gitSublime/tree/master/HTMLGame">on github</a>
+</body>
+<script>
+	var cwidth = 600, cheight = 400;
+	var ctx;
+	var everything = [];
+	var tid;	// for time event
+	var horvelocity;
+	var verticalvel1, verticalvel2;
+	var gravity = 2;
+	// var iballx = 20, ibally = 280;
+
+	var cball, ground, target, htarget, cannon;	// elements
+	var ballIndex, targetIndex, cannonIndex; 
+
+	var cannonx = 10, cannony = 280;
+	var cannonlength = 200, cannonht = 20;
+	var ballrad = 10;
+	var targetx = 500, targety = 50, targetw = 85, targeth = 280;
+	var htargetx = 450, htargety = 220, htargetw = 355, htargeth = 96;
+
+	function drawBall() {
+		ctx.fillStyle = this.fillStyle;
+		ctx.beginPath();
+		ctx.arc(this.sx, this.sy, this.rad, 0, Math.PI*2, true);
+		ctx.fill();
+	}
+
+	function moveBall(dx, dy) {
+		this.sx += dx;
+		this.sy += dy;
+	}
+
+	function Ball(sx, sy, rad, styleString) {
+		this.sx = sx;
+		this.sy = sy;
+		this.rad = rad;
+		this.draw = drawBall;
+		this.moveit = moveBall;
+		this.fillStyle = styleString;
+	}
+
+	function drawRectangle() {
+		ctx.fillStyle = this.fillStyle;
+		ctx.fillRect(this.sx, this.sy, this.swidth, this.sheight);
+	}
+
+	function MyRectangle(sx, sy, swidth, sheight, styleString) {
+		this.sx = sx;
+		this.sy = sy;
+		this.swidth = swidth;
+		this.sheight = sheight;
+		this.fillStyle = styleString;
+		this.draw = drawRectangle;
+		this.moveit = moveBall;
+	}
+
+	function drawAnImage() {
+		ctx.drawImage(this.img,
+			this.sx, this.sy, this.swidth, this.sheight);
+	}
+
+	function Picture(sx, sy, swidth, sheight, filen) {
+		var img = new Image();
+		img.src = filen;
+		this.sx = sx;
+		this.sy = sy;
+		this.img = img;
+		this.swidth = swidth;
+		this.sheight = sheight;
+		this.draw = drawAnImage;
+		this.moveit = moveBall();
+	}
+
+	function drawAll() {
+		ctx.clearRect(0, 0, cwidth, cheight);
+		for (var i = 0; i < everything.length; i++) {
+			var obj = everything[i];
+			if (obj[1]) {
+				ctx.save();
+				ctx.translate(obj[3], obj[4]);
+				ctx.rotate(obj[2]);
+				ctx.translate(-1*obj[3], -1*obj[4]);
+				obj[0].draw();
+				ctx.restore();
+			} else {
+				obj[0].draw();
+			}
+		}
+	}
+
+	function change() {
+		var dx = horvelocity;
+		var dy = verticalvel1 + gravity/2;
+
+		verticalvel1 += gravity;
+
+		cball.moveit(dx, dy);
+
+		var bx = cball.sx;
+		var by = cball.sy;
+
+		if ((bx>=target.sx)&&(bx<=target.sx+target.swidth)&&
+		    (by>=target.sy)&&(by<=target.sy+target.sheight)) {
+			clearInterval(tid);
+			// remove things after collision
+			everything.splice(targetIndex, 1, [htarget,false]);
+			everything.splice(ballIndex, 1);
+		}
+		if (by >= ground.sy) {
+			clearInterval(tid);
+		}
+
+		drawAll();
+	}
+
+	function fire() {
+		var angle = Number(document.f.ang.value);
+		var outofcannon = Number(document.f.vo.value);
+		var angleradians = angle * Math.PI/180;
+
+		horvelocity = outofcannon * Math.cos(angleradians);
+		verticalvel1 = -1 * outofcannon * Math.sin(angleradians);
+		everything[cannonIndex][2] = -1 * angleradians;
+		cball.sx = cannonx + cannonlength * Math.cos(angleradians);
+		cball.sy = cannony + cannonht*0.5 - cannonlength * Math.sin(angleradians);
+
+		drawAll();
+		if (tid) clearInterval(tid);
+		tid = setInterval(change, 100);
+		return false;
+	}
+
+	document.addEventListener("DOMContentLoaded", function() {
+		ctx = document.getElementById('canvas').getContext('2d');
+
+		cball = new Ball(cannonx+cannonlength, cannony+cannonht*0.5,
+				ballrad, "rgb(250,0,0)");
+		target = new Picture(targetx, targety, targetw, targeth,
+				"https://raw.githubusercontent.com/JamesAX/gitSublime/master/HTMLGame/cannon3/hill.jpg");
+		htarget = new Picture(htargetx, htargety, htargetw, htargeth,
+				"https://raw.githubusercontent.com/JamesAX/gitSublime/master/HTMLGame/cannon3/plateau.jpg");
+		ground = new MyRectangle(0, 300, 600, 30, "rgb(10,250,0)");
+		cannon = new MyRectangle(cannonx, cannony, cannonlength, cannonht, "rgb(40,40,0)");
+
+		targetIndex = everything.length;
+		everything.push([target, false]);
+		everything.push([ground, false]);
+
+		ballIndex = everything.length;
+		everything.push([cball, false]);
+
+		cannonIndex = everything.length;
+		everything.push([cannon,true,0,cannonx,cannony+cannonht*0.5]);
+
+		drawAll();
+	}, false);
+
+</script>
+</html>

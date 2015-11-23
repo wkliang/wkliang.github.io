@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <body>
+    <header>
+	<a href="http://www.matrix67.com/blog/archives/6039">
+		用三段 140 字符以内的代码生成一张 1024×1024 的图片</a>
+    </header>
+    <article>
+      <canvas id="my-canvas" width=1024 height=1024 />
+    </article>
+  </body>
+  <script>
+	window.addEventListener('load', function() {
+		var DIM = 1024;
+		var DIM2 = DIM/2;
+		var DIM4 = DIM/4;
+		var width = 1024;
+		var height = 1024;
+
+		var ofsx = 1.5;	// Math.random();
+		var ofsy = 1;	// 1 - ofsx;
+		function mandel(i, j) {
+			var x = 0, y = 0, n = 0, p, q;
+			while ((p=x*x)+(q=y*y)<4 && n++<DIM4) {
+				y = 2*x*y + j/DIM2 - ofsy;
+				x = p-q   + i/DIM2 - ofsx;
+			}
+			return n;
+			// return Math.log2(n);
+			// return 255*Math.pow((n-80)/800,0.7);
+		}
+
+		var ctx = document.getElementById('my-canvas').getContext('2d');
+		var imageData = ctx.getImageData(0, 0, width, height);
+
+			var pixel = imageData.data;
+			for (var y = 0; y < height; ++y)
+			for (var x = 0; x < width; ++x)
+			{
+				var i = ((y * width) + x) * 4;
+				var m = mandel(x, y);
+				pixel[i+0] = m    ; // * 3;
+				pixel[i+1] = m * 3; // * 5;
+				pixel[i+2] = m * 7; // * 7;
+				pixel[i+3] = 255 - m;
+			}
+			ctx.putImageData(imageData, 0, 0);
+		
+	}, true);
+  </script>
+</html>

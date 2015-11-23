@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <body>
+    <header>
+      <h1>Try the local SQL database</h1>
+      <h2>Essential App Engine... Listing 6.8</h2>
+      <h3>Using the Browser's SQL Database</h3>
+    </header>
+    <article>
+	<input type=button id="doCreate" value="create database"/>
+	<input type=button id="doFill" value="Fill table"/>
+	<input type=button id="doQuery" value="Query database"/>
+
+    </article>
+  </body>
+  <script>
+    if (window.openDatabase) {
+	db = openDatabase('mydb', '1.0', 'My local database', 1024 * 1024);
+	document.getElementById('doCreate').addEventListener('click', function() {
+		console.log('doCreate');
+		db.transaction(function(tx) {
+			tx.executeSql('CREATE TABLE IF NOT EXISTS ' + 
+				'mytable(id, content)');
+		});
+	}, true);
+	document.getElementById('doFill').addEventListener('click', function() {
+		console.log('doFill');
+		db.transaction(function(tx) {
+			tx.executeSql('INSERT INTO mytable(id, content) VALUES(?, ?)',
+				[1, 'Test content']);
+		});
+	}, true);
+	document.getElementById('doQuery').addEventListener('click', function() {
+		console.log('doQuery');
+		db.transaction(function(tx) {
+			tx.executeSql('SELECT * FROM mytable WHERE id = ?',
+				[1], function(tx, results) {
+					for (var i = 0; i < results.rows.length; ++i) {
+						var s = 'query result = ' +
+						results.rows.item(i).content;
+						alert(s);
+					}
+				});
+		});
+	}, true);
+    } // openDatabase
+  </script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <body>
+    <header>
+      <h1>Try the Geolocation services</h1>
+      <h2>Essential App Engine... Listing 6.5</h2>
+      <h3>Asking for the Geolocation of Visitors</h3>
+    </header>
+    <article>
+	<input type=button id="do-get" value="Get coordinates"/>
+    </article>
+  </body>
+  <script>
+	document.getElementById('do-get').addEventListener('click',
+		function() {
+			console.log('do-get');
+			navigator.geolocation &&
+			navigator.geolocation.getCurrentPosition(
+				function(position) {
+					var coords = position.coords;
+					alert("coords= " + coords.latitude
+						+ ", " + coords.longitude
+						+ ", +-" + coords.accuracy);
+				},
+				function(err) {
+					alert('Err' + err.code + ':' + err.message);
+				}, {
+					enableHighAccuracy: true,
+					timeout: 5000,
+					maximumAge: 0
+				});
+		}, true);
+  </script>
+</html>

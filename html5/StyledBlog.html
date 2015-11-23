@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <link rel=stylesheet href="StyledBlog.css">
+  <meta charset="utf-8">
+  <body>
+    <header>
+      <h1>A Simple HTML5-Styled Weblog Application</h1>
+      <h2>Essential App Engine... Listing 7.1</h2>
+      <h3>Blog title</h3>
+    </header>
+    <nav>
+      <a href="/1">First Link</a>
+      <a href="/2">Second link</a>
+    </nav>
+
+    <article>
+      <header>
+        <h1>Post title</h1>
+        <p>Written on <time datetime=2010-10-23 pubdate>
+		the 23rd on October 2010</time></p>
+      </header>
+        <p>Here is the actual content of the article</p>
+        <p>... and more</p>
+      <footer>
+        Little icons here to publish to Facebook, Twitter, etc.
+      </footer>
+    </article>
+
+    <article>
+      <header>
+        <h1>Second post</h1>
+        <p>Written on <time datetime=2010-10-24 pubdate>
+		the 24rd on October 2010</time></p>
+      </header>
+        <p>Different text</p>
+        <p>... and more</p>
+      <footer>
+        Little icons here to publish to Facebook, Twitter, etc.
+      </footer>
+    </article>
+
+    <footer>
+	Copyleft &copy; 2011 --- all rights released
+    </footer>
+  </body>
+  <script>
+	function calc(x) {
+		for (var i = 0; i < 100; ++i) {
+			x = (2 * Math.pow(x, 2) - 1);
+		}
+		console.log(i + ":" + x);
+	}
+	calc(0.51234);
+	calc(0.51235);
+  </script>
+</html>

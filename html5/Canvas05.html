@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <body>
+    <header>
+	<a href="http://www.matrix67.com/blog/archives/6039">
+		用三段 140 字符以内的代码生成一张 1024×1024 的图片</a>
+	<a href="http://www.alloyteam.com/2015/08/fu-li-ru-yao-dong-hua-chu-tan/">
+		【福利】乳摇动画初探</a>
+    </header>
+    <article>
+      <canvas id="my-canvas" width=1024 height=1024 />
+    </article>
+  </body>
+  <script>
+
+	// 将要液化部分的像素copy一份
+	function copyImageDataBuff(imgData) {
+		var data = imgData.data,
+		    imgDataBuff = [];
+		for (var i in data) {
+			imgDataBuff[i] = data[i];
+		}
+		return imgDataBuff;
+	}
+
+	function distanceSquare(x1, y1, x2, y2) {
+		// return sqr(x1 - x2) + sqr(y1 - y2);
+		return Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
+	}
+
+	// 将每个圆内的像素取出来进行处理 
+	function eachCircleDot(imgData, ox, oy, r, callback) {
+		var left = ox - r,
+		    right = ox + r,
+		    top = oy - r,
+		    bottom = oy + r,
+		    square_radius = Math.pow(r,2);
+		for (var x = left; x < right; x++) {
+		for (var y = top; y < bottom; y++) {
+			if (distanceSquare(x,y,ox,oy) <= square_radius) {
+				callback({x: x, y: y});
+			}
+		}}
+	}
+
+	function moveDot(imgData, dataBuff, pos, u) {
+		var width = imgData.width,
+		    height = imgData.height,
+		    data = imgData.data;
+
+		u.x = Math.floor(u.x);
+		u.y = Math.floor(u.y);
+
+		var dst = (pos.y * width + pos.x) * 4;
+		var src = (u.y * width + u.x) * 4;
+		data[dst  ] = dataBuff[src  ];
+		data[dst+1] = dataBuff[src+1];
+		data[dst+2] = dataBuff[src+2];
+		data[dst+3] = dataBuff[src+3];
+	}
+
+	function transFormular(cx, cy, mx, my, tx, ty, r) {
+		var relativity = Math.pow(r,2) - distanceSquare(tx,ty,cx,cy);
+		var distanceMovedSquare = distanceSquare(mx,my,cx,cy);
+		var rate = Math.pow(relativity/(relativity + distanceMovedSquare), 2);
+		var ux = (tx - rate * (mx - cx)),
+		    uy = (ty - rate * (my - cy));
+		return {x: ux, y: uy};
+	}
+
+	function liquify(imgData, cx, cy, mx, my, r) {
+		var imgDataBuff = copyImageDataBuff(imgData);
+		eachCircleDot(imgData, cx, cy, r, function(pos) {
+			var tx = pos.x,
+			    ty = pos.y;
+			var u = transFormular(cx, cy, mx, my, tx, ty, r);
+			moveDot(imgData, imgDataBuff, pos, u);
+		});
+		return imgData;
+	}
+
+	function run(oC, oGC, leftImage) {
+		var sX = 5;
+		var sY = 5;
+		var iX = -200;
+		var x = -10;
+		var iY = /* ev.clientY */ oC.height/2 - oC.offsetTop;
+
+		if (iY > 296) {
+			iY = 200;
+			y = 10;
+		} else {
+			iY = -200;
+			y = -10;
+		}
+
+		timer = setInterval(function() {
+			// oGC.drawImage(leftImage, 0, 0);
+			var d = oGC.getImageData(23, 140, 140, 200);
+			var c = liquify(d, 60, 170, sX + 65, sY + 170, 58);
+			oGC.putImageData(c, 23, 140);
+
+			sX += x;
+			sY += y;
+
+			if (Math.abs(sX) > Math.abs(iX) || Math.abs(sY) > Math.abs(iY)) {
+				clearInterval(timer);
+				oGC.putImageData(leftImage, 23, 140);
+			}
+		}, 30);
+	}
+
+	window.addEventListener('load', function() {
+		var DIM = 1024;
+
+		function R1(x, y) {
+			var v = Math.cos(Math.atan2(y-512,x-512)/2);
+			return v * v * 255;
+		}
+		function G1(x, y) {
+			var v = Math.cos(Math.atan2(y-512,x-512)/2-2*Math.acos(-1)/3);
+			return v * v * 255;
+		}
+		function B1(x, y) {
+			var v = Math.cos(Math.atan2(y-512,x-512)/2+2*Math.acos(-1)/3);
+			return v * v * 255;
+		}
+
+		function R2(i,j) {
+			var s=3./(j+99);
+			var y=(j+Math.sin((i*i+Math.pow(j-700,2)*5)/100./DIM)*35)*s;
+			return (((i+DIM)*s+y)%2+((DIM*2-i)*s+y)%2)*64;
+		}
+		function G2(i, j) {
+			var s=3./(j+99);
+			var y=(j+Math.sin((i*i+Math.pow(j-700, 2)*5)/100./DIM)*35)*s;
+			return ((5*((i+DIM)*s+y))%2+(5*((DIM*2-i)*s+y))%2)*64;
+		}
+		function B2(i, j) {
+			var s=3./(j+99);
+			var y=(j+Math.sin((i*i+Math.pow(j-700, 2)*5)/100./DIM)*35)*s;
+			return ((29*((i+DIM)*s+y))%2+(29*((DIM*2-i)*s+y))%2)*64;
+		}
+
+		var canvas = document.getElementById('my-canvas');
+		var context = canvas.getContext('2d');
+		var width = canvas.width;	// DIM;
+		var height = canvas.height;	// DIM;
+		var imageData = context.getImageData(0, 0, width, height);
+		var pixel = imageData.data;
+		var x, y;
+		for (y = 0; y < height; ++y) {
+			for (x = 0; x < width; ++x) {
+				var i = ((y * width) + x) * 4;
+				pixel[i  ] = R2(x, y);	// x % 255;
+				pixel[i+1] = G2(x, y);	// y % 255;
+				pixel[i+2] = B2(x, y);	// (x+y) % 255;
+				pixel[i+3] = 255;	// (x*y) % 255;
+			}
+		}
+		context.putImageData(imageData, 0, 0);
+
+		run(canvas, context, context.getImageData(23,140,140,200));
+		
+	}, true);
+  </script>
+</html>

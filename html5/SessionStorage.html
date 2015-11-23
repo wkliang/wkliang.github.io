@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <body>
+    <header>
+      <h1>Try the sessionStorage</h1>
+      <h2>Essential App Engine... Listing 6.7</h2>
+      <h3>Storing Data Using HTML5 Session Storage</h3>
+    </header>
+    <article>
+	<input type=button id="do-get" value="Get coordinates"/>
+	<input type=button id="stor-set" value="Set"/>
+	<input type=button id="stor-get" value="Get"/>
+	<input type=button id="stor-length" value="Length"/>
+
+    </article>
+  </body>
+  <script>
+	document.getElementById('do-get').addEventListener('click', function() {
+			console.log('do-get');
+			navigator.geolocation &&
+			navigator.geolocation.getCurrentPosition(
+				function(position) {
+					var coords = position.coords;
+					alert("coords= " + coords.latitude
+						+ ", " + coords.longitude
+						+ ", +-" + coords.accuracy);
+				},
+				function(err) {
+					alert('Err' + err.code + ':' + err.message);
+				}, {
+					enableHighAccuracy: true,
+					timeout: 5000,
+					maximumAge: 0
+				});
+		}, true);
+
+	document.getElementById('stor-set').addEventListener('click',
+		function() {
+			sessionStorage.test = "Hi! ";
+		}, true);
+	document.getElementById('stor-get').addEventListener('click',
+		function() {
+			alert("get= " + sessionStorage.test);
+		}, true);
+	document.getElementById('stor-length').addEventListener('click',
+		function() {
+			alert("length= " + sessionStorage.length);
+			for (var item in sessionStorage) {
+				console.log(item + "=" + sessionStorage[item] + ".");
+			}
+		}, true);
+  </script>
+</html>

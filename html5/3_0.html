@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>The Origami Frog</title>
+</head>
+<body>
+	<canvas id="canvas" width="400" height="300">
+		Your browser doesn't support the HTML5 element canvas.
+	</canvas>
+	<form name="f">
+		<input type="text" name="secs" value="0"/>
+	</form>
+</body>
+<script>
+
+var ctx, img;
+var imgX=20, imgY=10, imgW=100, imgH=100;
+var ballX = 100, ballY = 100, ballR = 200;
+var boxX = 0, boxY = 0, boxW = 200, boxH = 200;
+var hue = [ [255,   0,   0],
+	    [255, 255,   0],
+	    [  0, 255,   0],
+	    [  0, 255, 255],
+	    [  0,   0, 255],
+	    [255,   0, 255] ];
+var grad;
+
+function hasClicked(e) {
+//	console.log(e.target.nodeName + " has been clicked");
+/*
+
+	imgW += imgX;
+	imgH += imgY;
+	ctx.drawImage(img, imgX, imgY, imgW, imgH);
+*/
+	grad = ctx.createLinearGradient(boxX, boxY, boxX+boxW, boxY+boxH);
+	for (var h = 0; h < hue.length; h++) {
+		var color = 'rgb('+hue[h][0]+','+hue[h][1]+','+hue[h][2]+')';
+		grad.addColorStop(h/hue.length, color);
+	}
+
+	ctx.beginPath();
+	ctx.fillStyle = grad; // "rgb(200,0,50";
+	ctx.arc(ballX, ballY, ballR, 0, Math.PI*2, true); // counter clockwise
+	ctx.fill();
+/*
+	ctx.lineWidth = ballR / 10;
+	ctx.strokeRect(boxX, boxY, boxW, boxH);
+*/
+}
+
+function elapsed() {
+	document.f.secs.value = String(1+Number(document.f.secs.value));
+}
+
+function init() {
+	ctx = document.getElementById("canvas").getContext("2d");
+
+	img = new Image();
+	img.src = "http://www.giladorigami.com/P_Frog_Maekawa_Genuine.JPG";
+	ctx.drawImage(img, imgX, imgY, imgW, imgH);
+
+	var bodyEls = document.getElementsByTagName('body');
+	if (bodyEls.length > 0) {
+		bodyEls.item(0).addEventListener('click', hasClicked, false);
+	}
+
+	var tev = setInterval(elapsed, 100);
+	// clearInterval(tev);
+}
+
+document.addEventListener("DOMContentLoaded", init, false);
+
+</script>
+</html>
+

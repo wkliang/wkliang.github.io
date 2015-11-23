@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>3_2 Bouncing Ball with inputs</title>
+	<style>
+		form {
+			width: 330px;
+			margin: 20px;
+			backgrond-color : brown;
+			padding: 20px;
+		}
+	</style>
+</head>
+<body>
+	<canvas id ='canvas' width='400' height='300'>
+		Your browser doesn't support the HTML5 element canvas.
+	</canvas>
+	<br/>
+	<form name='f' id='f' onSubmit="return change();">
+		Horizontal velocity <input name='hv' id='hv'
+			value='4' type='number' min='-10' max='10'/>
+		<br/>
+		Vertical velocity <input name='vv' id='vv'
+			value='8' type='number' min='-10' max='10'/>
+		<br/>
+		<input type='submit' value='CHANGE'/>
+	</form>
+</body>
+<script>
+	var boxX = 20, boxY = 30, boxW = 350, boxH = 250;
+	var ballR = 10;
+	var boxboundX = boxW + boxX - ballR;
+	var boxboundY = boxH + boxY - ballR;
+	var inboxboundX = boxX + ballR;
+	var inboxboundY = boxY + ballR;
+	var ballX = 50, ballY = 60;
+	var ctx;
+	var ballVX = 4, ballVY = 8;
+
+	function change() {
+		ballVX = Number(f.hv.value);
+		ballVY = Number(f.vv.value);
+		return false;
+	}
+
+	function moveandcheck() {
+		var nballx = ballX + ballVX;
+		var nbally = ballY + ballVY;
+
+		if (nballx > boxboundX) {
+			ballVX = -1 * ballVX;
+			nballx = boxboundX;
+		}
+		if (nballx < inboxboundX) {
+			ballVX = -1 * ballVX;
+			nballx = inboxboundX;
+		}
+		if (nbally > boxboundY) {
+			ballVY = -1 * ballVY;
+			nbally = boxboundY;
+		}
+		if (nbally < inboxboundY) {
+			ballVY = -1 * ballVY;
+			nbally = inboxboundY;
+		}
+		ballX = nballx;
+		ballY = nbally;
+	}
+
+	function moveball() {
+		ctx.clearRect(boxX, boxY, boxW, boxH);
+		moveandcheck();
+		ctx.beginPath();
+		ctx.arc(ballX, ballY, ballR, 0, Math.PI*2, true);
+		ctx.fill();
+		ctx.strokeRect(boxX, boxY, boxW, boxH);
+	}
+
+	function init() {
+		ctx = document.getElementById('canvas').getContext('2d');
+		ctx.lineWidth = ballR;
+		ctx.fillStyle = "rgb(200,0,50)";
+		setInterval(moveball, 100);
+	}
+
+	document.addEventListener("DOMContentLoaded", init, false);
+
+</script>
+</html>

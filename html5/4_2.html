@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>4_2 Cannonball</title>
+	<style>
+		form {
+			width: 330px;
+			margin: 20px;
+			background-color : lightgray;
+			padding: 20px;
+		}
+		/* input:valid { background: green; } */
+		input:invalid { background: red; }
+	</style>
+</head>
+<body>
+	<canvas id ='canvas' width='600' height='400'>
+		Your browser doesn't support the HTML5 element canvas.
+	</canvas>
+	<br/>
+	<form name='f' id='f' onSubmit="return fire();">
+		Set velocities and fire cannonbal.
+		<br/>
+		Horizontal displacement <input name='hv' id='hv'
+			value='16' type='number' min='-100' max='100'/>
+		<br/>
+		Initial vertical displacement <input name='vv' id='vv'
+			value='-32' type='number' min='-100' max='100'/>
+		<br/>
+		<input type='submit' value='FIRE'/>
+	</form>
+</body>
+<script>
+	var cwidth = 600, cheight = 400;
+	var ctx;
+	var everything = [];
+	var tid;	// for time event
+	var horvelocity;
+	var verticalvel1, verticalvel2;
+	var gravity = 2;
+	var iballx = 20, ibally = 280;
+	var cball, ground, target;	// elements
+
+	function drawBall() {
+		ctx.fillStyle = this.fillStyle;
+		ctx.beginPath();
+		ctx.arc(this.sx, this.sy, this.rad, 0, Math.PI*2, true);
+		ctx.fill();
+	}
+
+	function moveBall(dx, dy) {
+		this.sx += dx;
+		this.sy += dy;
+	}
+
+	function Ball(sx, sy, rad, styleString) {
+		this.sx = sx;
+		this.sy = sy;
+		this.rad = rad;
+		this.draw = drawBall;
+		this.moveit = moveBall;
+		this.fillStyle = styleString;
+	}
+
+	function drawRectangle() {
+		ctx.fillStyle = this.fillStyle;
+		ctx.fillRect(this.sx, this.sy, this.swidth, this.sheight);
+	}
+
+	function MyRectangle(sx, sy, swidth, sheight, styleString) {
+		this.sx = sx;
+		this.sy = sy;
+		this.swidth = swidth;
+		this.sheight = sheight;
+		this.fillStyle = styleString;
+		this.draw = drawRectangle;
+		this.moveit = moveBall;
+	}
+
+	function draw1(ctx) {
+		ctx.strokeRect(0, 0, 300, 200);
+
+		ctx.fillStyle = "rgb(250,0,0)";
+		ctx.rotate(-1 * Math.PI/6);
+		ctx.fillRect(50, 50, 100, 200);
+
+		ctx.rotate(Math.PI/6);
+		ctx.fillStyle = "rgb(0,0,250)";
+		ctx.fillRect(50, 50, 20, 100);
+
+	}
+
+	function draw2(ctx) {
+		ctx.strokeRect(0, 0, 300, 200);
+
+		ctx.save();
+		ctx.fillStyle = "rgb(250,0,0)";
+		ctx.translate(50, 50);
+		ctx.rotate(-1 * Math.PI/6);
+		ctx.fillRect(0, 0, 100, 200);
+		ctx.restore();
+
+		ctx.fillStyle = "rgb(0,0,250)";
+		ctx.fillRect(50, 50, 20, 100);
+
+	}
+
+	function drawAll() {
+		ctx.clearRect(0, 0, cwidth, cheight);
+		for (var i = 0; i < everything.length; i++) {
+			everything[i].draw();
+		}
+	}
+
+	function change() {
+		var dx = horvelocity;
+		var dy = verticalvel1 + gravity/2;
+
+		verticalvel1 += gravity;
+
+		cball.moveit(dx, dy);
+
+		var bx = cball.sx;
+		var by = cball.sy;
+
+		if ((bx>=target.sx)&&(bx<=target.sx+target.swidth)&&
+		    (by>=target.sy)&&(by<=target.sy+target.sheight)) {
+			clearInterval(tid);
+		}
+		if (by >= ground.sy) {
+			clearInterval(tid);
+		}
+
+		drawAll();
+	}
+
+	function fire() {
+		cball.sx = iballx;
+		cball.sy = ibally;
+		horvelocity = Number(document.f.hv.value);
+		verticalvel1 = Number(document.f.vv.value);
+		drawAll();
+		if (tid) clearInterval(tid);
+		tid = setInterval(change, 100);
+		return false;
+	}
+
+	document.addEventListener("DOMContentLoaded", function() {
+		ctx = document.getElementById('canvas').getContext('2d');
+
+		cball = new Ball(iballx, ibally, 10, "rgb(250,0,0)");
+		target = new MyRectangle(300, 100, 80, 200, "rgb(0,5,90)");
+		ground = new MyRectangle(0, 300, 600, 30, "rgb(10,250,0)");
+
+		everything.push(target);
+		everything.push(ground);
+		everything.push(cball);
+
+		drawAll();
+	}, false);
+
+</script>
+</html>
