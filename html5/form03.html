@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+body textarea {
+	font-size: 16px;
+}
+</style>
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+</head>
+<body>
+	<form action="" method="post" enctype="multipart/form-data">
+		<textarea id="m" name="text" rows="2" cols="80">upload file... </textarea>
+		<input type="file" name="upload" />
+		<input type="submit" value="OK" />
+	</form>
+<script>
+	var socket = io.connect();
+	$('form').submit(function(event) {
+		event.preventDefault();
+		socket.emit('chat message', $('#m').val());
+	});
+	socket.on('message', function(msg) {
+		$('#m').text(msg.msg);
+	});
+</script>
+</body>
+</html>
