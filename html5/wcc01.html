@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+	canvas {background:gray;}
+    </style>
+  </head>
+  <body>
+    <header>
+      <h3><a href="https://wcc723.github.io/javascript/2017/12/28/javascript-fetch/">鐵人賽：ES6 原生 Fetch 遠端資料方法</a></h3>
+	XMLHttpRequest / Fetch
+    </header>
+    <article>
+	<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch">使用 Fetch</a>
+	<a href="https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest">使用 XMLHttpRequest</a><br/>
+		 addEventListener("load", function() {
+			console.log(this.responseText);
+		});
+   </article>
+      <div id="fetchElement">
+      </div>
+  </body>
+  <script>
+	function postLogin(myEmail, myPasswd) {
+		let url = 'https://hexschool-tutorial.herokuapp.com/api/signup';
+		fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-Type' : 'application/json'
+			},
+			body: JSON.stringify({
+				email: myEmail,
+				password: myPasswd
+			})
+		})
+		.then(response => response.json())
+		.then(jsonData => {
+			console.log("postLogin DATA:", jsonData);
+		})
+		.catch(err => {
+			console.log("postLogin ERROR:", err);
+		});
+	}
+	document.addEventListener('DOMContentLoaded', function() {
+		let req = new XMLHttpRequest();
+		req.open('get', "https://randomuser.me/api/", true);
+		req.send();
+		req.onerror = function(err) {
+			console.log('ERROR:', err);
+		}
+		req.onload = function() {
+			const data = JSON.parse(this.responseText);
+			console.log("DATA from randomuser.me:", data);
+
+			postLogin("yoroshiku@hello.jp", "12345678");
+		};
+
+		fetch("https://images.unsplash.com/photo-1513313778780-9ae4807465f0?auto=format&fit=crop&w=634&q=80")
+		.then(response => response.blob())
+		.then(imageBlob => {
+			let img = document.createElement('IMG');
+			document.querySelector('#fetchElement').appendChild(img);
+			img.src = URL.createObjectURL(imageBlob);
+		})
+		.catch(err => {
+			console.log("fetch() ERROR:", err);
+		});
+	}, true);
+  </script>
+</html>

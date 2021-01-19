@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>#7.8 實例：自動提示的輸入欄</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      padding: 0px;
+      margin: 5px;
+    }
+    form {
+      padding: 0px;
+      margin: 0px;
+    }
+    input {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      border: 1px solid #000000;
+      width: 200px;
+      padding: 1px;
+      margin: 0px;
+    }
+    #popup {
+      position: absolute;
+      width: 202px;
+      left: 41px;
+      top: 25px;
+      color: #004a7e;
+      font-size: 12px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    #popup.show {
+      border: 1px solit #004a7e;
+    }
+    #popup.hide {
+      border: none;
+    }
+    ul {
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+    }
+    li.mouseOver {
+      background-color: #004a7e;
+      color: #FFFFFF;
+    }
+    li.mouseOut {
+      background-color: #FFFFFF;
+      color: #004a7e;
+    }
+  </style>
+</head>
+<body>
+  <form method="post" name="myForm">
+    Astrology sign: <input type="text" name="astrology_sign" onkeyup="findItems()">
+  </form>
+  <div id="popup">
+    <ul id="astro_ul">
+    <li>123</li>
+    <li>456</li>
+    <li>789</li>
+    </ul>
+  </div>
+<script>
+  var oInputField, oPopDiv, oAstroUl;
+  var astro_list = ['Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 'Cancer',
+    'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn'];
+
+  function initVars() {
+    oInputField = document.forms['myForm'].astrology_sign;
+    oPopDiv = document.getElementById('popup');
+    oAstroUl = document.getElementById('astro_ul');
+  }
+
+  function clearItems() {
+    for (var i = oAstroUl.childNodes.length - 1; i >= 0; --i) {
+      oAstroUl.removeChild(oAstroUl.childNodes[i]);
+    }
+    oPopDiv.className = "hide";
+  }
+
+  function setItems(items) {
+    clearItems();
+    var oTemp = document.createDocumentFragment();
+    for (var i = 0; i < items.length; ++i) {
+      var oLi = document.createElement('li');
+      oLi.appendChild(document.createTextNode(items[i]));
+      oLi.onmouseover = function() {
+        this.className = "mouseOver";
+      };
+      oLi.onmouseout = function() {
+        this.className = "mouseOut";
+      };
+      oLi.onclick = function() {
+        oInputField.value = this.firstChild.nodeValue;
+        clearItems();
+      };
+      oTemp.appendChild(oLi);
+    }
+    oAstroUl.appendChild(oTemp);
+  }
+
+  function findItems() {
+    initVars();
+    // console.log('findItems(), ', oInputField.value.length);
+    if (oInputField.value.length >= 0) {
+      var aResult = new Array();
+      for (var i = 0; i < astro_list.length; ++i) {
+        if (astro_list[i].indexOf(oInputField.value) === 0)
+          aResult.push(astro_list[i]);
+      }
+      if (aResult.length > 0) {
+        // console.log("aResult.length=", aResult.length);
+        setItems(aResult);
+        return;
+      }
+    }
+    clearItems();
+  }
+
+  window.onload = function() {
+  }
+</script>
+</body>
+</html>
+

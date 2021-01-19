@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <meta name="description" content="精通 JavaScript.jQuery #5 使用 DOM"/>
+  <meta name="viewport" content="width=device-width; user-scalable=0" />
+<style>
+  .outputLine {
+    font-family: monospace;
+    font-size: larger;
+    padding : 0.5em;
+    background : #eee;
+    word-break: break-all;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  #content {
+    float: right;
+    border: 3px solid blue;
+    padding: 10px;
+    width: 72%;
+    height: 480px;
+    overflow: auto;
+  }
+  #navigation {
+    float: left;
+    width: 25%;
+  }
+  #navigation > ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+  }
+  #navigation > ul > li {
+    border-bottom: 1px solid #ED9F9F;
+  }
+  #navigation > ul > li > a {
+    display: block;
+    padding: 5px 5px 5px 0.5em;
+    text-decoration: none;
+    border-left: 12px solid #711515;
+    border-right: 1px solid #711515;
+  }
+  #navigation > ul > li > a:link,
+  #navigation > ul > li > a:visited {
+    background-color: #c11136;
+    color: #FFFFFF;
+  }
+  #navigation > ul > li > a:hover {
+    background-color: #990020;
+    color: #FFFF00;
+  }
+  /* submenu CSS */
+  #navigation ul li ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+  }
+  #navigation ul li ul li {
+    border-bottom: 1px solid #ED9F9F;
+  }
+  #navigation ul li ul li a {
+    display: block;
+    padding: 5px 5px 5px 0.5em;
+    text-decoration: none;
+    border-left: 28px solid #a71f1f;
+    border-right: 1px solid #711515;
+  }
+  #navigation ul li ul li a:link,
+  #navigation ul li ul li a:visited {
+    background-color: #e85070;
+    color: #FFFFFF;
+  }
+  #navigation ul li ul li a:hover {
+    background-color: #c2425d;
+    color: #FFFF00;
+  }
+  /* stateful style */
+  #navigation ul li ul.myHide {
+    display: none;
+  }
+  #navigation ul li ul.myShow {
+    display: block;
+  }
+  /* fixed area */
+  #windowSize {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+  }
+</style>
+</head>
+<body>
+  <div id="windowSize"></div>
+  <div id="navigation">
+  <ul id="myList">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">異形系列</a>
+      <ul class="myHide">
+        <li><a href="#">普羅米修斯</a></li>
+        <li><a href="#">異形：聖約</a></li>
+      </ul>
+    </li>
+    <li><a href="#">沙丘系列</a>
+      <ul class="myHide">
+        <li><a href="#">佐杜洛夫斯基的沙丘</a></li>
+      </ul>
+    </li>
+    <li><a href="#">Ghost in Shell</a></a>
+      <ul class="myHide">
+        <li id="myFavorite"><a href="#">攻殼機動隊</a></li>
+      </ul>
+    </li>
+    <li><a href="#">星際大戰</a>
+      <ul class="myHide">
+        <li><a href="#">俠盜一號</a></li>
+      </ul>
+    </li>
+    <li><a href="#">Contact me</a></li>
+  </div>
+  <div id="content">
+<p>
+想象一下在阿加莎·克里斯蒂（《东方快车谋杀案》作者）的侦探小说里收集所有证据找出犯人的读者，在足球滚到河边时上前停球的小孩，甚至一个购物者在购买水果时比较猕猴桃和芒果的优点。</p>
+<p>
+人类将这个世界理解为事物之间的关系。我们了解世界运行的方式，因为我们能对不同事物之间的联系做出逻辑推理——物理对象、语句，甚至抽象的想法。这种能力被称为关系推理，它是人类智能的核心。</p>
+<p>
+我们以每天所有感官接收到的非结构化信息为基础构建这种关系。我们的眼睛会接收到大量光线，而我们的大脑会将这些「巨量嘈杂的混乱」组织到我们需要关联的特定实体之中。</p>
+<p>
+这两篇论文都展示了有望理解关系推理这一挑战的新方法。</p>
+<p>
+开发具有人类级别灵活性和效率的人工智能系统需要实现人类级别的认知能力，这意味着它们必须能从非结构化数据中推理实体并认识其中的关系。解决这个问题意味着系统可以将有限技能推广到无限的新任务中，从而展示出强大的能力。</p>
+<p>
+现代深度学习方法在解决非结构性数据问题的过程中已经有了很大进展，但此前的诸多方法忽略了考虑事物之间的联系。</p>
+  </div>
+
+<script language="javascript">
+var output;
+
+function displayChildNodes(msg, el) {
+  if (el.hasChildNodes()) {
+    var cl = el.childNodes;
+    for (var i = 0; i < cl.length; ++i) {
+       output.log(msg + i + "="
+         + cl[i].nodeType + ":"
+         + cl[i].nodeName + ":"
+         + cl[i].nodeValue + ".");
+    // if (cl[i].nodeType == 1)
+       displayChildNodes(msg+'--', cl[i]);
+    }
+  }
+}
+
+function myDOMInspector() {
+  // var el = document.getElementsByTagName("body")[0];
+  var el = document.getElementById("myList");
+  displayChildNodes("--", el);
+}
+
+function showWindowSize() {
+  document.getElementById('windowSize').innerHTML =
+	"<span>" + window.innerWidth + " x " + window.innerHeight + "</span>";
+}
+
+function browserResize() {
+  var el = document.getElementById('content');
+  if (el) {
+    el.style.height = Math.floor(window.innerHeight * 0.90) + "px";
+  }
+  showWindowSize();
+}
+
+window.addEventListener("load", function() {
+
+  output = document.getElementById("content");
+  output.log = function(msg) {
+    var pre = document.createElement("p");
+/*
+    pre.style.wordWrap = "break-word";
+    pre.style.padding = "0.5em";
+    pre.style.background = "#eee";
+*/
+    pre.className = "outputLine";
+    pre.innerHTML = msg.replace(/\n/g, "<br/>");
+    // pre.textContent = "&gt;&gt;&gt;" + message;
+    this.appendChild(pre); 
+    this.scrollTop = this.scrollHeight;
+  };
+  myDOMInspector();
+  browserResize();
+  window.addEventListener("resize", browserResize);
+
+  (function() {
+    var oUl = document.getElementById('myList');
+    var aLi = oUl.childNodes;
+    var oA;
+    for (var i = 0; i < aLi.length; ++i) {
+      if (aLi[i].tagName === 'LI' && aLi[i].getElementsByTagName('ul').length) {
+        oA = aLi[i].firstChild;
+        oA.onclick = function() {
+          var oSecondDiv = this.parentNode.getElementsByTagName('ul')[0];
+          if (oSecondDiv.className == 'myHide')
+            oSecondDiv.className = 'myShow';
+          else
+            oSecondDiv.className = 'myHide';
+        };
+      }
+    }
+
+  })();
+});
+</script>
+</body>
+</html>
+

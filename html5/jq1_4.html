@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery 控制 CSS 樣式</title>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <style>
+    .divDefault {
+      width: 260px;
+      font-size: 10pt;
+      padding: 5px;
+      border: solid 1px #444;
+    }
+    .divClick {
+      width: 260px;
+      border: solid 1px #666;
+      font-size: 10pt;
+      background-color: #eee;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="divDefault">點擊前的樣式</div>
+  <script>
+    jQuery(function($) {
+        $('.divDefault').click(function() {
+          $(this).toggleClass('divClick').html("hasClass():" + $(this).hasClass('divClick'));
+        });
+    });
+  </script>
+</body>
+</html>

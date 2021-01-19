@@ -1,0 +1,310 @@
+<!doctype html>
+<html>
+<head>
+    <title>chatApp</title>
+    <meta charset="utf-8">
+<style>
+body {
+	/* padding: 50px; */
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+	color: #00B7FF;
+}
+
+#content {
+	/* width: 800px; */
+	margin-left: auto;
+	margin-right: auto;
+}
+#room {
+	background-color: #ddd;
+	margin-bottom: 1em;
+}
+#messages {
+	/* width: 690px; */
+	height: 256px;
+	overflow: auto;
+	background-color: #eee;
+	margin-bottom: 1em;
+	margin-right: 10px;
+}
+#room-list {
+	float: right;
+	width: 128px;
+	height: 256px;
+	padding: 10px;
+	overflow: auto;
+}
+#room-list div {
+	border-bottom: 1px solid #eee;
+}
+#room-list div:hover {
+	background-color: #ddd;
+}
+#send-message {
+	width: calc(100% - 180px);
+	margin-bottom: 1em;
+	margin-right: 1em;
+}
+#send-button {
+	float: right;
+	width: 128px;
+}
+#help {
+	font: 10px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+</style>
+</head>
+<body>
+	<div id='content'>
+		<div id='room'></div>
+		<div id='room-list'></div>
+		<div id='messages'></div>
+		<form id='send-form'>
+			<input id='send-message' type='text'/>
+			<input id='send-button' type='submit' value='Send'/>
+			<div id='help'>
+				Chat commands:
+				<ul>
+					<li><a href="https://eli.thegreenplace.net/2018/concurrent-servers-part-6-callbacks-promises-and-asyncawait/">is Prime?</a>:<code>/prime [number]</code></li>
+					<li><a href="https://wcc723.github.io/javascript/2017/12/29/javascript-proimse/">promise_all/race</a>:<code>/promise_[all,race] item_1 [..item_n]</code></li>
+				</ul>
+			</div>
+		</form>
+	</div>
+<script src='http://code.jquery.com/jquery-1.8.0.min.js' type='text/javascript'></script>
+<script>
+
+function showMessage(msg)
+{
+	let div = document.createElement('DIV');
+	div.innerHTML = msg;
+	let msgbox = document.querySelector('#messages');
+	msgbox.appendChild(div);
+	// console.log(msgbox.scrollTop, msgbox.scrollHeight);
+	msgbox.scrollTop = msgbox.scrollHeight;
+}
+
+// Check if n is prime, returning a boolean. The delay parameter is optional -
+// if it's true the function will block for n milliseconds before computing the
+// answer.
+function isPrime(n) {
+	showMessage(`isPrime(${n})`);
+  if (n % 2 == 0) {
+    return n == 2 ? true : false;
+  }
+  for (var r = 3; r * r <= n; r += 2) {
+    if (n % r == 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+// Parse the given a buffer into a number. buf is of class Buffer; it stores the
+// ascii representation of the number followed by some non-digits (like a
+// newline).
+function buf2num(buf) {
+  // console.log(`buf2num(${buf}) len=${buf.length}`);
+  var num = 0;
+  var code0 = '0'.charCodeAt(0);
+  var code9 = '9'.charCodeAt(0);
+  for (var i = 0; i < buf.length; ++i) {
+    let codeX = buf.charCodeAt(i);
+    if (codeX<code0 || codeX>code9)
+      break;
+    num = num * 10 + codeX - code0;
+  }
+  // console.log("num=", num);
+  return new Number(buf); // num;
+}
+
+function runPromise(who, timer) {
+	showMessage(`${who} ${timer} @ ${new Date()}`);
+	return new Promise((resolve, reject) => {
+		let ran = parseInt(Math.random() * 10);
+		if (ran) {
+		    setTimeout(() => {
+			resolve(`${who} ${timer} @ ${new Date()} fullfilled`);
+		    }, timer);
+		} else {
+		    reject(new Error(`${who} ${timer} rejected`));
+		}
+	});
+};
+
+function getPromises(arr) {
+	let promises = [];
+	for (let i = 0; i < arr.length; ++i) {
+		promises.push(runPromise(arr[i], 10000 * Math.random()));
+	}
+	return promises;
+}
+
+var Chat = function(socket) {
+	this.socket = socket;
+};
+
+Chat.prototype.sendMessage = function(room, text) {
+	this.socket.emit('message', { 'room': room, 'text': text });
+};
+
+Chat.prototype.changeRoom = function(room) {
+	this.socket.emit('join', { 'newRoom': room });
+};
+
+Chat.prototype.processCommand = function(command) {
+	showMessage(`command : ${command}`);
+	// console.log('command: ' + command);
+	var words = command.split(' ');
+	var command = words[0].substring(1, words[0].length).toLowerCase();
+	var message = false;
+	switch(command) {
+		case 'join' :
+			words.shift();
+			var room = words.join(' ');
+			this.changeRoom(room);
+			break;
+		case 'prime' :
+			words.shift();
+			showMessage(`prime?: ${isPrime(buf2num(words.join('')))}`);
+			break;
+		case 'clock' :
+			if (this.clock) {
+				clearInterval(this.clock);
+				this.clock = null;
+			} else {
+				this.clock = setInterval(() => {
+					document.querySelector('#room').innerHTML = new Date();
+				}, 1000);
+			}
+			break;
+		case 'promise' :
+			words.shift();
+			if (!words.length) {
+				showMessage('promise command need more arguments!');
+				break;
+			}
+			switch(words[0]) {
+				case 'all' :
+					words.shift();
+					Promise.all(getPromises(words)).then((data) => {
+					    showMessage(`RESOLVE promise all ${JSON.stringify(data)}`);
+					}).catch(err => {
+					    showMessage(`ERROR! promise all: ${err}`);
+					});
+					break;
+				case 'race' :
+					words.shift();
+					Promise.race(getPromises(words)).then((data) => {
+					    showMessage(`RESOLVE promise race ${JSON.stringify(data)}`);
+					}).catch(err => {
+					    showMessage(`ERROR! promise race: ${err}`);
+					});
+					break;
+				default : // chain it
+					let ppp = runPromise(words.shift(), 10000 * Math.random());
+					while (words.length) {
+						let func = ((s,t) => (result) => {
+						  showMessage(result);
+ 						  return runPromise(s,t);
+						})(words.shift(), 10000*Math.random());
+						ppp = ppp.then(func);
+					}
+					ppp.then(result => {
+						showMessage(`${result} LAST`);
+					}).catch(err => {
+						showMessage(`${err} ERROR`);
+					});
+					break;
+			}
+			break;
+		default:
+			message = "Unrecognized command.";
+			break;
+	}
+	return message;
+};
+
+Chat.prototype.processUserInput = function() {
+	var message = $('#send-message').val();
+	var systemMessage;
+
+	if (message.charAt(0) == '/') {
+		systemMessage = this.processCommand(message);
+		if (systemMessage) {
+			showMessage(systemMessage);
+		}
+	} else {
+		this.sendMessage($('#room').text(), message);
+	}
+	$('#send-message').val('');
+	return false;
+}
+
+function divEscapedContentElement(message) {
+	return $('<div></div>').text(message);
+}
+
+function divSystemContentElement(message) {
+	return $('<div></div>').html('<i>' + message + '</i>');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+	var socket = {
+		on: function(ev, func) {
+			showMessage(`SOCKET on: ${ev} ${func('Hello')}`);
+		},
+		emit: function(ev, msg) {
+			showMessage(`SOCKET emit ${ev} ${JSON.stringify(msg)}`);
+		}
+	};
+	let chatApp = new Chat(socket);
+
+	socket.on('nameResult', function(result) {
+		var message;
+		if (result.success) {
+			message = 'You are now known as ' + result.name + '.';
+		} else {
+			message = result.message;
+		}
+		$('#messages').append(divSystemContentElement(message));
+	});
+
+	socket.on('joinResult', function(result) {
+		$('#room').text(result.room);
+		$('#messages').append(divSystemContentElement('Room changed.'));
+	});
+
+	socket.on('message', function(message) {
+		var newElement = $('<div></div>').text(message.text);
+		$('#messages').append(newElement);
+	});
+
+	socket.on('rooms', function(rooms) {
+		showMessage(`Received rooms: ${rooms}`);
+		$('#room-list').empty();
+		for (var room in rooms) {
+			// room = room.substring(1, room.length);
+			room = rooms[room];
+			showMessage(`Received room: ${room}`);
+			if (room != '') {
+				$('#room-list').append(divEscapedContentElement(room));
+			}
+		}
+		$('#room-list div').click(function() {
+			chatApp.processCommand('/join ' + $(this).text());
+			// wkliang:20160718: move to one line below ?
+			// $('#send-message').focus();
+		});
+		$('#send-message').focus();
+	});
+
+	$('#send-message').focus();
+	$('#send-form').submit(() => chatApp.processUserInput());
+});
+</script>
+</body>
+</html>

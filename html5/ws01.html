@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1">
+  <title>WebSocket Test</title>
+  <!-- http://muki.tw/tech/websocket-simple-introduce-and-use/ -->
+  <style>
+	.chatbox {
+		position: fixed;
+		left: 0px; bottom: 0px; height: auto; width: 100%;
+		background: darkgray;
+		z-index: 1000;
+		display: block;
+	}
+	.btn_group {
+		overflow: auto;
+	}
+	body {
+		font-family: 'Sans-Serif';
+		font-size: 1.0em;
+		padding-bottom: 200px;
+	}
+	.container {
+		width: 99%;
+		height: 95vh;
+		border: 1px solid;
+	}
+	textarea {
+		overflow: hidden;
+		width: 50px;
+		height: 50px;
+		font-size: 1.2em;
+	}
+	#output {
+		height: auto;
+		overflow: auto;
+	}
+  </style>
+</head>
+<body>
+	<div class="chatbox">
+		<textarea id="input" wrap="off"></textarea>
+		<div class="btn_group">
+			<button id="btn_close">&times; close</button>
+			<button id="btn_send">&sect; send</button>
+		</div>
+	</div>
+	<div id="output"></div>
+
+<script language="javascript" type="text/javascript">
+	window.addEventListener("load", function() {
+		var input = document.getElementById("input");
+		var output = document.getElementById("output");
+		output.log = function(msg) {
+	                var pre = document.createElement("p");
+			pre.style.wordWrap = "break-word";
+			pre.style.padding = "4px";
+			pre.style.background = "#eee";
+			pre.innerHTML = msg.replace(/\n/g, "<br/>");
+			// pre.textContent = ">>>" + message;
+			this.appendChild(pre); 
+		};
+		// var wsUri = "ws://echo.websocket.org/";
+		var wsUri = "ws://"+window.location.hostname+":"+window.location.port;
+                var wsObj = new WebSocket(wsUri);
+		var wsDate = new Date();
+                wsObj.onopen = function(evt) { output.log("CONNECTED: " + wsUri); };
+                wsObj.onclose = function(evt) { output.log("DISCONNECTED: " + JSON.stringify(evt)
+			 + "->" + (new Date() - wsDate) ); };
+                wsObj.onmessage = function(evt) { output.log('RESPONSE: ' + evt.data); };
+                wsObj.onerror = function(evt) { output.log('ERROR: ' + evt.data); };
+		// http://stackoverflow.com/a/25820115/3025597
+		function resizeInput(elm) {
+			elm.wrap = "off";
+			elm.style.width = "50px";
+			elm.style.height = "50px";
+			elm.style.width = Math.min(
+				Math.max(50, elm.scrollWidth), window.innerWidth-220) + "px";
+			elm.style.height = Math.min(
+				Math.max(50, elm.scrollHeight), /*window.innerHeight*/ 220) + "px";
+			elm.wrap = "auto";
+		}
+		input.addEventListener('keyup', function(e) {
+			e.preventDefault();
+			resizeInput(this)
+		});
+		document.getElementById("btn_close").addEventListener("click", function(e) {
+			e.preventDefault();
+			wsObj.close(); 
+		});
+		document.getElementById("btn_send").addEventListener("click", function(e) {
+			e.preventDefault();
+			var message = input.value;
+                	output.log("SENT: " + message.length);
+	                wsObj.send(message); 
+			input.value = "";
+			resizeInput(input);
+		});
+
+	}, false);
+</script>  
+</body>
+</html>

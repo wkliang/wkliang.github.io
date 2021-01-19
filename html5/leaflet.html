@@ -4,8 +4,9 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.css" />
   <style>
-	#mapid {height: 320px;}
+	#mapid {height: 100vh;}
   </style>
+  <title>台灣經緯度原點</title>
 </head>
 <body>
   <div id="mapid"></div>
@@ -15,7 +16,9 @@
 	var map = L.map('mapid');
 
 	// 設定經緯度座標
-	map.setView(new L.LatLng(22.992, 120.239), 12);
+	// map.setView(new L.LatLng(22.992, 120.239), 12);
+	// https://zh.wikipedia.org/wiki/%E5%8F%B0%E7%81%A3%E7%B6%93%E7%B7%AF%E5%BA%A6%E5%8E%9F%E9%BB%9E
+	map.setView(new L.LatLng(23.973875, 120.982024), 8);
   
 	// 設定圖資來源
 	var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';

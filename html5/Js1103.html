@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>#11.3 處理頁面的元素</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <style>
+    .myClass1, .myBackground {
+      background: #ffde00;
+    }
+    .myClass2, .myBorder {
+      border: 1px solid #0000FF;
+    }
+  </style>
+</head>
+<body>
+<p id="hello">Hello, <span>how</span> are you?</p>
+<span>Great</span>, thank you.
+<div id="world">
+  <p>section 1</p>
+  <p>section 2</p>
+</div>
+<hr>
+<p id="foo"><b>文本</b>段落<em>示</em>例</p>
+<hr>
+<div id="bar">
+<a href="#">Hyperlink one</a>
+<a href="#">Hyperlink two</a>
+  <p>從前有一隻大恐龍...</p>
+  <p>在樹林跑啊跑...</p>
+</div>
+<script>
+  $(function() {
+    $('p#hello').find('span').addClass('myClass1').end().addClass('myClass2');
+    $('div#world').find('p').addClass('myBackground').andSelf().addClass('myBorder');
+    $('div#world').find('p').mouseover(function() {
+      $(this).css("color", "red").css("opacity", "0.5");
+    }).mouseout(function() {
+      $(this).css("color", "black").css("opacity", "1.0");
+    });
+    $("p#foo").click(function() {
+      var str = $(this).html();
+      $(this).text(str);
+    });
+    $('a').click(function() {
+      $('div#bar>p').append($('a:eq(0)'));
+      $('div#bar>p:eq(1)').append($('a:eq(0)'));
+    });
+  });
+</script>
+</body>
+</html>

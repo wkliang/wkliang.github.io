@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>#7.3 控制表單</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <style>
+    form {
+      border: 1px dotted #AAAAAA;
+      border-radius: 20px;
+      padding: 3px 6px 3px 6px;
+      margin: 0px;
+      font: 16px serif;
+    }
+    input, select, textarea {
+      color: #00008B;
+      background-color: #ADD8E6;
+      border: 1px solid #00008B;
+    }
+    select {
+      width: 80px;
+    }
+    textarea {
+      width: 200px;
+      height: 40px;
+    }
+    input.txt {
+      border: 1px inset #00008B;
+      background-color: #ADD8E6;
+    }
+    input.btn {
+      border: 1px outset #00008B;
+      background-color: #ADD8E6;
+      color: #00008B;
+      padding: 1px 2px 1px 2px;
+    }
+    .myClass {
+      background-color: #005890;
+      color: #4eff00;
+    }
+  </style>
+</head>
+<body>
+  <form method="post" name="myForm1" action="addInfo">
+    <p><label for="name">請輸入你的姓名：</lable><br>
+       <input type="text" name="name" id="name" class="txt" value="Tachikoma">
+    </p>
+    <p><label for="passwd">請輸入你的密碼：</label><br>
+       <input type="password" name="passwd" id="passwd" class="txt">
+    </p>
+    <p><label for="sleep">請選擇你最喜歡的顏色：</label><br>
+      <select name="color" id="color" multiple="multiple" xxxstyle="height: 120px">
+        <option value="red"   >紅</option>
+        <option value="green" >綠</option>
+        <option value="blue"  >藍</option>
+        <option value="yellow">黃</option>
+        <option value="cyan"  >青</option>
+        <option value="purple">紫</option>
+      </select><br>
+      Hint: Hold down the Ctrl(windows) / Command(Mac) button to select multiple options.<br>
+      <a href="#" onclick="selectCheck()">查看選項</a>
+      <a href="#" onclick="selectInsert()">插入選項</a>
+      <a href="#" onclick="myClassMark()">myClass mark</a>
+    </p>
+    <p><label for="other">請選擇你的性別：</label><br>
+      <input type="radio" name="gender" id="male"   value="male"  >
+      <label for="male"  >男</label>
+      <input type="radio" name="gender" id="female" value="female">
+      <label for="female">女</label>
+      <input type="radio" name="gender" id="other" value="other">
+      <label for="other"  >其他</label><br><br>
+      <a href="#" onclick="radioTest()">測試 radio</a>
+    </p>
+    <p>你喜歡做些什麼：<br>
+      <input type="checkbox" name="hobby" id="ball" value="ball">
+      <label for="ball">打球</label>
+      <input type="checkbox" name="hobby" id="book" value="book">
+      <label for="book">看書</label>
+      <input type="checkbox" name="hobby" id="TV" value="TV">
+      <label for="TV">看電視</label>
+      <input type="checkbox" name="hobby" id="net" value="net">
+      <label for="net">上網</label>
+      <input type="checkbox" name="hobby" id="music" value="music">
+      <label for="music">聽音樂</label>
+      <input type="checkbox" name="hobby" id="sleep" value="sleep">睡覺<br><br>
+
+      <a href="#" onclick="checkboxTest(1)">checkbox 全選</a>
+      <a href="#" onclick="checkboxTest(0)">checkbox 全不選</a>
+      <a href="#" onclick="checkboxTest(-1)">checkbox 反選</a>
+      <a href="#" onclick="checkboxSwap(this,'hobby')">hobby disable</a>
+      <a href="#" onclick="checkboxShow('hobby')">hobby show</a>
+    </p>
+    <p><label for="comments">我要留言：</label><br>
+      <textarea name="comments" id="comments" cols="30" rows="4" maxlength="100">
+每個表單元素都分配 name 和 id 屬性，name 用來將數據提交給服務器，id 則是用於 label 綁定。點擊 label 文字觸發綁定 id 的元素，如點選元素。</textarea>
+    </p>
+    <p>
+      <input type="submit" name="btnSubmit" id="btnSubmit" value="Submit" class="btn">
+      <input type="reset" name="btnReset" id="btnReset" value="Reset" class="btn">
+    </p>
+  </form>
+<script>
+
+function selectCheck()
+{
+  var oSelect = document.forms['myForm1'].color;
+  var count = 0;
+  for (var i = 0; i < oSelect.length; ++i) {
+    if (oSelect.options[i].selected)
+      ++count;
+  }
+  console.log(count + " of " + oSelect.length + " option(s) selected");
+
+  console.log("type=", oSelect.type,
+    ", selectedIndex=", oSelect.selectedIndex, 
+    ", text=", oSelect.options[oSelect.selectedIndex].text,
+    ", selected=", oSelect.options[oSelect.selectedIndex].selected);
+}
+
+function selectInsert() {
+  var oSelect = document.forms['myForm1'].color;
+  var rand = 'NO' + Math.ceil(100 * Math.random());
+  oSelect.insertBefore(new Option(rand,rand),
+    oSelect.options[ Math.floor( oSelect.length * Math.random() )]);
+}
+
+function radioTest() {
+  var oForm = document.forms['myForm1'];
+  var aChoices = oForm.gender;
+  for (var i = 0; i < aChoices.length; ++i)
+    if (aChoices[i].checked)
+      break;
+  alert("Your gender is: "+ aChoices[i].value);
+}
+
+function checkboxTest(action) {
+  var oForm = document.forms['myForm1'];
+  var aChoices = oForm.hobby;
+  for (var i = 0; i < aChoices.length; ++i) {
+    if (action < 0)
+      aChoices[i].checked = !aChoices[i].checked;
+    else
+      aChoices[i].checked = action;
+  }
+}
+
+// jQuery extension
+$.fn.disable = function() {
+  return this.each(function() {
+    if (typeof this.disabled != "undefined")
+      this.disabled = true;
+  });
+};
+$.fn.enable = function() {
+  return this.each(function() {
+    if (typeof this.disabled != "undefined")
+      this.disabled = false;
+  });
+};
+
+function checkboxSwap(thiz, name) {
+  // console.log(thiz);
+  if (thiz.innerText.indexOf('enable') >= 0) {
+    thiz.innerText = name + " disable";
+    $("input[name="+name+"]").enable();
+  } else {
+    thiz.innerText = name + " enable";
+    $("input[name="+name+"]").disable();
+  }
+}
+
+function checkboxShow(ns) {
+  $("input[name="+ns+"]:checked+label").addClass("myClass");
+  $("input[name="+ns+"]:not(:checked)+label").removeClass("myClass");
+}
+
+function myClassMark() {
+  $("option:nth-child(odd)").addClass("myClass");
+  $("input[name=hobby]:nth-child(odd)").addClass("myClass");
+}
+
+window.addEventListener('load', function() {
+  var oForm = document.forms['myForm1'];
+  console.log(oForm.elements.comments.type,
+    oForm.elements.comments.value);
+  oForm.elements['passwd'].focus();
+  oForm.onsubmit = function(e) {
+    console.log("submit.....", e);
+    return false;
+  };
+  oForm.elements['comments'].onkeypress = function() {
+    console.log(this.value.length, this.getAttribute("maxlength"));
+    return this.value.length < this.getAttribute("maxlength");
+  };
+  oForm.elements['name'].onmouseover = function() {
+    this.focus();
+  };
+  oForm.elements['name'].onfocus = function() {
+    this.select();
+  }
+});
+</script>
+</body> 
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="精通 JavaScript.jQuery #4 CSS 進階"/>
+  <title>顏色漸變的文字、文字跟隨鼠標</title>
+  <style>
+	body {
+		background-color:#004593;
+	}
+	.snakeStyle {
+		color: #fff000;
+		font-family: "Courier New";
+		font-size: 15px;
+		font-weight: bold;
+		position: fixed;
+		margin: 0 auto;
+		padding: 0;
+		border: 0px solid #DDD;
+	}
+  </style>
+</head>
+<body>
+星际争霸（英语：StarCraft，中国大陆和香港译作“星际争霸”，台湾译作“星海爭霸”）是由暴雪娱乐有限公司（Blizzard Entertainment）制作发行的一系列战争题材科幻游戏。游戏系列主要由Chris Metzen与James Phinney设计开发。游戏的剧情发生在26世纪初期的克普鲁星区——位于遥远的银河系中心。剧情讲述了三个种族之间的斗争，包括来自地球的人类、神秘而强大的星灵以及异形异虫。1998年即时战略游戏《星际争霸》发行，随后便产生了一大批衍生产品，包括8部相关题材的小说、1款桌上游戏以及其他授权商品比如模型玩具等。
+
+暴雪娱乐于1995年开始着手设计《星际争霸》系列游戏。这款游戏首先在1996年的电子娱乐大展（E3 Expo）上进行展示，并最初采用了《魔兽争霸II》的游戏引擎。《星际争霸》同样使暴雪娱乐建立了影片制作部门，最初用以在《星际争霸》的故事主线中插入一系列过场电影短片。
+
+1998年《星际争霸》发行之后，大部分《星际争霸》开发人员继续进行了其官方资料片《母巢之战》（Brood War）的开发。2001年，《星际争霸：幽灵》开始由Nihilistic Software领导开发。不同于先前的即时战略系列游戏，这是一部动作冒险游戏。然而在2004年，《星际争霸：幽灵》宣布被无限期推迟。《星际争霸II》于2010年7月27日发行。《星际争霸II》資料片《星际爭霸II：蟲群之心》則于2013年3月12日发行。《星际争霸II》最后一部资料片《星际争霸II：虚空之遗》在2015年11月10日发行。和《星际争霸II：自由之翼》以及《星际争霸II：虫群之心》不同的是，这次虚空之遗在中国大陆的发售与全球战网服务器的时间同步。
+
+原版《星际争霸》及其资料片发行初期即受到大量好评，仅于1998年即售出了150万套，[1]，是当年销量最好的PC游戏；而十年内總銷售量则超過950萬套。[2] 部分評論媒體將其視為史上最为傑出[3] 和重要[4] 的遊戲之一，並讚揚它對於即時戰略遊戲發展的貢獻。这一系列的游戏吸引了全世界众多的玩家。特别是在韩国，职业选手及战队在电视上进行对抗，收视率很好。
+</body>
+<script>
+function delta(sHex1,sHex2,iNum) {
+	var iHex1 = parseInt("0x"+sHex1);
+	var iHex2 = parseInt("0x"+sHex2);
+	return (iHex2 - iHex1)/(iNum-1);
+}
+
+function colorText(sText,sColor1,sColor2) {
+	if (sText.length < 10) {
+		return "<span style='color:#"+sColor1+";'>"+sText+"</span>";
+	}
+	var fDeltaR = delta(sColor1.substring(0,2),sColor2.substring(0,2),sText.length);
+	var fDeltaG = delta(sColor1.substring(2,4),sColor2.substring(2,4),sText.length);
+	var fDeltaB = delta(sColor1.substring(4,6),sColor2.substring(4,6),sText.length);
+	var sColorR = parseInt("0x"+sColor1.substring(0,2));
+	var sColorG = parseInt("0x"+sColor1.substring(2,4));
+	var sColorB = parseInt("0x"+sColor1.substring(4,6));
+	var text = "";
+	for (var i = 0; i < sText.length; ++i) {
+		text += "<span style='color:rgb("
+			+ Math.round(sColorR) + ","
+			+ Math.round(sColorG) + ","
+			+ Math.round(sColorB) + ");'>"
+			+ sText.substring(i,i+1) + "</span>";
+		sColorR += fDeltaR;
+		sColorG += fDeltaG;
+		sColorB += fDeltaB;
+	}
+	return text;
+}
+
+function SnakeCursor(parent, message) {
+	this.snake = [];
+	this.tops = [];
+	var left = 0;
+	for (var i = 0; i < message.length; ++i) {
+		var el = document.createElement("div");
+		el.className = "snakeStyle";
+		el.style.top = "0px";
+		el.style.left = left + "px";
+		left += 18;
+		el.appendChild(document.createTextNode(message[i]));
+		// console.log("message:["+i+"]="+message[i]);
+		this.snake.push(el);
+		this.tops.push(el.style.top);
+		parent.appendChild(el);
+	}
+}
+
+SnakeCursor.prototype.update = function(pageX, pageY) {
+	var left = pageX;
+	this.tops.unshift(pageY+"px");
+	this.tops.pop();
+	for (var i = 0; i < this.snake.length; ++i) {
+		this.snake[i].style.top = this.tops[i];
+		this.snake[i].style.left = left + "px";
+		left += 18;
+	}
+	// console.log(pageX, pageY);
+}
+
+window.onload = function() {
+  var $title = document.getElementsByTagName("title")[0].innerText;
+  var $body = document.getElementsByTagName("body")[0];
+  $body.innerHTML = colorText($body.innerText,"FF3300","3366FF");
+
+	var snakeCursor = new SnakeCursor($body, $title);
+	// snakeCursor.init($body);
+	window.addEventListener('mousemove', function(e) {
+			snakeCursor.update(e.pageX, e.pageY);
+		});
+
+};
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+	canvas {background:gray;}
+    </style>
+  </head>
+  <body>
+    <header>
+      <h3>AI Techniques For Game Programming</h3>
+	ch2. Further Adventure with Windows Programming
+    </header>
+    <article>
+      <canvas id="my-canvas" height=480 width=640>
+		your browser doesn't support the HTML5 canvas.
+      </canvas>
+    </article>
+  </body>
+  <script>
+	document.addEventListener('DOMContentLoaded', function() {
+		let myCanvas = document.getElementById('my-canvas');
+		let ctx = myCanvas.getContext('2d');
+		const NumLinesPerSide = 16;
+		const xWidth = myCanvas['width'];
+		const yHeight = myCanvas['height'];
+		const xStep = xWidth / NumLinesPerSide;
+		const yStep = yHeight / NumLinesPerSide;
+
+		ctx.beginPath();
+
+		for (var mult=1; mult<NumLinesPerSide; ++mult) {
+			ctx.moveTo(xStep * mult, 0.0);
+			ctx.lineTo(0.0, yHeight - yStep * mult);
+
+			ctx.moveTo(xStep * mult, yHeight);
+			ctx.lineTo(xWidth, yHeight - yStep * mult);
+
+			ctx.moveTo(xStep * mult, 0.0);
+			ctx.lineTo(xWidth, yStep * mult);
+
+			ctx.moveTo(xStep * mult, yHeight);
+			ctx.lineTo(0, yStep * mult);
+		}
+
+		ctx.stroke();
+	}, true);
+  </script>
+</html>

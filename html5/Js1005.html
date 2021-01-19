@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>#10.5 管理選擇結果</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <style>
+    div {
+      border: 1px solid #003a75;
+      color: #CC0066;
+      margin: 5px;
+      padding: 5px;
+      font-size: 12px;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+      height: 20px;
+      width: 20px;
+      float: left;
+    }
+    .myClass {
+      border: 2px solid #753a00;
+    }
+  </style>
+</head>
+<body>
+點擊的 div 序號：<span>?</span><br>
+<input type="button" id="btn-add" value="Add">
+<input type="button" id="btn-test" value="Test">
+<br>
+<div style="background:#FFFFFF">1</div>
+<div style="background:#CCCCCC">2</div>
+<div style="background:#999999">3</div>
+<div style="background:#666666">4</div>
+<div style="background:#333333">5</div>
+<div style="background:#000000">6</div>
+<script>
+  function disp(divs) {
+    for (var i = 0; i < divs.length; ++i) {
+      $(document.body).append($("<div style=\"background:"
+        + divs[i].style.background + ";\">"
+        + divs[i].innerHTML + "</div>"));
+    }
+  }
+
+  $(function() {
+    disp($('div').get().reverse());
+    $('div').click(function() {
+      var index = $('div').index(this);
+      $('span').html(index.toString());
+    });
+    // $(':input:button').click(function() {
+    $('#btn-add').click(function() {
+      var i = $('div').size() + 1;
+      $(document.body).append($("<div>"+i+"</div>"));
+    });
+    $('#btn-test').click(function() {
+      $('div').filter(function(index) {
+        return (index % 2) || $(this).attr("id")=="fouth";
+      }).addClass("myClass");
+    });
+  });
+</script>
+</body>
+</html>
+

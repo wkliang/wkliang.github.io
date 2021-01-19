@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>JavaScript Demo: Statement - Async</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://interactive-examples.mdn.mozilla.net/css/codemirror-5-31-0.css" rel="stylesheet" />
+    <link href="https://interactive-examples.mdn.mozilla.net/css/editor-js.css" rel="stylesheet" />
+  </head>
+  <body>
+      <section id="static">
+          <pre>
+<code id="static-js" data-height="taller">function resolveAfter2Seconds() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, 2000);
+  });
+}
+async function asyncCall() {
+  console.log('calling');
+  var result = await resolveAfter2Seconds();
+  console.log(`result : ${result}`);
+  // expected output: 'resolved'
+}
+
+asyncCall();
+console.log("After asyncCall()");</code>
+</pre>
+      </section>
+
+      <section id="live" class="live hidden">
+        <header><h4>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">Async function</a>
+          <span>&lt;---&gt;</span>
+          <a href="https://github.com/mdn/bob">Builder of Bits</a>
+        </h4></header>
+
+          <div id="editor" class="editor"></div>
+
+          <div class="output-container">
+              <div class="buttons-container">
+                  <button id="execute" class="button run" type="button">Run &rsaquo;</button>
+                  <button id="reset" type="button" class="button">Reset</button>
+              </div>
+              <div id="console" class="output"><code></code></div>
+          </div>
+      </section>
+    
+    <script src="https://interactive-examples.mdn.mozilla.net/js/codemirror-5-31-0.js"></script>
+    <script src="https://interactive-examples.mdn.mozilla.net/js/editor-js.js"></script>
+  </body>
+</html>
