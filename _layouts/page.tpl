@@ -53,11 +53,11 @@
 	
 	<div class="block block-license">
 		<h3>版权申明</h3>
-		<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/2.5/cn/" target="_blank" class="hide-target-icon" title="全部采用知识共享署名"><img alt="知识共享许可协议" src="http://i.creativecommons.org/l/by-nc-nd/2.5/cn/88x31.png" /></a></p>
+		<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/2.5/cn/" target="_blank" class="hide-target-icon" title="全部采用知识共享署名"><img alt="知识共享许可协议" src="/assets/img/88x31.png" /></a></p>
 	</div>
 	
 	<div class="block block-fork">
-		<a href="https://github.com/wkliang"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
+		<a href="https://github.com/wkliang"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/assets/img/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
 	</div>
 	
 	<div class="block block-thank">

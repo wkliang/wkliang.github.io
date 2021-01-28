@@ -1,5 +1,5 @@
 markdown: kramdown
-pygments: true
+rouge: true
 safe: false
 permalink: /posts/:title.html
 exclude:
