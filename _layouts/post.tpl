@@ -8,7 +8,7 @@ pageClass: page-type-post
 
 ---
 
-<div class="trace">/ <a href="/">pirate bear:D</a> / {{ page.title }}</div>
+<div class="trace">/ <a href="/">walking bear:D</a> / {{ page.title }}</div>
 
 <article>
 	<h1><a href="{{ page.url }}">{{ page.title }}</a></h1>

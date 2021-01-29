@@ -5,8 +5,8 @@
 <meta name="author" content="wkliang" />
 <meta name="keywords" content="{{ page.tags | join: ',' }}" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>pirate bear:D{% if page.title %} / {{ page.title }}{% endif %}</title>
-<link href="http://wkliang.github.com/feed.xml" rel="alternate" title="pirate bear:D" type="application/atom+xml" />
+<title>walking bear:D{% if page.title %} / {{ page.title }}{% endif %}</title>
+<link href="http://wkliang.github.com/feed.xml" rel="alternate" title="walking bear:D" type="application/atom+xml" />
 <link rel="stylesheet" type="text/css" href="/assets/css/site.css" />
 <link rel="stylesheet" type="text/css" href="/assets/css/code/github.css" />
 {% for style in page.styles %}<link rel="stylesheet" type="text/css" href="{{ style }}" />
@@ -24,7 +24,7 @@
 </div>
 
 <side>
-	<h2><a href="/">pirate bear:D</a><a href="/feed.xml" class="feed-link" title="subscribe">RSS feed</a></h2>
+	<h2><a href="/">walking bear:D</a><a href="/feed.xml" class="feed-link" title="subscribe">RSS feed</a></h2>
 	
 	<nav class="block">
 		<ul>
