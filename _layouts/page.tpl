@@ -24,7 +24,7 @@
 </div>
 
 <side>
-	<h2><a href="/">pirate bear:D</a><a href="/feed.xml" class="feed-link" title="RSS订阅"><img src="http://blog.rexsong.com/wp-content/themes/rexsong/icon_feed.gif" alt="RSS feed" /></a></h2>
+	<h2><a href="/">pirate bear:D</a><a href="/feed.xml" class="feed-link" title="subscribe">RSS feed</a></h2>
 	
 	<nav class="block">
 		<ul>
