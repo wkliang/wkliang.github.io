@@ -4,10 +4,7 @@ safe: false
 permalink: /posts/:title.html
 exclude:
   - README.md
-  - programs
   - nodejs
-  - html5
-  - demo
 
 host: wkliang.github.com
 
