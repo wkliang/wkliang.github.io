@@ -1,0 +1,12 @@
+{
+  "name": "ip01",
+  "version": "1.0.0",
+  "description": "NodeJS in Practice chapter 01",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

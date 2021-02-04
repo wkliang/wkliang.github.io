@@ -1,0 +1,7 @@
+https://news.google.com/news?cf=all&hl=zh-TW&pz=1&ned=tw&topic=w&output=rss
+https://news.google.com/news/feeds?cf=all&ned=tw&hl=zh-TW&output=rss
+https://news.google.com/news?cf=all&hl=zh-TW&pz=1&ned=tw&topic=t&output=rss
+https://news.google.com/news?cf=all&hl=zh-TW&pz=1&ned=tw&topic=b&output=rss
+https://news.google.com/news?cf=all&hl=zh-CN&ned=cn&topic=b&output=rss
+https://news.google.com/news?cf=all&hl=zh-CN&ned=cn&topic=t&output=rss
+https://news.google.com/news/feeds?cf=all&ned=cn&hl=zh-CN&output=rss

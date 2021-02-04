@@ -1,0 +1,1905 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 12 Sep 2016 17:37:57 GMT
+Content-Type: text/html; charset=Big5
+Connection: close
+Cache-Control: no-cache
+Pragma: no-cache
+
+<script language='javascript'>
+var serverbase = 'http'+'://'+'ip4.ek21.com/';
+var my_key = '';
+var my_cserial = '19w7gW'.substring(3)+'a19wNIx7gW'.substring(0,7)+'s87gWa1'.substring(0,2);
+var my_uno = 0;
+var my_nickname = '訪客_lonelyG';
+var my_level = 1;
+var my_gender = 'girl';
+var my_msgno = 1583773;
+var my_icon = '';
+var my_privkey ='2N95';
+var roomid = 'age_15';
+var maxuser = 200;
+var keyads = [];
+var title = '50~100歲聊天室';
+var agent = '';
+var trademark = '';
+var initbanner = '';
+var initbg = 0;
+var logout_url = 'http://www.ek21.com';
+var adver2 = '';
+var banner2 = '';
+var adwm2 = '';
+var level_sendpop = 16;
+var level_see_level = 4;
+var level_bbcode = 26;
+var level_bbcode1 = 26;
+var level_bbcode2 = 28;
+var level_bbcode3 = 30;
+var boycolor = '#8888FF';
+var girlcolor = '#FF88FF';
+var bgcolor = '#000000';
+var bg2color = '#004477';
+var wordcolor = '#FFFFFF';
+var word2color = '#FFFF00';
+var online_prefix = '';
+var online_append = '';
+var script_append = 'vshow_setonline([]);online_update_flag=1;';
+var vshow_target = 0;
+var vshow_deny = ',,';
+</script>
+<script language='javascript'>
+function online_area() {
+var sy = online_scroll_y();
+this.frames['oa'].document.open();
+with(this.frames['oa'].document) {
+writeln("<HTML>");
+writeln("<HEAD>");
+writeln("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=big5\">");
+writeln("<meta http-equiv=\"Content-Language\" content=\"zh-tw\">");
+writeln("<style type=\"text/css\">");
+writeln("td { font-size: 10pt; }");
+writeln("tr { line-height: 1.2; }");
+writeln("A:link, A:visited, A:active { text-decoration: none; }");
+writeln("</style>");
+writeln("<script language=\"javascript\">document.writeln(\"<base href='\"+parent.serverbase+\"'>\");<"+"/"+"script>");
+writeln("</HEAD>");
+writeln("");
+writeln("<body bgcolor='#000000' text='ffcc00' background='/age_15/chat/online_area_bg.gif' bgproperties='fixed' topmargin='0' leftmargin='0' oncontextmenu=\"return(false)\">");
+writeln("<basefont size=2 face='新細明體'>");
+writeln("<div align='center'>");
+writeln("");
+writeln("<script language=\"JavaScript\">");
+writeln("var girlcolor = parent.girlcolor;");
+writeln("var boycolor = parent.boycolor;");
+writeln("function gcolor(gender) {");
+writeln("	if(gender=='girl') { return(girlcolor); }");
+writeln("	return(boycolor);");
+writeln("}");
+writeln("function openbook(uno) {");
+writeln("	window.open('http://board.ek21.com/board?uno='+uno, '_book', '');");
+writeln("}");
+writeln("document.writeln(parent.online_prefix);");
+writeln("document.writeln(\"<table border='0' cellpadding='0' cellspacing='0' width='100%' align='center'>\");");
+writeln("for(var i=0; i<parent.online.length; i++) {");
+writeln("	var u = parent.online[i];");
+writeln("	document.write(\"<tr><td align='center' width='30'>\");");
+writeln("	if(u.icon!='') document.write(\"<img border='0' width='28' height='28' src='/icon/\"+u.icon+\"'>\");");
+writeln("	document.write(\"</td>\");");
+writeln("	document.write(\"<td><a href=\\\"javascript:parent.sel('\"+u.nickname+\"','\"+u.gender+\"')\\\" target='ta'\");");
+writeln("	if(u.uno>0) document.write(\" ondblclick='openbook(\"+u.uno+\")'\");");
+writeln("	document.write(\">\");");
+writeln("	document.write(\"<font color='\"+gcolor(u.gender)+\"'>\"+u.nickname+\"</font></a>\");");
+writeln("	if(u.level!='') document.write(\" \"+u.level);");
+writeln("	document.write(\"</td>\");");
+writeln("	document.writeln(\"</tr>\");");
+writeln("}");
+writeln("document.writeln(\"</table>\");");
+writeln("document.writeln(parent.online_append);");
+writeln("document.write(\"<table border='0' cellspacing='1' cellpadding='0' align='center' width='100%' style='margin-top:10px;margin-bottom:8px;'><tr><td height='18' align='center'>\");");
+writeln("document.write(\"<img border='0' src='/age_15/chat/online_area_boy.gif' width='19' height='14' align='absmiddle'>\");");
+writeln("document.write(\"<font color='\"+gcolor('boy')+\"'>♂\"+parent.online_boy_count()+\"人</font> \");");
+writeln("document.write(\"<img border='0' src='/age_15/chat/online_area_girl.gif' width='19' height='14' align='absmiddle'>\");");
+writeln("document.write(\"<font color='\"+gcolor('girl')+\"'>♀\"+parent.online_girl_count()+\"人</font></td></tr>\");");
+writeln("document.write(\"<tr><td align='center' height='18'><font color='#00FF00'>總人數 \"+parent.online_count()+\" 人</font></td></tr>\");");
+writeln("document.write(\"<tr><td align='center' height='18'><font color='#00FF00'>本室容量 \"+parent.maxuser+\" 人</font></td></tr>\");");
+writeln("document.write(\"<tr><td align='center' height='18'><font color='#FFCC00'>室別: \"+parent.roomid+\"</font></td></tr>\");");
+writeln("document.write(\"</table>\");");
+writeln("<"+"/"+"script>");
+writeln("");
+writeln("<a href='javascript:parent.AddBookmark()'><img border='0' width='69' height='18' src='/images/addfav2.gif' onMouseOver=\"this.src='/images/addfav1.gif'\" onMouseOut=\"this.src='/images/addfav2.gif'\"></a><br>");
+writeln("<!-- <iframe src=\"http://www.ek21.com/chat2/hot/online_area160x600.html\" frameborder=\"0\" scrolling=\"no\" width=\"160\" height=\"600\" style=\"margin:7 0 0 2px;\"></iframe><br> -->");
+writeln("<iframe src=\"http://www.ek21.com/chat2/hot/online_area_event.html\" frameborder=\"0\" scrolling=\"no\" width=\"160\" height=\"750\" style=\"margin:7 0 0 2px;\"></iframe><br>");
+writeln("</div>");
+writeln("<!-- Google Tag Manager -->");
+writeln("<noscript><iframe src=\"//www.googletagmanager.com/ns.html?id=GTM-PQNPSR\"");
+writeln("height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>");
+writeln("<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':");
+writeln("new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],");
+writeln("j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=");
+writeln("'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);");
+writeln("})(window,document,'script','dataLayer','GTM-PQNPSR');<"+"/"+"script>");
+writeln("<!-- End Google Tag Manager -->");
+writeln("</BODY>");
+writeln("</HTML>");
+writeln("");
+
+}
+this.frames['oa'].document.close();
+this.frames['oa'].scrollTo(0, sy);
+}
+function msg_area() {
+this.frames['ma'].document.close();
+this.frames['ma'].document.open();
+with(this.frames['ma'].document) {
+writeln("<HTML>");
+writeln("");
+writeln("<HEAD>");
+writeln("    <meta http-equiv='Content-Type' content='text/html; charset=big5'>");
+writeln("    <meta http-equiv='Content-Language' content='zh-tw'>");
+writeln("    <style type='text/css'>");
+writeln("    p {");
+writeln("        line-height: 1.0;");
+writeln("        margin: 0 0 3px 0;");
+writeln("    }");
+writeln("");
+writeln("    table {");
+writeln("        margin-bottom: 3px;");
+writeln("        border: 1px solid #999999;");
+writeln("    }");
+writeln("");
+writeln("    #ad {");
+writeln("        margin-bottom: 3px;");
+writeln("    }");
+writeln("");
+writeln("    A:link {");
+writeln("        text-decoration: none;");
+writeln("    }");
+writeln("");
+writeln("    A:visited {");
+writeln("        text-decoration: none;");
+writeln("    }");
+writeln("");
+writeln("    A:active {");
+writeln("        text-decoration: none;");
+writeln("    }");
+writeln("");
+writeln("    A:hover {");
+writeln("        text-decoration: underline;");
+writeln("    }");
+writeln("");
+writeln("    .bar {");
+writeln("        font-family: 新細明體;");
+writeln("        font-size: 12pt;");
+writeln("    }");
+writeln("");
+writeln("    td {");
+writeln("        font-family: 新細明體;");
+writeln("        font-size: 11pt;");
+writeln("    }");
+writeln("");
+writeln("    body {");
+writeln("        font-family: 新細明體;");
+writeln("        font-size: 11pt;");
+writeln("        overflow-x: hidden;");
+writeln("        margin: 0px;");
+writeln("    }");
+writeln("");
+writeln("    .adver {");
+writeln("        font-size: 11pt;");
+writeln("        font-weight: bold;");
+writeln("        color: #FFFF00;");
+writeln("        line-height: 20pt;");
+writeln("    }");
+writeln("    </style>");
+writeln("    <script language=\"javascript\">");
+writeln("    document.writeln(\"<base href='\" + parent.serverbase + \"'>\");");
+writeln("    <"+"/"+"script>");
+writeln("    <script type='text/javascript'>");
+writeln("    function vshow_alert(m) {");
+writeln("        parent.vshow_alert(m);");
+writeln("    }");
+writeln("");
+writeln("    function vshow_shownote(m) {");
+writeln("        parent.vshow_shownote(m);");
+writeln("    }");
+writeln("");
+writeln("    function vshow_showtime(t) {");
+writeln("        parent.vshow_showtime(t);");
+writeln("    }");
+writeln("");
+writeln("    function vshow_div(i) {");
+writeln("        parent.vshow_div(i);");
+writeln("    }");
+writeln("");
+writeln("    function vshow_newmsg(nick, gender, m) {");
+writeln("        parent.vshow_newmsg(nick, gender, m);");
+writeln("    }");
+writeln("    <"+"/"+"script>");
+writeln("    <script type='text/javascript'>");
+writeln("    var googletag = googletag || {};");
+writeln("    googletag.cmd = googletag.cmd || [];");
+writeln("    (function() {");
+writeln("        var gads = document.createElement('script');");
+writeln("        gads.async = true;");
+writeln("        gads.type = 'text/javascript';");
+writeln("        var useSSL = 'https:' == document.location.protocol;");
+writeln("        gads.src = (useSSL ? 'https:' : 'http:') +");
+writeln("            '//www.googletagservices.com/tag/js/gpt.js';");
+writeln("        var node = document.getElementsByTagName('script')[0];");
+writeln("        node.parentNode.insertBefore(gads, node);");
+writeln("    })();");
+writeln("    <"+"/"+"script>");
+writeln("    <script type='text/javascript'>");
+writeln("    googletag.cmd.push(function() {");
+writeln("        googletag.defineSlot('/1095084/ek21_chatroom_300250_1', [300, 250], 'div-gpt-ad-1457344636672-5').addService(googletag.pubads());");
+writeln("");
+writeln("        googletag.pubads().enableSingleRequest();");
+writeln("        googletag.pubads().collapseEmptyDivs();");
+writeln("        googletag.enableServices();");
+writeln("    });");
+writeln("    <"+"/"+"script>");
+writeln("    <script language=\"javascript\">");
+writeln("    function divhidden() {");
+writeln("        var box = document.getElementById(\"div-gpt-ad-1457344636672-5\");");
+writeln("        box.style.display = \"none\";");
+writeln("    }");
+writeln("    setTimeout(\"divhidden()\", 10000); //10秒");
+writeln("    <"+"/"+"script>");
+writeln("</HEAD>");
+writeln("");
+writeln("<body bgcolor='#000000' text='#FFFFFF' bgproperties='fixed' topmargin='0' leftmargin='0' oncontextmenu=\"return(false)\">");
+writeln("    <div id=\"tv\" style=\"position:absolute;top:24px;right:20px;width:300px;height:208px;z-index:30;overflow:hidden;display:none;\"><img src=\"/age_15/chat/tv_close.gif\" onClick=\"parent.tv_off()\" style=\"position:absolute;top:2px;right:2px;width:20px;height:20px;cursor:pointer;\">");
+writeln("        <iframe id=\"tvifm\" width=\"300\" height=\"208\" src=\"about:blank\" frameborder=\"0\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\"></iframe>");
+writeln("    </div>");
+writeln("    <div id=\"mp3\" style=\"position:absolute;top:236px;right:20px;width:180px;height:56px;z-index:40;overflow:hidden;\"></div>");
+writeln("    <div id=\"bulletin\" style=\"position:absolute;top:3px;right:60px;width:400px;height:260px;z-index:50;overflow:hidden;display:none;\"><img src=\"/age_15/chat/close.gif\" onClick=\"parent.bulletin_off()\" style=\"position:absolute;top:10px;right:10px;width:19px;height:19px;cursor:pointer;\">");
+writeln("        <iframe id=\"bulletinifm\" width=\"400\" height=\"260\" src=\"about:blank\" frameborder=\"0\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\" allowtransparency=\"true\"></iframe>");
+writeln("    </div>");
+writeln("    <div id=\"profile\" style=\"position:absolute;top:60px;left:20px;width:430px;height:205px;z-index:60;overflow:hidden;border:2px solid #CC6600;background-color:#FFCC66;display:none;\"><img src=\"/age_15/chat/close.gif\" onClick=\"parent.profile_off()\" style=\"position:absolute;top:0px;right:0px;width:19px;height:19px;cursor:pointer;\">");
+writeln("        <iframe id=\"profileifm\" width=\"100%\" height=\"100%\" src=\"about:blank\" frameborder=\"0\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\" allowtransparency=\"true\"></iframe>");
+writeln("    </div>");
+writeln("    <div id=\"warn\" style=\"position:absolute;bottom:5px;left:50%;margin-left:-150px;width:300px;height:180px;z-index:70;overflow:hidden;border:2px solid #FF6666;background-color:#FFCCCC;display:none;\">");
+writeln("        <iframe id=\"warnifm\" width=\"100%\" height=\"100%\" src=\"about:blank\" frameborder=\"0\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\" allowtransparency=\"true\"></iframe>");
+writeln("    </div>");
+writeln("    <div id=\"vshow\" style=\"position:absolute;top:5px;right:20px;width:326px;height:266px;z-index:80;overflow:hidden;background-image:url(/images/vshow_bg.gif);color:#000000;display:none;\">");
+writeln("        <div id='vshow_note' style='position:absolute;width:260px;height:20px;top:3px;left:3px;text-align:center;line-height:20px;'></div>");
+writeln("        <img src='/images/vshow_close.gif' onClick='parent.vshow_off()' style='position:absolute;top:3px;right:3px;width:19px;height:19px;cursor:pointer;'>");
+writeln("        <iframe id='vshow_gfifm' style='position:absolute;top:3px;right:24px;width:45px;height:20px;' src='about:blank' frameborder='0' marginwidth='0' marginheight='0' scrolling='no'></iframe>");
+writeln("        <div id='vshow_div2' style='position:absolute;width:320px;height:240px;top:22px;left:3px;'></div>");
+writeln("        <div id='vshow_div1' style='position:absolute;width:320px;height:240px;top:22px;left:3px;'>");
+writeln("            <iframe id='vshow_ifm' width='320' height='200' src='about:blank' frameborder='0' marginwidth='0' marginheight='0' scrolling='no'></iframe>");
+writeln("            <table style='border:0;margin-left:20px;margin-top:5px;'>");
+writeln("                <tr>");
+writeln("                    <td>");
+writeln("                        <font color='#000000'>入場券號碼：</font>");
+writeln("                    </td>");
+writeln("                    <td>");
+writeln("                        <input type='text' id='vshow_ticket' maxlength='12' style='width:75px;'>");
+writeln("                    </td>");
+writeln("                    <td>");
+writeln("                        <input type='button' onclick='parent.vshow_login()' value='進入'>");
+writeln("                    </td>");
+writeln("            </table>");
+writeln("        </div>");
+writeln("    </div>");
+writeln("    <div id=\"main\" style=\"margin:0px;padding:0px;width:100%;height:100%;overflow:auto;overflow-x:hidden;word-break:break-all;\">");
+writeln("        <table border='0' bgcolor='#003399' align='center' cellpadding='2' cellspacing='0' background='/age_15/chat/msg_area_bar.gif'>");
+writeln("            <tr>");
+writeln("                <td class='bar' nowrap>&nbsp;&nbsp;</td>");
+writeln("                <td class='bar' nowrap><img src='/age_15/chat/msg_area_star.gif' border='0' width='11' height='11' align='absmiddle'>");
+writeln("                    <font color='#FFFFFF'>暱稱：</font>");
+writeln("                    <font color='#FFFF00'>");
+writeln("                        <script language='javascript'>");
+writeln("                        document.write(parent.my_nickname);");
+writeln("                        <"+"/"+"script>");
+writeln("                    </font>&nbsp;</td>");
+writeln("                <td class='bar' nowrap><img src='/age_15/chat/msg_area_star.gif' border='0' width='11' height='11' align='absmiddle'>");
+writeln("                    <font color='#FFFFFF'>性別：</font>");
+writeln("                    <font color='#FFFF00'>");
+writeln("                        <script language='javascript'>");
+writeln("                        var gender = '男生';");
+writeln("                        if (parent.my_gender == 'girl') {");
+writeln("                            gender = '女生';");
+writeln("                        }");
+writeln("                        document.write(gender);");
+writeln("                        <"+"/"+"script>");
+writeln("                    </font>&nbsp;</td>");
+writeln("                <td class='bar' nowrap><img src='/age_15/chat/msg_area_star.gif' border='0' width='11' height='11' align='absmiddle'>");
+writeln("                    <font color='#FFFFFF'>等級：</font>");
+writeln("                    <font color='#FFFF00'>");
+writeln("                        <script language='javascript'>");
+writeln("                        document.write(parent.my_level);");
+writeln("                        <"+"/"+"script>");
+writeln("                    </font>&nbsp;</td>");
+writeln("                <td class='bar' nowrap>&nbsp;&nbsp;</td>");
+writeln("            </tr>");
+writeln("        </table>");
+writeln("        <div style=\"margin-bottom:8px;\"></div>");
+writeln("        <div style=\"margin-bottom:5px;\">歡迎光臨,請隨時注意最新 <a href=\"javascript:parent.bulletin_on();\" target=\"ta\" style=\"color:#00FF00;text-decoration:underline;\">站務公告</a></div>");
+writeln("        <div style=\"margin-bottom:5px;\">聊天前先設定 <a href=\"javascript:parent.profile_on();\" target=\"ta\" style=\"color:#00FF00;text-decoration:underline;\">個人資訊</a> 可更快交到朋友喔^^</div>");
+writeln("        <!-- /1095084/ek21_chatroom_300250_1 -->");
+writeln("        <div id='div-gpt-ad-1457344636672-5' style='height:250px; width:300px; padding-bottom: 3px;'>");
+writeln("            <script type='text/javascript'>");
+writeln("            googletag.cmd.push(function() {");
+writeln("                googletag.display('div-gpt-ad-1457344636672-5');");
+writeln("            });");
+writeln("            <"+"/"+"script>");
+writeln("        </div>");
+writeln("    </div>");
+
+}
+}
+var send_open = "<div style=\"position:absolute;width:180px;height:56px;background-image:url(/age_15/chat/mp3_bg.gif);\">\n<select id=\"mp3_sel\" style=\"position:absolute;top:4px;left:7px;width:132px;background-color:#CCCCFF;\"></select>\n<img src=\"/age_15/chat/mp3_start.gif\" width=\"22\" height=\"22\" onClick=\"parent.mp3_start()\" onmouseover=\"this.src='/age_15/chat/mp3_start_b.gif'\" onmouseout=\"this.src='/age_15/chat/mp3_start.gif'\" style=\"position:absolute;top:30px;left:7px;cursor:pointer;\">\n<img src=\"/age_15/chat/mp3_stop.gif\" width=\"22\" height=\"22\" onClick=\"parent.mp3_stop()\" onmouseover=\"this.src='/age_15/chat/mp3_stop_b.gif'\" onmouseout=\"this.src='/age_15/chat/mp3_stop.gif'\" style=\"position:absolute;top:30px;left:32px;cursor:pointer;\">\n<img src=\"/age_15/chat/mp3_close.gif\" width=\"16\" height=\"16\" onClick=\"parent.mp3_close()\" style=\"position:absolute;top:6px;right:7px;cursor:pointer;\">\n<div style=\"position:absolute;top:29px;left:56px;width:120px;height:24px;\">\n<OBJECT id='mp3_swf' classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' codebase='http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0' WIDTH='120' HEIGHT='24' ALIGN=''>\n<PARAM NAME='movie' VALUE='/mp3.swf?20071130'>\n<PARAM NAME='quality' VALUE='high'>\n<PARAM NAME='wmode' VALUE='transparent'>\n<PARAM NAME='menu' VALUE='false'>\n<EMBED src='/mp3.swf?20071130' id='mp3e_swf' quality='high' menu='false' wmode='transparent' WIDTH='120' HEIGHT='24' ALIGN='' TYPE='application/x-shockwave-flash' PLUGINSPAGE='http://www.macromedia.com/go/getflashplayer'></EMBED>\n</OBJECT>\n</div>\n</div>\n";
+</script>
+<script language='javascript'>
+var room_adwm = "";
+var room_banner = "";
+</script>
+<script type="text/javascript">
+function setwindowsize(w,h) {
+	var chatWidth = (w>0 && w<=screen.availWidth)? w : screen.availWidth;
+	var chatHeight = (h>0 && h<=screen.availHeight)? h : screen.availHeight;
+	top.window.resizeTo(chatWidth, chatHeight);
+}
+top.window.moveTo(0, 0);
+setwindowsize(2096, 2096);
+</script>
+
+<script language='JavaScript'>
+window.name = 'age_15_main';
+var taload = 0;
+var warn = '';
+
+function isEmpty(str) {
+	if(str==null || str=='') { return true; }
+	for(var i=0; i<str.length; i++) {
+		if(str.charAt(i)!=' ') { return(false); }
+	}
+	return true;
+}
+
+function trimstr(str) {
+	var len;
+	while((len=str.length)>0 && str.charAt(len - 1)==' ') {
+		str = str.substring(0, len - 1);
+	}
+	return str;
+}
+
+function repstr(s, t, p) {
+	if(s==null || t==null || t.length==0) return s;
+	if(p==null) p='';
+	var s1 = s;
+	var s2 = '';
+	var i;
+	while(s1.indexOf(t)>=0) {
+		i = s1.indexOf(t);
+		s2 = s2+s1.substring(0,i)+p;
+		s1 = s1.substring(i+t.length);
+	}
+	s2 = s2+s1;
+	s = s2;
+	return s;
+}
+
+////////////////////
+
+var filter = new Array;
+function filter_chk(nickname) {
+	if(nickname!='') {
+		for(var i=0; i<filter.length; i++) {
+			if(filter[i]==nickname) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+function filter_set(nickname) {
+	if(nickname!='') {
+		var j=0;
+		for(var i=0; i<filter.length; i++) {
+			if(filter[i]==nickname) {
+				j=1;
+				break;
+			}
+		}
+		if(j==0) {
+			filter[filter.length] = nickname;
+		}
+	}
+	var s='';
+	for(var i=0; i<filter.length; i++) {
+		s = s+filter[i];
+		if(i!=filter.length-1) { s = s+','; }
+	}
+	if(s=='') { s='Empty'; }
+	return s;
+}
+function filter_cls() {
+	for(var i=0; i<filter.length; i++) { delete filter[i]; }
+	filter.length = 0;
+}
+
+////////////////////
+
+var dirty = new Array;
+dirty = ['://', 'c:', 'C:', '.a', '.A', '.c', '.C', '.i', '.I', '.n', '.N', '.o', '.O', '.p', '.P', '.s', '.S', '.t', '.T', '幹', '榦', '娘', '姦'];
+
+function dirty_filter(s) {
+	for(var i=0; i<dirty.length; i++) {
+		s = repstr(s, dirty[i], '');
+	}
+	return s;
+}
+
+////////////////////
+
+var msgtpl = new Array;
+msgtpl[0]='<font color=$color>$icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip $mood：$content $sign</font>';
+msgtpl[1]='<font color=$color>$icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 對 <a href=javascript:parent.sel("$to_nickname","$to_gender"); target=ta><font color=$to_gcolor>$to_nickname</font></a> $mood：$content $sign</font>';
+msgtpl[2]='<font color=#FF0000>(密)</font> <font color=$color>$icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 只對 <a href=javascript:parent.sel("$to_nickname","$to_gender"); target=ta><font color=$to_gcolor>$to_nickname</font></a> $mood：$content $sign</font>';
+msgtpl[3]='<font color=#FFFFFF>『<a href=javascript:parent.sel("$to_nickname","$to_gender"); target=ta><font color=$to_gcolor>$to_nickname</font></a>』因違反聊天規定已被請出聊天室嚕! <font size=1>($timestr)</font></font>';
+msgtpl[4]='<font color=#99FF99>$icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 點播歌曲『<a href=javascript:parent.mp3_open("$mood","$content"); target=ta><u><font color=#00FF00>$mood</font></u></a>』給 <a href=javascript:parent.sel("$to_nickname","$to_gender"); target=ta><font color=$to_gcolor>$to_nickname</font></a> <img align="absmiddle" src="/age_15/chat/mp3_start.gif" width="22" height="22" onClick=parent.mp3_open("$mood","$content"); onmouseover=this.src="/age_15/chat/mp3_start_b.gif" onmouseout=this.src="/age_15/chat/mp3_start.gif" style="cursor:pointer;"> <font size=1>($timestr)</font></font>';
+msgtpl[5]='<font color=#FFFFFF>『<a href=javascript:parent.sel("$to_nickname","$to_gender"); target=ta><font color=$to_gcolor>$to_nickname</font></a>』因違反聊天規定正在被罰$mood! <font size=1>($timestr)</font></font>';
+msgtpl[6]='<font color=#FFFFFF>『<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>』已經離線嚕! <font size=1>($timestr)</font></font>';
+function msgtpl_get(i) {
+	if(msgtpl[i]) { return msgtpl[i]; }
+	return '';
+}
+
+var msgtpl_login = new Array;
+msgtpl_login[1] ='<font color=00FFFF><a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title <font size=1>($timestr)</font></font>';
+msgtpl_login[2] ='<font color=00FFFF>會員 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 努力聊天中 <font size=1>($timestr)</font></font>';
+msgtpl_login[3] ='<font color=00FFFF>進階會員 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 快樂歡唱中 <font size=1>($timestr)</font></font>';
+msgtpl_login[4] ='<font color=00FFFF>高級會員 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 用喜悅的心與你交談 <font size=1>($timestr)</font></font>';
+msgtpl_login[10]='<font color=00FFFF>實習天使 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 不會註冊的請找我喔 <font size=1>($timestr)</font></font>';
+msgtpl_login[12]='<font color=00FFFF>小天使 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 需要協助的請找我唷 <font size=1>($timestr)</font></font>';
+msgtpl_login[14]='<font color=00FFFF>大天使 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 傳遞幸福  <font size=1>($timestr)</font></font>';
+msgtpl_login[16]='<font color=00FFFF>金天使 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 傳遞愛的祝福 <font size=1>($timestr)</font></font>';
+msgtpl_login[18]='<font color=00FFFF>督察 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 維持和平 <font size=1>($timestr)</font></font>';
+msgtpl_login[20]='<font color=00FFFF>大督察 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 維持聊天秩序 <font size=1>($timestr)</font></font>';
+msgtpl_login[22]='<font color=00FFFF>金督察 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 維持聊天風氣 <font size=1>($timestr)</font></font>';
+msgtpl_login[24]='<font color=00FFFF>白金督察 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 大家要乖乖喔<font size=1>($timestr)</font></font>';
+msgtpl_login[26]='<font color=00FFFF>聊神 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 祝大家聊天愉快 <font size=1>($timestr)</font></font>';
+msgtpl_login[28]='<font color=00FFFF>金聊神 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 守護大家 <font size=1>($timestr)</font></font>';
+msgtpl_login[30]='<font color=00FFFF>白金聊神 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 聆聽你的心聲 <font size=1>($timestr)</font></font>';
+msgtpl_login[32]='<font color=00FFFF>鑽石聊神 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 請大家煩死他 <font size=1>($timestr)</font></font>';
+msgtpl_login[34]='<font color=00FFFF>指揮官 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 體察民意 關心大家 <font size=1>($timestr)</font></font>';
+msgtpl_login[36]='<font color=00FFFF>副站長 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 請大家掌聲鼓勵！<font size=1>($timestr)</font></font>';
+msgtpl_login[38]='<font color=00FFFF>站長 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 請大家起立敬禮！<font size=1>($timestr)</font></font>';
+msgtpl_login[40]='<font color=00FFFF>大站長 $icon<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor><b>$nickname</b></font></a>$ip 進入$title 請大家起立行三鞠躬禮！<font size=1>($timestr)</font></font>';
+function msgtpl_login_get(i) {
+	var ret = '';
+	for(var j=1; j<msgtpl_login.length; j++) {
+		if(j>i) { break; }
+		if(msgtpl_login[j]) { ret = msgtpl_login[j]; }
+	}
+	return ret;
+}
+
+var msgtpl_logout = new Array;
+msgtpl_logout[1] ='<font color=ffcc99><a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title <font size=1>($timestr)</font></font>';
+msgtpl_logout[2] ='<font color=ffcc99>會員 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，下次再見囉! <font size=1>($timestr)</font></font>';
+msgtpl_logout[3] ='<font color=ffcc99>進階會員 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，下次再見囉! <font size=1>($timestr)</font></font>';
+msgtpl_logout[4] ='<font color=ffcc99>高級會員 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，下次再見囉! <font size=1>($timestr)</font></font>';
+msgtpl_logout[10]='<font color=ffcc99>實習天使 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，別太想我喔! <font size=1>($timestr)</font></font>';
+msgtpl_logout[12]='<font color=ffcc99>小天使 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，別太想我喔! <font size=1>($timestr)</font></font>';
+msgtpl_logout[14]='<font color=ffcc99>大天使 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，別太想我喔! <font size=1>($timestr)</font></font>';
+msgtpl_logout[16]='<font color=ffcc99>金天使 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，別太想我喔! <font size=1>($timestr)</font></font>';
+msgtpl_logout[18]='<font color=ffcc99>督察 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，大家要乖乖喔! <font size=1>($timestr)</font></font>';
+msgtpl_logout[20]='<font color=ffcc99>大督察 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，大家要乖乖喔! <font size=1>($timestr)</font></font>';
+msgtpl_logout[22]='<font color=ffcc99>金督察 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，大家要乖乖喔! <font size=1>($timestr)</font></font>';
+msgtpl_logout[24]='<font color=ffcc99>白金督察 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，大家要乖乖喔! <font size=1>($timestr)</font></font>';
+msgtpl_logout[26]='<font color=ffcc99>聊神 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，有緣再見囉! <font size=1>($timestr)</font></font>';
+msgtpl_logout[28]='<font color=ffcc99>金聊神 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，有緣再見囉! <font size=1>($timestr)</font></font>';
+msgtpl_logout[30]='<font color=ffcc99>白金聊神 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，有緣再見囉! <font size=1>($timestr)</font></font>';
+msgtpl_logout[32]='<font color=ffcc99>鑽石聊神 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，有緣再見囉! <font size=1>($timestr)</font></font>';
+msgtpl_logout[34]='<font color=ffcc99>指揮官 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，大家別太傷心唷! <font size=1>($timestr)</font></font>';
+msgtpl_logout[36]='<font color=ffcc99>副站長 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，大家別太傷心唷! <font size=1>($timestr)</font></font>';
+msgtpl_logout[38]='<font color=ffcc99>站長 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，大家別太傷心唷! <font size=1>($timestr)</font></font>';
+msgtpl_logout[40]='<font color=ffcc99>大站長 <a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a>$ip 離開$title，大家別太傷心唷! <font size=1>($timestr)</font></font>';
+function msgtpl_logout_get(i) {
+	var ret = '';
+	for(var j=1; j<msgtpl_logout.length; j++) {
+		if(j>i) { break; }
+		if(msgtpl_logout[j]) { ret=msgtpl_logout[j]; }
+	}
+	return ret;
+}
+
+var msgtpl_grade_close = '<a href=javascript:parent.sel("$nickname","$gender"); target=ta><font color=$gcolor>$nickname</font></a> 關閉評分板!';
+
+////////////////////
+
+var has_new_msg = 1;
+var screen_lines = 0;
+function showmsg(s) {
+	var madoc = this.frames['ma'].document;
+	var mamain = madoc.getElementById('main');
+	if(!mamain) return;
+	var ed = madoc.createElement('div');
+	ed.innerHTML = s;
+	mamain.appendChild(ed);
+	if(this.frames['ta'].document.form1.autoscroll.checked) mamain.scrollTop = mamain.scrollHeight;
+	has_new_msg = 1;
+}
+function msg(type,msgno,timestr,nickname,gender,level,ip,to_nickname,to_gender,content,color,mood,sign) {
+  	if(msgno<=my_msgno) { return; }
+	my_msgno = msgno;
+	if(filter_chk(nickname)==true) { return; }
+	content = trimstr(content);
+
+	var temp='';
+	if(type<=10) {	//基本訊息
+		temp = msgtpl_get(type);
+		if(type==0 || type==1 || type==2) { //發言
+			if(level>=level_bbcode) {
+				content = bbcode(content);
+				if(level>=level_bbcode1) { content = bbcode1(content); }
+				if(level>=level_bbcode2) { content = bbcode2(content); }
+				if(level>=level_bbcode3) { content = bbcode3(content); }
+			}
+			else { content = dirty_filter(content); }
+		}
+		else if(type==3) { //kicked
+			online_del(to_nickname);
+			if(online_update_flag==0) online_update_flag = 1;
+		}
+		else if(type==6) { //crash out
+			online_del(nickname);
+			if(online_update_flag==0) online_update_flag = 1;
+		}
+	}
+	else if(type==21) { //login
+		temp = msgtpl_login_get(level);
+		var info_array = content.split('|');
+		var logintime = info_array[0];
+		var uno = parseInt(info_array[1]);
+		var icon = info_array[2];
+		var area = info_array[3];
+		var profile = info_array[4];
+		if(my_level>=level_see_level) { online_add(uno,nickname,gender,logintime,level,icon,area,profile); }
+		else { online_add(uno,nickname,gender,logintime,'',icon,area,profile); }
+		online_update_flag = 2;
+	}
+	else if(type==22) { //logout
+		temp = msgtpl_logout_get(level);
+		online_del(nickname);
+		if(online_update_flag==0) online_update_flag = 1;
+	}
+	else if(type==31) { //grade
+		if(content=='score') {
+			this.frames['ga'].set_result(mood, sign);
+		}
+		else if(content=='open') {
+			this.frames['ga'].create(nickname, gender);
+			if(this.frames['ta'].document.form1.autoscroll.checked) {
+				var maindiv = this.frames['ma'].document.getElementById('main');
+				if(maindiv) maindiv.scrollTop = maindiv.scrollHeight;
+			}
+		}
+		else if(content=='close') {
+			if(this.frames['ga'].destroy()) {
+				temp = msgtpl_grade_close;
+			}
+		}
+	}
+	else if(type==41) { //profile
+		var n = online_find_nickname(nickname);
+		if(n>=0) online[n].profile = content;
+	}
+	else if(type==51) { //broadcast
+		try { eval(unescape(content));
+		} catch(e) { }
+	}
+	if(temp=='') return; //無訊息顯示則直接離開
+
+	if(my_nickname==nickname || my_nickname==to_nickname) {	//和自己有關的訊息
+		temp='<table border=0 bgcolor='+bg2color+' cellpadding=0 cellspacing=2><tr><td>'+temp+'</td></tr></table>';
+	}
+	else if(type==22 && to_nicknames_chk(nickname)) { //對方離開也是和自己有關的
+		temp='<table border=0 bgcolor='+bg2color+' cellpadding=0 cellspacing=2><tr><td>'+temp+'</td></tr></table>';
+	}
+	else { temp='<p>'+temp+'</p>'; }
+
+	if(ip.length>0) { ip=' <font size=1 color=$gcolor>['+ip+']</font>'; }
+	if(sign.length>0) { sign='<font face=wingdings>'+sign+'</font>'; }
+
+	var gcolor = boycolor;
+	if(gender=='girl') {
+		gcolor = girlcolor;
+	}
+	else {	gender = 'boy';
+		gcolor = boycolor;
+	}
+
+	var to_gcolor = boycolor;
+	if(to_gender=='girl') {
+		to_gcolor = girlcolor;
+	}
+	else {	to_gender = 'boy';
+		to_gcolor = boycolor;
+	}
+
+	temp=repstr(temp, '$timestr', timestr);
+	temp=repstr(temp, '$ip', ip);
+	temp=repstr(temp, '$nickname', nickname);
+	temp=repstr(temp, '$gender', gender);
+	temp=repstr(temp, '$gcolor', gcolor);
+	temp=repstr(temp, '$to_nickname', to_nickname);
+	temp=repstr(temp, '$to_gender', to_gender);
+	temp=repstr(temp, '$to_gcolor', to_gcolor);
+	temp=repstr(temp, '$color', color);
+	temp=repstr(temp, '$mood', mood);
+	temp=repstr(temp, '$sign', sign);
+	temp=repstr(temp, '$title', title);
+
+	//小圖示
+	var icon = '';
+	if(level>1) {
+		var n = online_find_nickname(nickname);
+		if(n>=0 && online[n].icon!='') {
+			icon = "<img border='0' align='absmiddle' height='28' src='icon/"+online[n].icon+"'>";
+		}
+	}
+	temp=repstr(temp, '$icon', icon);
+
+	temp=repstr(temp, '$content', content); //must last
+
+	//警告
+	if(type==5) {
+		if(my_nickname==to_nickname) {
+			warn = content;
+			warn_on(content);
+		}
+	}
+
+	if(screen_lines>1500 && warn=='' && vshow_sn==0) {
+		screen_lines = 0;
+		msg_area_click();
+	}
+	showmsg(temp);
+	screen_lines++;
+}
+
+////////////////////
+
+var bbc = /(javascript|jscript|vbscript|onmouse|onkey|onclick|ondblclick|onload|onunload|onsubmit|onfocus|onselect|onblur|onchange|onerror)[a-z]*/ig;
+function bbcode(str) {
+	return str.replace(bbc, '');
+}
+
+var bbc1_1 = /\[font ([^\]]+)\]([^\[]+)\[\/font\]/ig;
+var bbc1_2 = /\[b\]([^\[]+)\[\/b\]/ig;
+function bbcode1(str) {
+	str = str.replace(bbc1_1, "<font $1>$2</font>");
+	str = str.replace(bbc1_2, "<b>$1</b>");
+	return(str);
+}
+
+var bbc2_1 = /\[img([^\]]*)\](http[^\[]+)\[\/img\]/ig;
+function bbcode2(str) {
+	str = str.replace(bbc2_1, "<img $1 src='$2'>");
+	return(str);
+}
+
+function bbcode3(str) {
+	return(str);
+}
+
+////////////////////
+
+var to_nicknames = new Array;
+var to_genders = new Array;
+for(var i=0;i<=10;i++) {
+	to_nicknames[i] = '';
+	to_genders[i] = '';
+}
+var to_nickname_select	= '';
+var to_gender_select = '';
+function to_cls() {
+	if(taload!=1) return;
+	for(var i=1;i<=10;i++) {
+		this.frames['ta'].document.form1.to_show.options[i].text='';
+		to_nicknames[i]='';
+		to_genders[i]='';
+	}
+	to_nickname_select='';
+	to_gender_select='';
+	this.frames['ta'].document.form1.to_show.selectedIndex=0;
+	says_focus();
+}
+function to_move(i) {
+	if(taload!=1) return;
+	this.frames['ta'].document.form1.to_show.selectedIndex=i;
+	to_nickname_select=to_nicknames[i];
+	to_gender_select=to_genders[i];
+}
+function to_set(nickname, gender) {
+	if(taload!=1) return;
+	if(to_nicknames.length!=to_genders.length) {
+		to_cls();
+		return;
+	}
+	if(to_nicknames_chk(nickname)==0) { //未被選擇過
+		for(var i=10;i>1;i--) {
+			if(this.frames['ta'].document.form1.to_show.options[i-1].text!='') {
+				this.frames['ta'].document.form1.to_show.options[i].text=this.frames['ta'].document.form1.to_show.options[i-1].text;
+				to_nicknames[i]=to_nicknames[i-1];
+				to_genders[i]=to_genders[i-1];
+			}
+		}
+		this.frames['ta'].document.form1.to_show.options[1].text=nickname;
+		to_nicknames[1]=nickname;
+		to_genders[1]=gender;
+		to_nickname_select=nickname;
+		to_gender_select=gender;
+		this.frames['ta'].document.form1.to_show.selectedIndex=1;
+	}
+	else {	//已在選擇名單中
+		for(var i=10;i>=1;i--) {
+			if(to_nicknames[i]==nickname) {
+				to_nickname_select=nickname;
+				to_gender_select=gender;
+				this.frames['ta'].document.form1.to_show.selectedIndex=i;
+				break;
+			}
+		}
+	}
+	says_focus();
+}
+function to_nicknames_chk(s) {
+	if(s!='') {
+		if(to_nickname_select==s) { return 2; }
+		for(var i=1;i<=10;i++) {
+			if(to_nicknames[i]==s) { return 1; }
+			if(to_nicknames[i]=='') { break; }
+		}
+	}
+	return 0;
+}
+
+////////////////////
+
+function says_focus() {
+	this.frames['ta'].document.form1.says_temp.focus();
+}
+
+function sel(nickname, gender) {
+	to_set(nickname, gender);
+	says_focus();
+	var n = online_find_nickname(nickname);
+	if(n>=0) {
+		this.frames['board'].document.getElementById('ba1').innerHTML = 'ＩＰ：'+online[n].area;
+		if(online[n].profile=='') {
+			if(online[n].uno==0) board_banner();
+			else this.frames['board'].document.getElementById('ba').innerHTML = '編號：'+online[n].uno + '<br>' + photo_count(online[n].uno, nickname);
+		} else	this.frames['board'].document.getElementById('ba').innerHTML = online[n].profile + '<br>' + photo_count(online[n].uno, nickname);
+	} else {
+		this.frames['board'].document.getElementById('ba1').innerHTML = '';
+		board_banner();
+	}
+}
+
+function photo_count(uno, nick) {
+	return('<img src="http://photo.ek21.com/count.php?uno='+uno+'" onerror="this.width=0;this.height=0;" border="0" style="cursor:pointer;margin-top:3px;" onclick='+"'"+'parent.photo_show('+uno+', "'+nick+'")'+"'"+'>');
+}
+function photo_show(uno, nick) {
+	this.frames['board'].document.getElementById('ba1').innerHTML = '<div style="text-align:center">'+nick+'照片</div>';
+	this.frames['board'].document.getElementById('ba').innerHTML = '<div style="text-align:center"><iframe src="http://photo.ek21.com/show.php?uno='+uno+'" width="120" height="120" allowTransparency="true" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>';
+}
+
+////////////////////
+
+var banner = [[],[]];
+function board_banner() {
+	var h = (new Date()).getHours();
+	h = ((h>=19 || h<7) && banner[1].length>0)? 1:0;
+	if(banner[h].length==0) return;
+	var ran = parseInt(Math.random()*banner[h].length);
+	var adstr = banner[h][ran];
+	adstr = repstr(adstr, '$'+'roomid', roomid);
+	adstr = repstr(adstr, '$random', Math.random());
+	adstr = repstr(adstr, '$gender', my_gender);
+	this.frames['board'].document.getElementById('ba').innerHTML = adstr;
+}
+
+var adwm = [[],[]];
+function adwm_post() {
+	var h = (new Date()).getHours();
+	h = ((h>=19 || h<7) && adwm[1].length>0)? 1:0;
+	if(adwm[h].length==0) return;
+	var ran = parseInt(Math.random()*adwm[h].length);
+	var adstr = adwm[h][ran];
+	adstr = repstr(adstr, '$'+'roomid', roomid);
+	adstr = repstr(adstr, '$random', Math.random());
+	adstr = repstr(adstr, '$gender', my_gender);
+	var wmdiv = this.frames['ta'].document.getElementById('wm1');
+	if(wmdiv) wmdiv.innerHTML = (this.frames['ta'].document.body.clientWidth>750)? adstr : '';
+	setTimeout('adwm_post()', 179*1000);
+}
+setTimeout('adwm_post()', 12*1000);
+
+var adver = [[],[]];
+function adver_post() {
+	var h = 0;
+	if(adver[h].length==0) return;
+	var ran = parseInt(Math.random()*adver[h].length);
+	var adstr = adver[h][ran];
+	adstr = repstr(adstr, '$'+'roomid', roomid);
+	adstr = repstr(adstr, '$random', Math.random());
+	adstr = repstr(adstr, '$gender', my_gender);
+	if(has_new_msg==1) {
+		var addiv = this.frames['ma'].document.getElementById('ad');
+		if(addiv) addiv.parentNode.removeChild(addiv);
+		showmsg('<div id="ad">'+adstr+'</div>');
+		has_new_msg = 0;
+	}
+	adver_wait();
+}
+function adver_wait() {
+	setTimeout('adver_post()', 120*1000);
+}
+adver_wait();
+
+//add 2016.0407 @Roy 0806 hot_fix 0820 on
+var adver1 = [[],[]];
+function adver_post1() {
+	var h = 0;
+	if(adver[h].length==0) return;
+	var ran = parseInt(Math.random()*adver1[h].length);
+	var adstr = adver1[h][ran];
+	adstr = repstr(adstr, '$'+'roomid', roomid);
+	adstr = repstr(adstr, '$random', Math.random());
+	adstr = repstr(adstr, '$gender', my_gender);
+	if(has_new_msg==1) {
+		var addiv = this.frames['ma'].document.getElementById('ad1');
+		if(addiv) addiv.parentNode.removeChild(addiv);
+		showmsg('<div id="ad1">'+adstr+'</div>');
+		has_new_msg = 0;
+	}
+	adver1_wait();
+}
+function adver1_wait() {
+	setTimeout('adver_post1()', 120*1000);
+}
+adver1_wait();
+setTimeout('adver_post1()', 60*1000);
+
+function clear_content() {
+	adwm[1] = [];
+	banner[1] = [];
+}
+
+////////////////////
+
+var msg_mode = 0;
+var msg_secs = 0;
+var msg_rand = 0;
+function msg_nocache() {
+	msg_rand++;
+	if(msg_rand>99999) { msg_rand=0; }
+	return msg_rand;
+}
+function msg_stat(n) {
+	msg_mode = n;
+	msg_secs = 0;
+}
+function msg_wait() {
+	setTimeout('msg_new()', 1000);
+}
+function msg_new() {
+	if(msg_mode==1) {
+		if(msg_secs>=6) {
+			this.frames['ha'].location.href = '/msg_new?roomid=age_15&cserial='+my_cserial+'&msgno='+my_msgno+'&r='+msg_nocache();
+			msg_secs = 0;
+		}
+		else { msg_secs++; }
+	}
+	else { msg_secs = 0; }
+	msg_wait();
+}
+function msg_area_background() {
+	this.frames['ma'].document.body.background = this.frames['ta'].document.form1.background.options[this.frames['ta'].document.form1.background.options.selectedIndex].value;
+}
+function msg_area_click() {
+	if(vshow_sn!=0 && !confirm('有視訊在畫面上,是否確定清除?')) return;
+	msg_area();
+	msg_area_background();
+	msg_stat(1);
+}
+
+////////////////////
+
+var online = new Array();
+var online_sort_method = '';
+var online_synctime = 0;
+var online_update_flag = 0;
+function User(uno, nickname, gender, logintime, level, icon, area, profile) {
+	this.uno = uno;
+	this.nickname = nickname;
+	this.gender = gender;
+	this.logintime = logintime;
+	this.level = level;
+	this.icon = icon;
+	this.area = area;
+	this.profile = profile;
+}
+function online_update() {
+	if(online_update_flag>1) online_sort();
+	if(online_update_flag>0) online_area();
+	online_update_flag = 0;
+}
+function online_count() {
+	return online.length;
+}
+function online_boy_count() {
+	var count=0;
+	for(var i=0; i<online.length; i++) {
+		if(online[i].gender=="boy") count++;
+	}
+	return count;
+}
+function online_girl_count() {
+	var count=0;
+	for(var i=0; i<online.length; i++) {
+		if(online[i].gender=="girl") count++;
+	}
+	return count;
+}
+function online_find_nickname(str) {
+	for(var i=0; i<online.length; i++) {
+		if(online[i].nickname==str) return i;
+	}
+	return -1 ;
+}
+function online_add(uno, nickname, gender, logintime, level, icon, area, profile) {
+	var u = new User(uno, nickname, gender, logintime, level, icon, area, profile);
+	var n = online_find_nickname(nickname);
+	if(n==-1) { online[online.length] = u; }
+	else { online[n] = u; }
+}
+function online_del(nickname) {
+	var n = online_find_nickname(nickname);
+	if(n==-1) { return false; }
+	for(var i=n; i<online.length-1; i++) {
+		online[i] = online[i+1];
+	}
+	online.length--;
+	return true;
+}
+function online_del_all() {
+	online = new Array();
+}
+function online_sort_logintime1(a, b) {
+	var n1 = a.logintime;
+	var n2 = b.logintime;
+	if(n1<n2) return -1;
+	if(n1>n2) return 1;
+	return 0;
+}
+function online_sort_logintime2(a, b) {
+	var n1 = a.logintime;
+	var n2 = b.logintime;
+	if(n1<n2) return 1;
+	if(n1>n2) return -1;
+	return 0;
+}
+function online_sort_uno(a, b) {
+	var n1 = a.uno;
+	var n2 = b.uno;
+	if(n1==0 && n2==0) return online_sort_logintime1(a,b);
+	if(n1!=0 && n2==0) return -1;
+	if(n1==0 && n2!=0) return 1;
+	if(n1<n2) return -1;
+	if(n1>n2) return 1;
+	return 0;
+}
+function online_sort_icon(a, b) {
+	var n1 = a.icon;
+	var n2 = b.icon;
+	if(n1!='' && n2=='') return -1;
+	if(n1=='' && n2!='') return 1;
+	return online_sort_uno(a,b);
+}
+function online_sort_gender1(a, b) {
+	var n1 = a.gender;
+	var n2 = b.gender;
+	if(n1=='girl' && n2=='boy') return -1;
+	if(n1=='boy' && n2=='girl') return 1;
+	return online_sort_uno(a,b);
+}
+function online_sort_gender2(a, b) {
+	var n1 = a.gender;
+	var n2 = b.gender;
+	if(n1=='girl' && n2=='boy') return 1;
+	if(n1=='boy' && n2=='girl') return -1;
+	return online_sort_uno(a,b);
+}
+function online_sort_profile(a, b) {
+	var n1 = a.profile;
+	var n2 = b.profile;
+	if(n1!='' && n2=='') return -1;
+	if(n1=='' && n2!='') return 1;
+	return online_sort_uno(a,b);
+}
+function online_sort() {
+	if(online_sort_method=="logintime1") { online.sort(online_sort_logintime1); }
+	else if(online_sort_method=="logintime2") { online.sort(online_sort_logintime2); }
+	else if(online_sort_method=="icon") { online.sort(online_sort_icon); }
+	else if(online_sort_method=="gender1") { online.sort(online_sort_gender1); }
+	else if(online_sort_method=="gender2") { online.sort(online_sort_gender2); }
+	else if(online_sort_method=="uno") { online.sort(online_sort_uno); }
+	else if(online_sort_method=="profile") { online.sort(online_sort_profile); }
+	else { online.sort(online_sort_uno); }
+}
+function online_area_click() {
+	if((new Date()).getTime()-online_synctime > 30*1000) {
+		this.frames['ha2'].location.href = '/online_area?roomid=age_15&cserial='+my_cserial+'&r='+msg_nocache();
+	}
+	else { online_area(); }
+}
+function online_scroll_y() {
+	if(this.frames['oa'].document.body && this.frames['oa'].document.body.scrollTop) { //DOM compliant
+		return(this.frames['oa'].document.body.scrollTop);
+	}
+	else if(typeof(this.frames['oa'].window.pageYOffset)=='number') { //Netscape compliant
+		return(this.frames['oa'].window.pageYOffset);
+	}
+	return(0);
+}
+function online_total_y() {
+	if(this.frames['oa'].document.body && this.frames['oa'].document.body.scrollHeight) { //DOM compliant
+		return(this.frames['oa'].document.body.scrollHeight);
+	}
+	return(200);
+}
+</script>
+
+<script language='JavaScript'>
+function tv_on() {
+	this.frames['ma'].document.getElementById('tvifm').src = 'http://avlink.ek21.com/tv/?roomid=age_15&cserial='+my_cserial;
+	this.frames['ma'].document.getElementById('tv').style.display = 'block';
+}
+function tv_off() {
+	this.frames['ma'].document.getElementById('tv').style.display = 'none';
+	this.frames['ma'].document.getElementById('tvifm').src = 'about:blank';
+}
+function tv_on_confirm() {
+	if(this.frames['ma'].document.getElementById('tv').style.display=='none') tv_on();
+}
+</script>
+
+<script language='JavaScript'>
+function mp3_open(t, u) {
+	var exist_div = true;
+	var d = this.frames['ma'].document.getElementById('mp3');
+	if(d && d.innerHTML=='') {
+		exist_div = false;
+		writediv(d, send_open);
+	}
+	var sel = this.frames['ma'].document.getElementById('mp3_sel');
+	var exist_song = false;
+	for(var i=0;i<sel.length;i++) {
+		if(sel.options[i].value == u) {
+			sel.options[i].text = t;
+			sel.selectedIndex = i;
+			exist_song = true;
+			break;
+		}
+	}
+	if(!exist_song) sel.options[sel.length] = new Option(t, u, false, true);
+	if(exist_div) mp3_start();
+	else setTimeout('mp3_start()', 1500);
+}
+function mp3_close() {
+	mp3_stop();
+	var d = this.frames['ma'].document.getElementById('mp3');
+	if(d) d.innerHTML = '';
+}
+function mp3_start() {
+  try {
+	var sel = this.frames['ma'].document.getElementById('mp3_sel');
+	if(!sel) return;
+	var u = sel.value;
+	u = repstr(u, '$'+'roomid', 'age_15');
+	if(u.indexOf('/')==0) u += '?roomid=age_15&cserial='+my_cserial;
+	var swf = this.frames['ma'].document.getElementById('mp3_swf');
+	if(swf && swf.mystart) swf.mystart(u);
+	else {
+		var swfe = this.frames['ma'].document.getElementById('mp3e_swf');
+		if(swfe && swfe.mystart) swfe.mystart(u);
+	}
+  } catch(e) { }
+}
+function mp3_stop() {
+  try {
+	var swf = this.frames['ma'].document.getElementById('mp3_swf');
+	if(swf && swf.mystop) swf.mystop();
+	else {
+		var swfe = this.frames['ma'].document.getElementById('mp3e_swf');
+		if(swfe && swfe.mystart) swfe.mystop();
+	}
+  } catch(e) { }
+}
+</script>
+
+<script language='JavaScript'>
+function bulletin_on() {
+	this.frames['ma'].document.getElementById('bulletinifm').src = '/bulletin?roomid=age_15&cserial='+my_cserial;
+	this.frames['ma'].document.getElementById('bulletin').style.display = 'block';
+}
+function bulletin_off() {
+	this.frames['ma'].document.getElementById('bulletin').style.display = 'none';
+	this.frames['ma'].document.getElementById('bulletinifm').src = 'about:blank';
+}
+</script>
+
+<script language='JavaScript'>
+function warn_on(n) {
+	this.frames['ma'].document.getElementById('warnifm').src = '/warn/'+n+'.htm';
+	this.frames['ma'].document.getElementById('warn').style.display = 'block';
+}
+function warn_off() {
+	this.frames['ma'].document.getElementById('warn').style.display = 'none';
+	this.frames['ma'].document.getElementById('warnifm').src = 'about:blank';
+}
+function warn_status() {
+	return( (this.frames['ma'].document.getElementById('warn').style.display=='none')? 'off':'on' );
+}
+</script>
+
+<script language='JavaScript'>
+function profile_on() {
+	this.frames['ma'].document.getElementById('profileifm').src = '/profile?roomid=age_15&cserial='+my_cserial;
+	this.frames['ma'].document.getElementById('profile').style.display = 'block';
+}
+function profile_off() {
+	this.frames['ma'].document.getElementById('profile').style.display = 'none';
+	this.frames['ma'].document.getElementById('profileifm').src = 'about:blank';
+}
+</script>
+
+<script language='JavaScript'>
+banner[0] = ['<iframe id="age_15_ba" name="age_15_ba" src="http://content.ek21.com/delivery/afr.php?zoneid=6&source=gender_$gender&cb=$random" framespacing="0" frameborder="no" scrolling="no" width="120" height="90" allowtransparency="true"></iframe>'];
+adver[0] = ['<iframe id="age_15_ad" name="age_15_ad" src="http://content.ek21.com/delivery/afr.php?zoneid=3&source=gender_$gender&cb=$random" framespacing="0" frameborder="no" scrolling="no" width="400" height="20" allowtransparency="true"></iframe>','<iframe id="age_15_ad" name="age_15_ad" src="http://www.ek21.com/chat2/hot/320x50_sc.html" framespacing="0" frameborder="no" scrolling="no" width="328" height="58" allowtransparency="true"></iframe>', '<iframe id="age_15_ad" name="age_15_ad" src="http://www.ek21.com/chat2/hot/320x50_uc.html" framespacing="0" frameborder="no" scrolling="no" width="328" height="58" allowtransparency="true"></iframe>', '<iframe id="age_15_ad" name="age_15_ad" src="http://www.ek21.com/chat2/hot/320x50_xa.html" framespacing="0" frameborder="no" scrolling="no" width="328" height="58" allowtransparency="true"></iframe>', '<iframe id="age_15_ad" name="age_15_ad" src="http://www.ek21.com/chat2/hot/320x50_ub.html" framespacing="0" frameborder="no" scrolling="no" width="328" height="58" allowtransparency="true"></iframe>'];
+adwm[0] = ['<iframe id="age_15_wm" name="age_15_wm" src="http://content.ek21.com/delivery/afr.php?zoneid=4&source=gender_$gender&cb=$random" framespacing="0" frameborder="no" scrolling="no" width="70" height="70" allowtransparency="true"></iframe>'];
+//add adver1 2015.0623 @Roy 2016.04.25 第二則 0806 hot_fix 0820 on
+adver1[0] = ['<iframe id="age_15_ad1" name="age_15_ad1" src="http://www.ek21.com/chat2/hot/320x50_sc.html" framespacing="0" frameborder="no" scrolling="no" width="328" height="58" allowtransparency="true"></iframe>'];
+</script>
+
+<script language='JavaScript'>
+if(room_adwm && room_adwm!='') { adwm[1] = room_adwm.replace(/\n$/,'').split('\n'); }
+if(room_banner && room_banner!='') { banner[1] = room_banner.replace(/\n$/,'').split('\n'); }
+if(adver2 && adver2!='') { adver[0] = adver2.split('|'); adver[1] = []; }
+if(banner2 && banner2!='') { banner[0] = banner2.split('|'); banner[1] = []; }
+if(adwm2 && adwm2!='') { adwm[0] = adwm2.split('|'); adwm[1] = []; }
+</script>
+
+<script language='JavaScript' src="/write.js?20080116"></script>
+
+<script type="text/javascript">
+function AddBookmark() {
+	var u = serverbase + roomid + '/';
+	var t = '['+roomid+'] ' + title ;
+	if(window.sidebar) { window.sidebar.addPanel(t, u, ''); }
+	else if(window.external) { window.external.AddFavorite(u, t); }
+}
+</script>
+
+<script type="text/javascript">var vshowcolor='#CCFF33';</script>
+<script type="text/javascript" src="/vshow.js?080918" charset="big5"></script>
+
+<script type="text/javascript">
+try { if(script_append) eval(unescape(script_append)); }
+catch(ex) { }
+</script>
+
+<script language='JavaScript'>
+document.writeln("<html>");
+document.writeln("<head>");
+document.writeln("<meta http-equiv='Content-Type' content='text/html; charset=big5'>");
+document.writeln("<meta http-equiv='Content-Language' content='zh-tw'>");
+document.writeln("<title>尋夢園 - "+title+" ["+roomid+"]</title>");
+document.writeln("</head>");
+document.writeln("<frameset cols='*,190' border=0 frameborder=0 framespacing=0>");
+document.writeln("	<frameset rows='97,*,100' border=0 frameborder=0 framespacing=0>");
+document.writeln("		<frame src='/age_15/chat/top.htm' scrolling='no' noresize='true'>");
+document.writeln("		<frameset id='marow' rows='12,*,0,18' frameborder='NO'>");
+document.writeln("			<frame src='/age_15/chat/ma1.htm' frameborder='NO' scrolling='NO' noresize='true'>");
+document.writeln("			<frameset cols='19,*,0,0,0,0,16' frameborder='NO'>");
+document.writeln("				<frame src='/age_15/chat/ma2.htm' frameborder='NO' scrolling='NO' noresize='true'>");
+document.writeln("				<frame name='ma' src='/age_15/chat/loading.htm' scrolling='no' noresize='true'>");
+document.writeln("				<frame name='ha' src='about:blank' scrolling='no' noresize='true'>");
+document.writeln("				<frame name='ha2' src='about:blank' scrolling='no' noresize='true'>");
+document.writeln("				<frame name='ha3' src='about:blank' scrolling='no' noresize='true'>");
+document.writeln("				<frame name='ha5' src='about:blank' scrolling='no' noresize='true'>");
+document.writeln("				<frame src='/age_15/chat/ma3.htm' frameborder='NO' scrolling='NO' noresize='true'>");
+document.writeln("			</frameset>");
+document.writeln("			<frame name='ga' src='/grade_area?roomid=age_15' frameborder='NO' scrolling='NO' noresize='true'>");
+document.writeln("			<frame src='/age_15/chat/ma4.htm' frameborder='NO' scrolling='NO' noresize='true'>");
+document.writeln("		</frameset>");
+document.writeln("		<frame name='ta' src='/type_area?roomid=age_15&cserial="+my_cserial+"' scrolling='no' noresize='true'>");
+document.writeln("	</frameset>");
+document.writeln("	<frameset rows='201,*,21' border=0 frameborder=0 framespacing=0>");
+document.writeln("		<frame name='board' src='/age_15/chat/board.htm' frameborder='NO' scrolling='NO' noresize='true'>");
+document.writeln("		<frameset cols='*,27' frameborder='NO' border='0' framespacing='0'>");
+document.writeln("			<frameset rows='55,*' frameborder='NO'>");
+document.writeln("				<frame src='/age_15/chat/oa1.htm' frameborder='NO' scrolling='NO' noresize='true'>");
+document.writeln("				<frame name='oa' src='/age_15/chat/loading.htm' scrolling='NO' noresize='true'>");
+document.writeln("			</frameset>");
+document.writeln("			<frame src='/age_15/chat/oa2.htm' frameborder='NO' scrolling='NO' noresize='true'>");
+document.writeln("		</frameset>");
+document.writeln("		<frame src='/age_15/chat/oa3.htm' frameborder='NO' scrolling='NO' noresize='true'>");
+document.writeln("	</frameset>");
+document.writeln("</frameset>");
+document.writeln("</html>");
+</script>
+
+// 20160928 // type_area.....
+// frames["ta"].logout()
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=big5">
+<meta http-equiv="Content-Language" content="zh-tw">
+<style type='text/css'>
+<!--
+A:link { text-decoration:none }
+A:visited { text-decoration:none }
+A:active { text-decoration:none }
+-->
+</style>
+<script language="JavaScript1.1">
+<!--
+function right(e) {
+	if(navigator.appName=='Netscape' && (e.which==3 || e.which==2)) { return false; }
+	else if(navigator.appName=='Microsoft Internet Explorer' && (event.button==2 || event.button==3)) { return false; }
+	return true;
+}
+document.onmousedown=right;
+if(document.layers) { window.captureEvents(Event.MOUSEDOWN); }
+window.onmousedown=right;
+function disableRightClick() { return false; }
+document.oncontextmenu = disableRightClick;
+//-->
+</script>
+
+<script language='JavaScript'>
+var canSay = false;
+function set_canSay() {
+	canSay = true;
+}
+
+function load_start() {
+	parent.taload=1;
+	if(document.form1.color.length>1) {
+		var ran = 1+parseInt(Math.random()*(document.form1.color.length-1));
+		document.form1.color.selectedIndex = ran;
+	}
+	if(document.form1.background.length>1) {
+		if(parent.initbg && parent.initbg!='' && parent.initbg>0) {
+			document.form1.background.selectedIndex = parent.initbg;
+		}
+		else {	var ran = 1+parseInt(Math.random()*(document.form1.background.length-1));
+			document.form1.background.selectedIndex = ran;
+		}
+	}
+	parent.msg_area_click();
+	parent.msg_wait();
+	parent.msg_secs += 3;
+	parent.online_area_click();
+
+	if(parent.my_level>=2) { set_canSay(); }
+	else { setTimeout('set_canSay()', 10*1000); }
+
+	if(parent.vshow_target>0 && parent.vshow_isonline(parent.vshow_target)) parent.vshow_on(parent.vshow_target);
+}
+
+////////////////////
+
+var says_keep = new Array;
+var says_keep_now = -1;
+for(var i=0; i<50; i++) { says_keep[i]=''; }
+function says_keep_add(str) {
+	for(var i=50-2; i>=0; i--) { says_keep[i+1]=says_keep[i]; }
+	says_keep[0] = str;
+	says_keep_now = -1;
+}
+function says_keep_get(m) {
+	if(says_keep_now+m>=0 && says_keep_now+m<=49 && says_keep[says_keep_now+m]!='') {
+		says_keep_now = says_keep_now+m;
+		return says_keep[says_keep_now];
+	}
+	return('');
+}
+function says_keep_click(n) {
+	var s = says_keep_get(n);
+	if(s!='') { document.form1.says_temp.value = s; }
+}
+
+////////////////////
+
+function openwin(action, target) {
+	document.form_openwin.cserial.value = parent.my_cserial;
+	document.form_openwin.action = action;
+	document.form_openwin.target = target;
+	var winopt = 'width=300,height=300,scrollbars=yes';
+	if(target=='_sendlist') { winopt = 'width=240,height=160,left=250,top=200,scrollbars=no'; }
+	else if(target=='_kickadvance') { winopt = 'width=580,height=500,scrollbars=yes'; }
+	else if(target=='_kicklist') { winopt = 'width=700,height=500,scrollbars=yes'; }
+	else if(target=='_loginlog') { winopt = 'width=640,height=500,scrollbars=yes'; }
+	else if(target=='_msglog') { winopt = 'width=740,height=550,scrollbars=yes'; }
+	else if(target=='_warnlog') { winopt = 'width=700,height=500,scrollbars=yes'; }
+	else if(target=='_kicklog') { winopt = 'width=900,height=500,scrollbars=yes'; }
+	else if(target=='_reflog') { winopt = 'width=600,height=400,scrollbars=yes'; }
+	else if(target=='_apublish') { winopt = 'width=430,height=460,scrollbars=no'; }
+	else if(target=='_bulletin') { winopt = 'width=520,height=410,scrollbars=yes'; }
+	else if(target=='_content_') { winopt = 'width=460,height=400,scrollbars=yes'; }
+	else if(target=='_levelfunction') { winopt = 'width=470,height=460,scrollbars=yes'; }
+	else if(target=='_my_says') { winopt = 'width=600,height=420,scrollbars=yes'; }
+	else if(target=='_my_moods') { winopt = 'width=480,height=420,scrollbars=yes'; }
+	else if(target=='_config') { winopt = 'width=350,height=300,scrollbars=no'; }
+	else if(target=='_icon') { winopt = 'width=360,height=410,scrollbars=yes'; }
+	thiswin = window.open('', target, winopt+',toolbar=no,location=no,status=no,directories=no,menubar=no,resizable=yes');
+	thiswin.focus();
+	setTimeout("document.form_openwin.submit()", 200);
+}
+
+function openwin_ex(action, target) {
+	document.form_openwin_ex.cserial.value = parent.my_cserial;
+	document.form_openwin_ex.server.value = parent.serverbase;
+	document.form_openwin_ex.privkey.value = parent.my_privkey;
+	document.form_openwin_ex.action = action;
+	document.form_openwin_ex.target = target;
+	var winopt = 'width=300,height=300,scrollbars=yes';
+	if(target=='_photo') { winopt = 'width=600,height=480,left=10,top=20,scrollbars=no'; }
+	thiswin_ex = window.open('', target, winopt+',toolbar=no,location=no,status=no,directories=no,menubar=no,resizable=yes');
+	thiswin_ex.focus();
+	setTimeout("document.form_openwin_ex.submit()", 200);
+}
+
+function form2submit(job, data1, data2) {
+	if(parent.isEmpty(parent.to_nickname_select) && job!='grade') {
+		alert('請先選擇對象!');
+		return;
+	}
+	if((parent.to_gender_select.indexOf('vshow_')==0) && job!='grade') {
+		alert('此對象無法執行');
+		return;
+	}
+	if(job=='kick_easy') {
+		if(confirm('確定要對此人執行管制?')!=true) return;
+	}
+	else if(job=='warn') {
+		if(confirm('確定要對此人執行警告?')!=true) return;
+	}
+	document.form2.cserial.value = parent.my_cserial;
+	document.form2.msgno.value = parent.my_msgno;
+	document.form2.to_nickname.value = parent.to_nickname_select;
+	document.form2.to_gender.value = parent.to_gender_select;
+	document.form2.job.value = job;
+	document.form2.data1.value = data1;
+	document.form2.data2.value = data2;
+	parent.msg_stat(0);
+	if(job!='grade') { parent.says_focus(); }
+	document.form2.submit();
+}
+
+function nowsecm() {
+	var now = new Date();
+	return now.getTime();
+}
+var says_last = '';
+var says_lasttime = nowsecm();
+var says_count = 0;
+var schars = '';
+var tchars = '';
+function s2t(cc) {
+	var str='';
+	for(var i=0;i<cc.length;i++) {
+		var c = cc.charAt(i);
+		if(cc.charCodeAt(i)>10000 && schars.indexOf(c)!=-1) str += tchars.charAt(schars.indexOf(c));
+  		else str += c;
+	}
+	return str;
+}
+var old_chksays = frames['ta'].chksays;
+frames['ta'].form1.onsubmit = 
+function chksays() {
+	if(document.form1.st.checked) document.form1.says_temp.value = s2t(document.form1.says_temp.value);
+	var says_temp = document.form1.says_temp.value;
+	//says_temp = parent.dirty_filter(says_temp);
+	if(parent.isEmpty(says_temp)==true) {
+		alert('請輸入發言!');
+		parent.says_focus();
+		return false;
+	}
+	if(says_last==says_temp) {
+		alert('請勿重覆發言!');
+		parent.says_focus();
+		return false;
+	}
+	var between = 1500;
+	if(document.form1.says_temp.value.length*80>1500) { between=document.form1.says_temp.value.length*80; }
+	if(nowsecm()-says_lasttime<between) {
+		alert('發言速度過快!');
+		parent.says_focus();
+		return false;
+	}
+	if(parent.warn!='') {
+		alert("必須執行完指定的動作才能繼續發言!");
+		if(parent.warn_status()=='off') parent.warn_on(parent.warn);
+		return false;
+	}
+	if(canSay==false) {
+		alert("訪客進入聊天室10秒後才能開始發言，\n按上方註冊成為會員後即不受此限制!");
+		return false;
+	}
+	if(parent.to_gender_select.indexOf('vshow_')==0) {
+		parent.vshow_say();
+		return false;
+	}	
+	document.form1.cserial.value = parent.my_cserial;
+	document.form1.msgno.value = parent.my_msgno;
+	document.form1.to_nickname.value = parent.to_nickname_select;
+	document.form1.to_gender.value = parent.to_gender_select;
+	document.form1.says.value = says_temp;
+	document.form1.says_temp.value = '';
+	says_keep_add(says_temp);
+	says_last = says_temp;
+	says_lasttime = nowsecm();
+	//parent.ma.scroll(0, 65535000);
+	parent.msg_stat(0);
+	parent.says_focus();
+
+	says_count++;
+	document.form1.sayscount.value = says_count;
+
+	//keyads
+	var haskeyads = 0;
+	for(var i=0;i<parent.keyads.length;i++) {
+		for(var j=0;j<parent.keyads[i][0].length;j++) {
+			if(says_temp.indexOf(parent.keyads[i][0][j])!=-1) {
+				var adstr = parent.keyads[i][1];
+				adstr = parent.repstr(adstr, '$random', Math.random());
+				adstr = parent.repstr(adstr, '$gender', parent.my_gender);
+				adstr = parent.repstr(adstr, '$'+'roomid', parent.roomid);
+				var addiv = parent.frames['ma'].document.getElementById('ad');
+				if(addiv) addiv.parentNode.removeChild(addiv);
+				parent.showmsg('<div id="ad">'+adstr+'</div>');
+				haskeyads = 1;
+				break;
+			}
+		}
+		if(haskeyads!=0) break;
+	}
+
+	return true;
+}
+
+////////////////////
+
+function to_change() {
+	parent.to_move(document.form1.to_show.selectedIndex);
+	document.form1.to_nickname.value = parent.to_nickname_select;
+	document.form1.to_gender.value = parent.to_gender_select;
+}
+function says_preset_change() {
+	var s = document.form1.says_preset.options[document.form1.says_preset.selectedIndex].value;
+	if(s!='') { document.form1.says_temp.value = s; }
+}
+function filter_make() {
+	if(parent.isEmpty(parent.to_nickname_select)) {
+		alert('請選擇過濾對象!');
+		return;
+	}
+	if(confirm('確定過濾['+parent.to_nickname_select+']?')) {
+		alert('目前過濾：'+parent.filter_set(parent.to_nickname_select));
+	}
+}
+function filter_clear() {
+	if(confirm('確定取消過濾?')) {
+		parent.filter_cls();
+		alert('過濾功能取消完成!');
+	}
+}
+function audio_play_open() {
+	alert("語音模式即將開啟，\n請留意右上方之訊息框！");
+	parent.frames['ha5'].location.href = '/a_play.htm';
+}
+function audio_play_close() {
+	parent.frames['ha5'].location.href = 'about:blank';
+	parent.frames['board'].document.getElementById('ba2').innerHTML = '語音模式已關閉！';
+	alert("語音模式已關閉！");
+}
+function set_my_says(data) {
+	var ops = document.form1.says_preset.options;
+	for(var i=ops.length-1;i>0;i--) ops[i] = null;
+	ops.length = 1;
+	var rows = data.split('\n');
+	for(var i=0;i<rows.length;i++) {
+		if(rows[i]==null || rows[i]=='' || rows[i].indexOf('\t')==-1) continue;
+		var contents = rows[i].split('\t');
+		ops[ops.length] = new Option(contents[0], contents[1]);
+	}
+}
+function set_my_moods(data) {
+	var ops = document.form1.mood.options;
+	for(var i=ops.length-1;i>0;i--) ops[i] = null;
+	ops.length = 1;
+	var rows = data.split('\n');
+	for(var i=0;i<rows.length;i++) {
+		if(rows[i]==null || rows[i]=='' || rows[i].indexOf('\t')==-1) continue;
+		var contents = rows[i].split('\t');
+		ops[ops.length] = new Option(contents[0], contents[1]);
+	}
+}
+////////////////////
+
+var logout_flag = 0;
+function logout() {
+	logout_flag = 1;
+	if(skeyboardwin!=null && !skeyboardwin.closed) skeyboardwin.close();
+	document.form_logout.cserial.value = parent.my_cserial;
+	document.form_logout.logout_url.value = parent.logout_url;
+	document.form_logout.submit();
+	parent.frames['ha5'].location.href = 'about:blank';
+	if(parent.vshow_sn!=0) parent.vshow_off();
+}
+function logout_c() {
+	if(logout_flag!=1) {
+		document.form_logout.launch.value = 'close';
+		logout();
+	}
+	parent.msg_secs = -100;
+	alert('歡迎下次再來喔!');
+	top.close();
+}
+function logout_a() {
+	if(logout_flag==1) return;
+	document.form_logout.launch.value = 'auto';
+	logout();
+	alert("請使用聊天室下方之離開按鈕退出聊天室，\n以免因不正常離線導致下次無法使用此暱稱。");
+}
+function logout_u(u) {
+	if(logout_flag==1) return;
+	document.form_logout.launch.value = 'url';
+	logout();
+	top.location.href = u;
+}
+
+////////////////////
+
+var skeyboardwin = null;
+function skeyboard() {
+	if(skeyboardwin==null || skeyboardwin.closed) {
+		skeyboardwin = window.open('/age_15/chat/skeyboard.htm', '_skeyboard', 'width=322,height=120,toolbar=no,location=no,directories=no,menubar=no,resizable=no');
+	}
+	else { skeyboardwin.focus(); }
+}
+</script>
+
+</head>
+<body bgcolor='#020205' background='/age_15/chat/type_area_bg.gif' text='#000000' leftmargin='0' topmargin='0' marginwidth='0' marginheight='0' link='#FFFF00' vlink='#FFFF00' alink='#FFFF00' onLoad='load_start();' onunload='logout_a();' oncontextmenu="window.event.returnValue=false">
+
+<table width='100%' height='100%' border='0' cellspacing='0' cellpadding='0' style='margin-top:0; margin-bottom:0'>
+<tr>
+<td rowspan='2' width='31' valign='bottom' background='/age_15/chat/type_area_bg1.gif'><img src='/age_15/chat/type_area_1.gif' width='31' height='26'></td>
+<td align='center' bordercolor='#CC0066'>
+
+<!-- main form begin -->
+
+<form name='form_logout' method='post' action='/logout' target='frame_logout' style='margin-top:0; margin-bottom:0'>
+<input type='hidden' name='roomid' value='age_15'>
+<input type='hidden' name='logout_url' value=''>
+<input type='hidden' name='cserial' value=''>
+<input type='hidden' name='launch' value=''>
+</form>
+<iframe src="about:blank" name="frame_logout" width="0" height="0" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"></iframe>
+
+<form name='form_openwin' method='post' style='margin-top:0; margin-bottom:0' action='' target='_blank'>
+<input type='hidden' name='roomid' value='age_15'>
+<input type='hidden' name='cserial' value=''>
+</form>
+
+<form name='form_openwin_ex' method='post' style='margin-top:0; margin-bottom:0' action='' target='_blank'>
+<input type='hidden' name='roomid' value='age_15'>
+<input type='hidden' name='cserial' value=''>
+<input type='hidden' name='server' value=''>
+<input type='hidden' name='privkey' value=''>
+</form>
+
+<form name='form2' method='post' style='margin-top:0; margin-bottom:0' action='/msg_new' target='ha'>
+<input type='hidden' name='roomid' value='age_15'>
+<input type='hidden' name='cserial' value=''>
+<input type='hidden' name='msgno' value=''>
+<input type='hidden' name='to_nickname' value=''>
+<input type='hidden' name='to_gender' value=''>
+<input type='hidden' name='job' value=''>
+<input type='hidden' name='data1' value=''>
+<input type='hidden' name='data2' value=''>
+</form>
+
+<form name='form1' method='post' style='margin-top:0; margin-bottom:0' action='/msg_new' target='ha' onsubmit='return(chksays());' autocomplete='off'>
+<input type='hidden' name='roomid' value='age_15'>
+<input type='hidden' name='cserial' value=''>
+<input type='hidden' name='msgno' value=''>
+<input type='hidden' name='job' value='say'>
+<input type='hidden' name='says' value=''>
+<input type='hidden' name='to_nickname' value=''>
+<input type='hidden' name='to_gender' value=''>
+<input type='hidden' name='sayscount' value=''>
+
+<p style="margin-top:0; margin-bottom:1">
+
+<font color='#CCFFFF' style="font-size:12pt">發言:</font>
+<input type='button' value='<' onClick='says_keep_click(1); parent.says_focus();' style="height:22px; width:15px; background-color:#BBBBFF">
+<input type='text' name='says_temp' size='48' maxlength='100' style="height:22px;width:350px; background-color:#BBBBFF">
+<input type='button' value='>' onClick='says_keep_click(-1); parent.says_focus();' style="height:22px; width:15px; background-color:#BBBBFF">
+<input type='submit' value='送出' style="height:22px; background-color:#BBBBFF"> 
+<img src="/age_15/chat/keyboard.gif" width="32" height="18" onClick="skeyboard()" style="cursor:pointer;" align="absmiddle">
+
+</p>
+<p style="margin-top:2; margin-bottom:2">
+
+<input type='checkbox' name='autoscroll' value='y' onClick='parent.says_focus();' checked><font color='yellow' style='font-size:10pt'>捲動</font>
+<input type='checkbox' name='only' value='y' onClick='parent.says_focus();' checked><font color='yellow' style='font-size:10pt'>密談</font>
+<input type='checkbox' name='st' value='y' onClick='parent.says_focus();' checked><font color='yellow' style='font-size:10pt'>簡-繁</font>
+
+<font color="#00FF00" style="font-size:12pt">對象:</font>
+<select name='to_show' onChange='to_change(); parent.says_focus();' style="background-color:#AAFFAA">
+<option value=''>對所有人說　　</option>
+<option></option>
+<option></option>
+<option></option>
+<option></option>
+<option></option>
+<option></option>
+<option></option>
+<option></option>
+<option></option>
+<option></option>
+</select>
+
+<input type='button' value='清空對象' onClick='parent.to_cls(); parent.says_focus();' style="height:22px; background:#AAFFAA">
+<input type='button' value='清除畫面' onClick='parent.msg_area_click(); parent.says_focus();' style="height:22px; background:#FFFF99"> 
+<a href='javascript:logout_c()'><font color='yellow' style="font-size:10pt"><u>離開</u></font></a>
+
+</p>
+<p style="margin-top:1; margin-bottom:0">
+
+<select name='func' onChange="if(this.value=='') this.selectedIndex=0;" style="background-color:#FFFF99; width:89px;">
+<option value=''>功能選單</option>
+<option value="filter_make();">過濾壞人</option>
+<option value="filter_clear();">解除過濾</option>
+<option value="parent.profile_on();">個人資訊</option>
+<option value="parent.bulletin_on();">站務公告</option>
+<option value="openwin('/levelfunction.htm', '_levelfunction');">等級功能表</option>
+</select><input type='button' value='GO' onClick='if(this.form.func.value=="") {alert("請先選擇功能");} else {eval(this.form.func.value);}' onFocus="this.blur()" style="height:22px;width:28px;background:#FFFF99;margin-left:1px;">
+
+<select name='background' onChange='parent.msg_area_background(); parent.says_focus();' style="background-color:#FFAAFF; width:78px;">
+<option value=''>背景圖案</option>
+<option value='/age_15/chat/bg_m01.jpg'>人魚傳說</option>
+<option value='/age_15/chat/bg_m02.gif'>少女情懷</option>
+<option value='/age_15/chat/bg_m03.jpg'>幻舞精靈</option>
+<option value='/age_15/chat/bg_m04.jpg'>水滴星情</option>
+<option value='/age_15/chat/bg_m05.jpg'>出水芙蓉</option>
+<option value='/age_15/chat/bg_m06.jpg'>可愛臉譜</option>
+<option value='/age_15/chat/bg_m07.jpg'>沙灘戀影</option>
+<option value='/age_15/chat/bg_m08.jpg'>兩小無猜</option>
+<option value='/age_15/chat/bg_m09.jpg'>幸福滋味</option>
+<option value='/age_15/chat/bg_m10.jpg'>拉丁舞孃</option>
+<option value='/age_15/chat/bg_m11.jpg'>青春飛揚</option>
+<option value='/age_15/chat/bg_m12.jpg'>炫藍奔馳</option>
+<option value='/age_15/chat/bg_m13.jpg'>郁香咖啡</option>
+<option value='/age_15/chat/bg_m14.jpg'>夏荷之戀</option>
+<option value='/age_15/chat/bg_m15.jpg'>時光之旅</option>
+<option value='/age_15/chat/bg_m16.jpg'>時尚女郎</option>
+<option value='/age_15/chat/bg_m17.jpg'>海景閒趣</option>
+<option value='/age_15/chat/bg_m18.jpg'>雪花冬戀</option>
+<option value='/age_15/chat/bg_m19.jpg'>絕色水蓮</option>
+<option value='/age_15/chat/bg_m20.jpg'>越野奇遇</option>
+<option value='/age_15/chat/bg_m21.jpg'>搖滾男孩</option>
+<option value='/age_15/chat/bg_m22.jpg'>暗夜精靈</option>
+<option value='/age_15/chat/bg_m23.jpg'>溫馨小品</option>
+<option value='/age_15/chat/bg_m24.jpg'>夢幻飄逸</option>
+<option value='/age_15/chat/bg_m25.jpg'>霹靂神州</option>
+<option value='/age_15/chat/bg_m26.jpg'>戀戀星空</option>
+<option value='/age_15/chat/bg_hinet.jpg'>HiNet</option>
+<option value='/age_15/chat/bg_01.gif'>滿天繁星</option>
+<option value='/age_15/chat/bg_02.gif'>許願流星</option>
+<option value='/age_15/chat/bg_03.gif'>尋夢女孩</option>
+<option value='/age_15/chat/bg_05.jpg'>藍星鳳凰</option>
+<option value='/age_15/chat/bg_07.jpg'>秋楓落葉</option>
+<option value='/age_15/chat/bg_09.gif'>星光閃耀</option>
+<option value='/age_15/chat/bg_11.jpg'>花蝶巧舞</option>
+<option value='/age_15/chat/bg_12.jpg'>銀色幻蝶</option>
+<option value='/age_15/chat/bg_14.jpg'>粉紅玫瑰</option>
+<option value='/age_15/chat/bg_16.gif'>銀河星系</option>
+<option value='/age_15/chat/bg_r01.jpg'>愛神之箭</option>
+<option value='/age_15/chat/bg_r02.jpg'>白花燈籠</option>
+<option value='/age_15/chat/bg_r03.jpg'>藍月鯨星</option>
+<option value='/age_15/chat/bg_r04.jpg'>暗夜明月</option>
+<option value='/age_15/chat/bg_r05.jpg'>暗夜燭光</option>
+<option value='/age_15/chat/bg_r06.jpg'>聖誕燭光</option>
+<option value='/age_15/chat/bg_r07.jpg'>紫色玫瑰</option>
+<option value='/age_15/chat/bg_r08.jpg'>魔法氣泡</option>
+<option value='/age_15/chat/bg_r09.jpg'>水漾紅心</option>
+</select>
+
+<select name='says_preset' onChange='says_preset_change(); parent.says_focus();' style="background-color:#FFAAFF; width:78px;">
+<option value=''>常用詞句</option>
+<option value='大家好，有人要跟我聊聊嗎？'>大家好</option>
+<option value='請稍等一下，我有事正在忙！'>忙碌中</option>
+<option value='請稍等一下，我正在電話中喔～'>電話中</option>
+<option value='請稍等一下，我要去上廁所喔～～'>上廁所</option>
+<option value='大家掰掰囉，下次再聊哦！'>告別1</option>
+<option value='啵啵啵～大家掰掰～～'>告別2</option>
+<option value='我該走囉！我會想你們的！'>告別3</option>
+<option value='我有事先走一步嚕，大家要幸福喔！'>告別4</option>
+<option value='我累嚕，想休息一下了，祝各位聊天愉快囉，記得想我喔！掰掰～'>告別5</option>
+</select>
+
+<select name='color' onChange='parent.says_focus();' style="width:78px;">
+<option value="ffffff">文字顏色</option>
+<option value="ffffff" style="background-color:#000000;color:ffffff">白雪紛飛</option>
+<option value="ff8800" style="background-color:#000000;color:ff8800">黃金歲月</option>
+<option value="ff8888" style="background-color:#000000;color:ff8888">紅袍飄飄</option>
+<option value="ff88ff" style="background-color:#000000;color:ff88ff">紫金繡帖</option>
+<option value="66ffff" style="background-color:#000000;color:66ffff">冷若冰霜</option>
+<option value="ff6699" style="background-color:#000000;color:ff6699">紅粉佳人</option>
+<option value="66ffcc" style="background-color:#000000;color:66ffcc">翠綠碧波</option>
+<option value="ff9966" style="background-color:#000000;color:ff9966">鮮甜橘子</option>
+<option value="ff6600" style="background-color:#000000;color:ff6600">利市大吉</option>
+<option value="ccffff" style="background-color:#000000;color:ccffff">純淨泉水</option>
+<option value="ffcccc" style="background-color:#000000;color:ffcccc">粉紅姻脂</option>
+<option value="ff66ff" style="background-color:#000000;color:ff66ff">嬌豔牡丹</option>
+<option value="ccffcc" style="background-color:#000000;color:ccffcc">蜜瓜鮮奶</option>
+<option value="ccff99" style="background-color:#000000;color:ccff99">加州青檸</option>
+<option value="ffcc99" style="background-color:#000000;color:ffcc99">健康膚色</option>
+<option value="ffffcc" style="background-color:#000000;color:ffffcc">芒果布丁</option>
+<option value="cc99ff" style="background-color:#000000;color:cc99ff">酸辣綺夢</option>
+<option value="7ac5cd" style="background-color:#000000;color:7ac5cd">柔情似水</option>
+<option value="d15fee" style="background-color:#000000;color:d15fee">淺紫鳶尾</option>
+<option value="dc153c" style="background-color:#000000;color:dc153c">緋紅晚霞</option>
+<option value="ee4000" style="background-color:#000000;color:ee4000">油炸番茄</option>
+<option value="d2691e" style="background-color:#000000;color:d2691e">核桃鬆餅</option>
+<option value="32cd32" style="background-color:#000000;color:32cd32">清香草原</option>
+<option value="888800" style="background-color:#000000;color:888800">卡其制服</option>
+<option value="ccaa00" style="background-color:#000000;color:ccaa00">卡布其諾</option>
+<option value="0088ff" style="background-color:#000000;color:0088ff">海洋之藍</option>
+<option value="8888ff" style="background-color:#000000;color:8888ff">興份過藍</option>
+<option value="ff0000" style="background-color:#000000;color:ff0000">正宗喜紅</option>
+<option value="ff00ff" style="background-color:#000000;color:ff00ff">紅的發紫</option>
+<option value="ffff00" style="background-color:#000000;color:ffff00">皮卡丘黃</option>
+</select>
+
+<select name='mood' onChange='parent.says_focus();' style="background-color:#FFAAFF; width:78px;">
+<option value=''>文字表情</option>
+<option value='笑著說'>笑</option>
+<option value='微笑著說'>微笑</option>
+<option value='大笑著說'>大笑</option>
+<option value='奸笑著說'>奸笑</option>
+<option value='傻笑著說'>傻笑</option>
+<option value='苦笑著說'>苦笑</option>
+<option value='笑到流淚的說'>笑到流淚</option>
+<option value='甜蜜蜜的說'>甜蜜蜜</option>
+<option value='含情脈脈的說'>含情脈脈</option>
+<option value='深情款款的說'>深情款款</option>
+<option value='感動的說'>感動</option>
+<option value='幸福的說'>幸福</option>
+<option value='高興的說'>高興</option>
+<option value='興奮的說'>興奮</option>
+<option value='滿足的說'>滿足</option>
+<option value='渴望的說'>渴望</option>
+<option value='舒服的說'>舒服</option>
+<option value='溫柔的說'>溫柔</option>
+<option value='遺憾的說'>遺憾</option>
+<option value='悲傷的說'>悲傷</option>
+<option value='嘟著嘴的說'>嘟著嘴</option>
+<option value='很委屈的說'>很委屈</option>
+<option value='快要哭的說'>快要哭</option>
+<option value='心情鬱卒的說'>心情鬱卒</option>
+<option value='淚流滿面的說'>淚流滿面</option>
+<option value='手足無措的說'>手足無措</option>
+<option value='很尷尬的說'>很尷尬</option>
+<option value='紅著臉說'>紅著臉</option>
+<option value='吞吞吐吐的說'>吞吞吐吐</option>
+<option value='拐彎抹角的說'>拐彎抹角</option>
+<option value='左右為難的說'>左右為難</option>
+<option value='很懷疑的說'>很懷疑</option>
+<option value='很無辜的說'>很無辜</option>
+<option value='傻乎乎的說'>傻乎乎</option>
+<option value='流口水的說'>流口水</option>
+<option value='自言自語的說'>自言自語</option>
+<option value='無精打采的說'>無精打采</option>
+<option value='口吐白沫的說'>口吐白沫</option>
+<option value='嚴肅的說'>嚴肅</option>
+<option value='認真的說'>認真</option>
+<option value='訝異的說'>訝異</option>
+<option value='生氣的說'>生氣</option>
+<option value='大聲的說'>大聲</option>
+<option value='瞪大眼的說'>瞪大眼</option>
+<option value='拳打腳踢的說'>拳打腳踢</option>
+<option value='不懷好意的說'>不懷好意</option>
+<option value='翻箱倒櫃的說'>翻箱倒櫃</option>
+<option value='正氣凜然的說'>正氣凜然</option>
+<option value='毛手毛腳的說'>毛手毛腳</option>
+<option value='快要吐的說'>快要吐</option>
+<option value='不舒服的說'>不舒服</option>
+<option value='依依不捨的說'>依依不捨</option>
+</select>
+
+<select name='sign' onChange='parent.says_focus();' style="background-color:#FFAAFF; width:65px;">
+<option value=''>貼圖</option>
+<option value="A">勝利</option>
+<option value="B">OK</option>
+<option value="C">讚</option>
+<option value="D">遜</option>
+<option value="I">布</option>
+<option value="J">笑臉</option>
+<option value="L">扁嘴</option>
+<option value="M">炸彈</option>
+<option value="N">毒藥</option>
+<option value="O">旗</option>
+<option value="R">太陽</option>
+<option value="S">水滴</option>
+<option value="T">雪花</option>
+<option value="V">十字架</option>
+<option value="Y">星星</option>
+<option value="Z">月亮</option>
+<option value="b">蚵蚪</option>
+<option value="d">肚臍</option>
+<option value="f">箭頭</option>
+<option value="m">圓</option>
+<option value="r">四角</option>
+<option value="1">檔案夾</option>
+<option value="4">備忘錄</option>
+<option value="6">沙漏</option>
+<option value="8">滑鼠</option>
+<option value="!">筆</option>
+<option value="#">剪刀</option>
+<option value="$">眼鏡</option>
+<option value="%">鈴噹</option>
+<option value="&">書</option>
+<option value="*">明信片</option>
+<option value="(">電話</option>
+<option value="-">信箱</option>
+<option value="<">磁片</option>
+<option value="|">黑花</option>
+<option value="]">舵</option>
+<option value="{">白花</option>
+<option value=":">電腦</option>
+</select>
+
+</p>
+</form>
+
+<!-- main form end -->
+
+</td>
+<td rowspan='2' width='26' valign='bottom' background='/age_15/chat/type_area_bg2.gif'><img src='/age_15/chat/type_area_2.gif' width='26' height='26'></td>
+</tr>
+<tr>
+<td background='/age_15/chat/type_area_bg3.gif' height='21' bordercolor='#CC0066'></td>
+</tr>
+</table>
+<div id="wm1" style="position:absolute;top:6px;left:38px;width:70px;height:70px;z-index:20;overflow:hidden;"></div>
+<script type="text/javascript" src="/s2t.js?20080116"></script>
+</body>
+</html>
+
+<script language='javascript'>
+var funcop = document.form1.func.options;
+funcop[funcop.length] = new Option('==========', '');
+funcop[funcop.length] = new Option('開啟語音', "audio_play_open();");
+funcop[funcop.length] = new Option('關閉語音', "audio_play_close();");
+funcop[funcop.length] = new Option('==========', '');
+funcop[funcop.length] = new Option('□ 全螢幕', "parent.setwindowsize(0,0);");
+funcop[funcop.length] = new Option('□ 1024x768', "parent.setwindowsize(1024,768);");
+funcop[funcop.length] = new Option('□ 800x600', "parent.setwindowsize(800,600);");
+funcop[funcop.length] = new Option('□ 800x480', "parent.setwindowsize(800,480);");
+</script>
+
