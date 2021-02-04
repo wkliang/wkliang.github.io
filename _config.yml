@@ -4,7 +4,9 @@ safe: false
 permalink: /posts/:title.html
 exclude:
   - README.md
+  - programs
   - nodejs
+  - webext
 
 host: wkliang.github.com
 
