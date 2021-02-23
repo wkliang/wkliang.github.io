@@ -1,7 +1,7 @@
 #!bin/sh
 
-url=http://192.168.0.6:3000/stream.mjpg 
-# url=http://ware.tw:3000/stream.mjpg 
+# url=http://192.168.0.6:3000/stream.mjpg 
+url=http://ware.tw:3000/stream.mjpg 
 
 pipe=$(mktemp)
 rm -v $pipe
