@@ -12,14 +12,18 @@
 	XMLHttpRequest / Fetch
     </header>
     <article>
-	<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch">使用 Fetch</a>
+	    <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch">使用 Fetch</a> <span>---</span>
 	<a href="https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest">使用 XMLHttpRequest</a><br/>
+	<a href="https://juejin.cn/post/6844903880774385671">为什么视频网站的视频链接地址是blob？</a><br/>
+<!---
 		 addEventListener("load", function() {
 			console.log(this.responseText);
 		});
+--->
    </article>
-      <div id="fetchElement">
-      </div>
+      <div id="fetchElement"></div>
+      <img id="previewImage" src="" alt="preview"/>
+      <input id="uploadImage" type="file"/>
   </body>
   <script>
 	function postLogin(myEmail, myPasswd) {
@@ -66,6 +70,13 @@
 		.catch(err => {
 			console.log("fetch() ERROR:", err);
 		});
+
+		const uploadImage = document.querySelector("#uploadImage");
+		const previewImage = document.querySelector("#previewImage");
+		uploadImage.onchange = function() {
+			const file = uploadImage.files[0];
+			previewImage.src = URL.createObjectURL(file);
+		};
 	}, true);
   </script>
 </html>
